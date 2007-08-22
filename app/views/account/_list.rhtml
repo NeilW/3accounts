@@ -1,0 +1,24 @@
+<%for @account in @accounts%>
+	<%if @selected_account == @account%>
+		<div class='selected'>
+			<div class='nav_account_name'><%= @account.name %></div>
+			<div class='nav_account_today_total' id='nav_a_t_total'>
+				<%= render :partial => '/account/nav_show_today_balance' %>
+			</div>
+			<div class='nav_account_upcoming_total' id='nav_a_u_total'>
+				<%= render :partial => '/account/nav_show_upcoming_balance' %>
+			</div>
+			<span class='nav_account_delete'><%= link_to 'export entries to CSV' , :controller => :account, :action => :export_csv, :id => @account.id %></span>
+			<span class='nav_account_delete'><%= link_to 'delete' , {:controller => :account, :action => :delete, :id => @account.id}, :confirm => "It will also delete any related entry. Are you sure?" %></span>
+		</div>
+	<%else%>
+		<div class='unselected'>
+			<a href="<%= url_for :controller => :admin, :action => :account, :id => @account.id %>">
+				<span class='nav_account_name'><%=@account.name%></span>
+				<span class='nav_account_small_total' id='nav_a_s_total'><%= render :partial => '/account/nav_show_small_balance' %></span>
+			</a>
+		</div>
+
+	<%end%>
+	
+<%end%>

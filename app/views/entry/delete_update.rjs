@@ -1,0 +1,10 @@
+if @entry_id
+ page.replace_html 'add_entry_form', :partial => '/entry/form_new', :object => @entry=Entry.new, :object => @selected_account, :object => @categories, :object => @updating
+ page.remove 'entry_'+@entry_id.to_s
+ if @entry_effective_date <= Time.now.to_date
+	page.replace_html 'account_total', :partial => '/account/show_balance', :object => @selected_account	
+      	page.replace_html 'nav_a_t_total', :partial => '/account/nav_show_today_balance', :object => @account = @selected_account
+ end  
+ page.replace_html 'upcoming_account_total', :partial => '/account/show_upcoming_balance', :object => @selected_account
+ page.replace_html 'nav_a_u_total', :partial => '/account/nav_show_upcoming_balance', :object => @account = @selected_account
+end

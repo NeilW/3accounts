@@ -1,0 +1,646 @@
+
+
+Processing AdminController#index (for 127.0.0.1 at 2007-08-22 10:54:50) [GET]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"action"=>"index", "controller"=>"admin"}
+
+
+Mysql::Error (Unknown database '3accounts_development'):
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:389:in `real_connect'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:389:in `connect'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:152:in `initialize'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `new'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `mysql_connection'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `send'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `connection_without_query_cache='
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/query_cache.rb:54:in `connection='
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:230:in `retrieve_connection'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:78:in `connection'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:1139:in `add_limit!'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:1101:in `construct_finder_sql'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:997:in `find_every'
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:418:in `find'
+    .//app/controllers/admin_controller.rb:3:in `index'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:78:in `process'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:76:in `synchronize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:76:in `process'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:618:in `process_client'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:617:in `each'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:617:in `process_client'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `initialize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `new'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `initialize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `new'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:271:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:270:in `each'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:270:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/bin/mongrel_rails:127:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/command.rb:211:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/bin/mongrel_rails:243
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+  [4;36;1mSQL (0.000156)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.010331)[0m   [0mCREATE TABLE schema_info (version int(11))[0m
+  [4;36;1mSQL (0.000244)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: Table 'schema_info' already exists: CREATE TABLE schema_info (version int(11))[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: Table 'schema_info' already exists: CREATE TABLE schema_info (version int(11))[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: Table 'schema_info' already exists: CREATE TABLE schema_info (version int(11))[0m
+  [4;35;1mSQL (0.000252)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Install3accounts (1)
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: Unknown table 'accounts': DROP TABLE accounts[0m
+  [4;35;1mSQL (0.038032)[0m   [0mCREATE TABLE accounts (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: Unknown table 'categories': DROP TABLE categories[0m
+  [4;35;1mSQL (0.002707)[0m   [0mCREATE TABLE categories (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: Unknown table 'entries': DROP TABLE entries[0m
+  [4;35;1mSQL (0.003009)[0m   [0mCREATE TABLE entries (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `account_id` int(11) DEFAULT NULL, `category_id` int(11) DEFAULT NULL, `effective_date` date DEFAULT NULL, `checked` tinyint(1) DEFAULT NULL, `check_number` varchar(255) DEFAULT NULL, `comment` varchar(255) DEFAULT NULL, `value` float DEFAULT NULL, `created_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000189)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mSQL (0.000209)[0m   [0mSELECT * FROM schema_info[0m
+  [4;36;1mSQL (0.000242)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.000542)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mSQL (0.000262)[0m   [0;1mSHOW KEYS FROM accounts[0m
+  [4;35;1mSQL (0.000432)[0m   [0mSHOW FIELDS FROM categories[0m
+  [4;36;1mSQL (0.000221)[0m   [0;1mSHOW KEYS FROM categories[0m
+  [4;35;1mSQL (0.000623)[0m   [0mSHOW FIELDS FROM entries[0m
+  [4;36;1mSQL (0.000222)[0m   [0;1mSHOW KEYS FROM entries[0m
+
+
+Processing AdminController#index (for 127.0.0.1 at 2007-08-22 10:58:20) [GET]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"action"=>"index", "controller"=>"admin"}
+  [4;36;1mSQL (0.000154)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAccount Load (0.000254)[0m   [0mSELECT * FROM accounts [0m
+
+
+NoMethodError (undefined method `order_by' for Category:Class):
+    /var/lib/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:1235:in `method_missing'
+    .//app/models/category.rb:8
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:203:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:203:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:202:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:94:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:248:in `load_missing_constant'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:452:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:464:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:470:in `send'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:470:in `const_missing'
+    .//app/controllers/admin_controller.rb:4:in `index'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:78:in `process'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:76:in `synchronize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:76:in `process'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:618:in `process_client'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:617:in `each'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:617:in `process_client'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `initialize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `new'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `initialize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `new'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:271:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:270:in `each'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:270:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/bin/mongrel_rails:127:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/command.rb:211:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/bin/mongrel_rails:243
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing AdminController#index (for 127.0.0.1 at 2007-08-22 11:08:50) [GET]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"action"=>"index", "controller"=>"admin"}
+  [4;36;1mSQL (0.000136)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAccount Load (0.000125)[0m   [0mSELECT * FROM accounts [0m
+  [4;36;1mCategory Load (0.000305)[0m   [0;1mSELECT * FROM categories ORDER BY name[0m
+Rendering  within layouts/admin
+Rendering admin/index
+Rendered /account/_list (0.00173)
+Rendered /category/_list (0.00102)
+  [4;35;1mAccount Columns (0.000574)[0m   [0mSHOW FIELDS FROM accounts[0m
+Rendered /account/_form_new (0.00494)
+  [4;36;1mCategory Columns (0.000562)[0m   [0;1mSHOW FIELDS FROM categories[0m
+Rendered /category/_form_new (0.00391)
+Rendered /admin/partials/_nav (0.01336)
+Completed in 0.04709 (21 reqs/sec) | Rendering: 0.01813 (38%) | DB: 0.00170 (3%) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-22 11:08:50) [GET]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/images/3accounts.gif" with {:method=>:get}):
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:78:in `process'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:76:in `synchronize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:76:in `process'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:618:in `process_client'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:617:in `each'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:617:in `process_client'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `initialize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `new'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `initialize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `new'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:271:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:270:in `each'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:270:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/bin/mongrel_rails:127:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/command.rb:211:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/bin/mongrel_rails:243
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing AccountController#add (for 127.0.0.1 at 2007-08-22 11:09:06) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add account", "account"=>{"name"=>"test"}, "action"=>"add", "controller"=>"account", "selected_account_id"=>nil}
+  [4;35;1mAccount Columns (0.001322)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mSQL (0.000156)[0m   [0;1mBEGIN[0m
+  [4;35;1mAccount Load (0.000421)[0m   [0mSELECT * FROM accounts WHERE (accounts.name = 'test') LIMIT 1[0m
+  [4;36;1mSQL (0.000361)[0m   [0;1mINSERT INTO accounts (`name`) VALUES('test')[0m
+  [4;35;1mSQL (0.005456)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Load (0.000384)[0m   [0;1mSELECT * FROM accounts [0m
+  [4;35;1mEntry Load (0.000687)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_small_balance (0.01263)
+Rendered /account/_list (0.01593)
+Completed in 0.04429 (22 reqs/sec) | Rendering: 0.01614 (36%) | DB: 0.00879 (19%) | 200 OK [http://localhost/account/add?selected_account_id=]
+
+
+Processing AdminController#account (for 127.0.0.1 at 2007-08-22 11:09:08) [GET]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"action"=>"account", "id"=>"1", "controller"=>"admin"}
+  [4;36;1mAccount Load (0.000378)[0m   [0;1mSELECT * FROM accounts [0m
+  [4;35;1mCategory Load (0.000231)[0m   [0mSELECT * FROM categories ORDER BY name[0m
+  [4;36;1mAccount Columns (0.000901)[0m   [0;1mSHOW FIELDS FROM accounts[0m
+  [4;35;1mAccount Load (0.000416)[0m   [0mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering  within layouts/admin
+Rendering admin/account
+  [4;36;1mEntry Load (0.000178)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.09552)
+  [4;35;1mEntry Load (0.000390)[0m   [0mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00221)
+Rendered /account/_list (0.10140)
+Rendered /category/_list (0.00014)
+Rendered /account/_form_new (0.00215)
+  [4;36;1mCategory Columns (0.000608)[0m   [0;1mSHOW FIELDS FROM categories[0m
+Rendered /category/_form_new (0.00329)
+Rendered /admin/partials/_nav (0.10837)
+  [4;35;1mEntry Columns (0.000806)[0m   [0mSHOW FIELDS FROM entries[0m
+Rendered /entry/_form_new_categories_select (0.00076)
+Rendered /entry/_form_new (0.01057)
+  [4;36;1mEntry Load (0.000756)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00227)
+  [4;35;1mEntry Load (0.000141)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00176)
+  [4;36;1mEntry Load (0.000121)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_upcoming_balance (0.00131)
+  [4;35;1mEntry Load (0.000376)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date > '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list_upcoming (0.00188)
+Rendered /admin/partials/_content_account (0.02034)
+Completed in 0.16094 (6 reqs/sec) | Rendering: 0.12973 (80%) | DB: 0.00530 (3%) | 200 OK [http://localhost/admin/account/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-22 11:09:08) [GET]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/images/3accounts.gif" with {:method=>:get}):
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:78:in `process'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:76:in `synchronize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/rails.rb:76:in `process'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:618:in `process_client'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:617:in `each'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:617:in `process_client'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `initialize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `new'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:736:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `initialize'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `new'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel.rb:720:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:271:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:270:in `each'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/configurator.rb:270:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/bin/mongrel_rails:127:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/lib/mongrel/command.rb:211:in `run'
+    /var/lib/gems/1.8/gems/mongrel-1.0.1/bin/mongrel_rails:243
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    /var/lib/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering /var/lib/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:29) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;36;1mEntry Columns (0.000826)[0m   [0;1mSHOW FIELDS FROM entries[0m
+  [4;35;1mSQL (0.000066)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000074)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (0.000573)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mAccount Load (0.000086)[0m   [0;1mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;35;1mEntry Load (0.000203)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00126)
+  [4;36;1mEntry Load (0.000120)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00089)
+  [4;35;1mEntry Load (0.000108)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00084)
+  [4;36;1mEntry Load (0.000215)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00187)
+Rendered /account/_show_upcoming_balance (0.00020)
+Completed in 0.02855 (35 reqs/sec) | Rendering: 0.01304 (45%) | DB: 0.00227 (7%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:30) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;35;1mEntry Columns (0.001062)[0m   [0mSHOW FIELDS FROM entries[0m
+  [4;36;1mSQL (0.000079)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000079)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Columns (0.000579)[0m   [0;1mSHOW FIELDS FROM accounts[0m
+  [4;35;1mAccount Load (0.000082)[0m   [0mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;36;1mEntry Load (0.000140)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00124)
+  [4;35;1mEntry Load (0.000103)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00091)
+  [4;36;1mEntry Load (0.000100)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00090)
+  [4;35;1mEntry Load (0.000118)[0m   [0mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00111)
+Rendered /account/_show_upcoming_balance (0.00024)
+Completed in 0.03152 (31 reqs/sec) | Rendering: 0.01232 (39%) | DB: 0.00234 (7%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:30) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;36;1mEntry Columns (0.001812)[0m   [0;1mSHOW FIELDS FROM entries[0m
+  [4;35;1mSQL (0.000075)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000078)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (0.000665)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mAccount Load (0.000078)[0m   [0;1mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;35;1mEntry Load (0.000146)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00119)
+  [4;36;1mEntry Load (0.000099)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00083)
+  [4;35;1mEntry Load (0.000103)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00086)
+  [4;36;1mEntry Load (0.000104)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00098)
+Rendered /account/_show_upcoming_balance (0.00019)
+Completed in 0.02982 (33 reqs/sec) | Rendering: 0.01203 (40%) | DB: 0.00316 (10%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:30) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;35;1mEntry Columns (0.001324)[0m   [0mSHOW FIELDS FROM entries[0m
+  [4;36;1mSQL (0.000189)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000139)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Columns (0.000667)[0m   [0;1mSHOW FIELDS FROM accounts[0m
+  [4;35;1mAccount Load (0.000065)[0m   [0mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;36;1mEntry Load (0.000144)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00119)
+  [4;35;1mEntry Load (0.000105)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00087)
+  [4;36;1mEntry Load (0.000110)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00093)
+  [4;35;1mEntry Load (0.000173)[0m   [0mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00111)
+Rendered /account/_show_upcoming_balance (0.00019)
+Completed in 0.03361 (29 reqs/sec) | Rendering: 0.01248 (37%) | DB: 0.00292 (8%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:30) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;36;1mEntry Columns (0.001604)[0m   [0;1mSHOW FIELDS FROM entries[0m
+  [4;35;1mSQL (0.000107)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000099)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (0.000603)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mAccount Load (0.000079)[0m   [0;1mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;35;1mEntry Load (0.000146)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00123)
+  [4;36;1mEntry Load (0.000099)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00088)
+  [4;35;1mEntry Load (0.001939)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00362)
+  [4;36;1mEntry Load (0.000143)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00139)
+Rendered /account/_show_upcoming_balance (0.00027)
+Completed in 0.03314 (30 reqs/sec) | Rendering: 0.01377 (41%) | DB: 0.00482 (14%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:31) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;35;1mEntry Columns (0.000903)[0m   [0mSHOW FIELDS FROM entries[0m
+  [4;36;1mSQL (0.000100)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000119)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Columns (0.000666)[0m   [0;1mSHOW FIELDS FROM accounts[0m
+  [4;35;1mAccount Load (0.000084)[0m   [0mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;36;1mEntry Load (0.000148)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00130)
+  [4;35;1mEntry Load (0.000125)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00100)
+  [4;36;1mEntry Load (0.000106)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00092)
+  [4;35;1mEntry Load (0.000150)[0m   [0mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00134)
+Rendered /account/_show_upcoming_balance (0.00026)
+Completed in 0.03318 (30 reqs/sec) | Rendering: 0.01413 (42%) | DB: 0.00240 (7%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:31) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;36;1mEntry Columns (0.001009)[0m   [0;1mSHOW FIELDS FROM entries[0m
+  [4;35;1mSQL (0.000101)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000076)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (0.000653)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mAccount Load (0.000067)[0m   [0;1mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;35;1mEntry Load (0.000146)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00118)
+  [4;36;1mEntry Load (0.000110)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00096)
+  [4;35;1mEntry Load (0.000082)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00080)
+  [4;36;1mEntry Load (0.000184)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00109)
+Rendered /account/_show_upcoming_balance (0.00035)
+Completed in 0.11303 (8 reqs/sec) | Rendering: 0.09304 (82%) | DB: 0.00243 (2%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:32) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;35;1mEntry Columns (0.000887)[0m   [0mSHOW FIELDS FROM entries[0m
+  [4;36;1mSQL (0.000141)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000104)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Columns (0.000560)[0m   [0;1mSHOW FIELDS FROM accounts[0m
+  [4;35;1mAccount Load (0.000113)[0m   [0mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;36;1mEntry Load (0.000147)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00123)
+  [4;35;1mEntry Load (0.000095)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00086)
+  [4;36;1mEntry Load (0.000084)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00081)
+  [4;35;1mEntry Load (0.000105)[0m   [0mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00103)
+Rendered /account/_show_upcoming_balance (0.00020)
+Completed in 0.02922 (34 reqs/sec) | Rendering: 0.01234 (42%) | DB: 0.00224 (7%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:32) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;36;1mEntry Columns (0.003687)[0m   [0;1mSHOW FIELDS FROM entries[0m
+  [4;35;1mSQL (0.000138)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (0.000684)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mAccount Load (0.000067)[0m   [0;1mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;35;1mEntry Load (0.000136)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00126)
+  [4;36;1mEntry Load (0.000119)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00092)
+  [4;35;1mEntry Load (0.000099)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00084)
+  [4;36;1mEntry Load (0.000101)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00096)
+Rendered /account/_show_upcoming_balance (0.00018)
+Completed in 0.03295 (30 reqs/sec) | Rendering: 0.01189 (36%) | DB: 0.00514 (15%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:32) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;35;1mEntry Columns (0.001442)[0m   [0mSHOW FIELDS FROM entries[0m
+  [4;36;1mSQL (0.000092)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000086)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Columns (0.000584)[0m   [0;1mSHOW FIELDS FROM accounts[0m
+  [4;35;1mAccount Load (0.000094)[0m   [0mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;36;1mEntry Load (0.000142)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00128)
+  [4;35;1mEntry Load (0.000103)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00095)
+  [4;36;1mEntry Load (0.000114)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00097)
+  [4;35;1mEntry Load (0.000103)[0m   [0mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00120)
+Rendered /account/_show_upcoming_balance (0.00024)
+Completed in 0.11004 (9 reqs/sec) | Rendering: 0.01256 (11%) | DB: 0.00276 (2%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:32) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;36;1mEntry Columns (0.001111)[0m   [0;1mSHOW FIELDS FROM entries[0m
+  [4;35;1mSQL (0.000095)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000082)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (0.000914)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mAccount Load (0.000253)[0m   [0;1mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;35;1mEntry Load (0.000146)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00121)
+  [4;36;1mEntry Load (0.000096)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00084)
+  [4;35;1mEntry Load (0.000092)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00083)
+  [4;36;1mEntry Load (0.000104)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00098)
+Rendered /account/_show_upcoming_balance (0.00020)
+Completed in 0.03305 (30 reqs/sec) | Rendering: 0.01368 (41%) | DB: 0.00289 (8%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:33) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;35;1mEntry Columns (0.001149)[0m   [0mSHOW FIELDS FROM entries[0m
+  [4;36;1mSQL (0.000133)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000130)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Columns (0.002175)[0m   [0;1mSHOW FIELDS FROM accounts[0m
+  [4;35;1mAccount Load (0.000093)[0m   [0mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;36;1mEntry Load (0.000143)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00124)
+  [4;35;1mEntry Load (0.000095)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00085)
+  [4;36;1mEntry Load (0.000092)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00077)
+  [4;35;1mEntry Load (0.000101)[0m   [0mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00099)
+Rendered /account/_show_upcoming_balance (0.00019)
+Completed in 0.03588 (27 reqs/sec) | Rendering: 0.01255 (34%) | DB: 0.00411 (11%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:33) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;36;1mEntry Columns (0.001108)[0m   [0;1mSHOW FIELDS FROM entries[0m
+  [4;35;1mSQL (0.000245)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000101)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (0.000731)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mAccount Load (0.000077)[0m   [0;1mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;35;1mEntry Load (0.000156)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00178)
+  [4;36;1mEntry Load (0.000101)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00101)
+  [4;35;1mEntry Load (0.000093)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00088)
+  [4;36;1mEntry Load (0.000104)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00109)
+Rendered /account/_show_upcoming_balance (0.00022)
+Completed in 0.03567 (28 reqs/sec) | Rendering: 0.01450 (40%) | DB: 0.00272 (7%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:33) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;35;1mEntry Columns (0.001019)[0m   [0mSHOW FIELDS FROM entries[0m
+  [4;36;1mSQL (0.000124)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000249)[0m   [0mCOMMIT[0m
+  [4;36;1mAccount Columns (0.000757)[0m   [0;1mSHOW FIELDS FROM accounts[0m
+  [4;35;1mAccount Load (0.000088)[0m   [0mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;36;1mEntry Load (0.000148)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00126)
+  [4;35;1mEntry Load (0.000124)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00098)
+  [4;36;1mEntry Load (0.000120)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00137)
+  [4;35;1mEntry Load (0.000113)[0m   [0mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00184)
+Rendered /account/_show_upcoming_balance (0.00023)
+Completed in 0.03529 (28 reqs/sec) | Rendering: 0.01543 (43%) | DB: 0.00274 (7%) | 200 OK [http://localhost/entry/add]
+
+
+Processing EntryController#add (for 127.0.0.1 at 2007-08-22 11:09:34) [POST]
+  Session ID: 31ec372f26beb7c57716ea4963bd9f79
+  Parameters: {"commit"=>"add", "action"=>"add", "controller"=>"entry", "entry"=>{"checked"=>"0", "account_id"=>"1", "check_number"=>"", "value"=>"", "comment"=>"", "effective_date"=>"2007-7-19"}}
+  [4;36;1mEntry Columns (0.000773)[0m   [0;1mSHOW FIELDS FROM entries[0m
+  [4;35;1mSQL (0.000169)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000120)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAccount Columns (0.000605)[0m   [0mSHOW FIELDS FROM accounts[0m
+  [4;36;1mAccount Load (0.000088)[0m   [0;1mSELECT * FROM accounts WHERE (accounts.`id` = 1) [0m
+Rendering entry/add
+  [4;35;1mEntry Load (0.000140)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /entry/_list (0.00139)
+  [4;36;1mEntry Load (0.000103)[0m   [0;1mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_show_balance (0.00085)
+  [4;35;1mEntry Load (0.000078)[0m   [0mSELECT * FROM entries WHERE (account_id=1 AND effective_date <= '2007-08-22') ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_today_balance (0.00078)
+  [4;36;1mEntry Load (0.000101)[0m   [0;1mSELECT * FROM entries WHERE (entries.account_id = 1) ORDER BY effective_date DESC, created_at DESC[0m
+Rendered /account/_nav_show_upcoming_balance (0.00095)
+Rendered /account/_show_upcoming_balance (0.00018)
+Completed in 0.02784 (35 reqs/sec) | Rendering: 0.01238 (44%) | DB: 0.00218 (7%) | 200 OK [http://localhost/entry/add]

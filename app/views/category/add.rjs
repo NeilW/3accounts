@@ -1,0 +1,6 @@
+page.replace_html 'categories_list', :partial => '/category/list', :object => @categories
+
+if @selected_account_id
+	page.replace_html 'content_form_new_categories_select', :partial => '/entry/form_new_categories_select'
+end
+

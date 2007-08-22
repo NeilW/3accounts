@@ -1,0 +1,11 @@
+if @newEntry.effective_date <= Time.now.to_date
+	page.replace_html 'entries_list', :partial => '/entry/list', :object => @selected_account
+	page.replace_html 'account_total', :partial => '/account/show_balance', :object => @selected_account	
+	page.replace_html 'nav_a_t_total', :partial => '/account/nav_show_today_balance', :object => @account = @selected_account
+else
+	page.replace_html 'upcoming_entries_list', :partial => '/entry/list_upcoming', :object => @selected_account
+end
+
+page.replace_html 'nav_a_u_total', :partial => '/account/nav_show_upcoming_balance', :object => @account = @selected_account
+page.replace_html 'upcoming_account_total', :partial => '/account/show_upcoming_balance', :object => @selected_account
+

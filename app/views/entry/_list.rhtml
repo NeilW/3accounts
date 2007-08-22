@@ -1,0 +1,11 @@
+<div class='overflown'>
+<% @even = false
+for @entry in getTodayEntries(@selected_account)%>
+  <%= render :partial => '/entry/list_one_entry' %>
+<% if @even
+	@even= false
+     else 
+ 	@even= true
+     end
+end%>
+</div>

@@ -1,0 +1,50 @@
+<% @entry = Entry.new unless !@entry.nil?%>
+
+<%
+ if !@updating 
+	params = {:url => {:controller => 'entry', :action => 'add'},  :update => 'entries_list'}%>
+	<h2>Add a new entry:</h2>
+<%
+ else 
+	params = {:url => {:controller => 'entry', :action => 'save_update', :id => @entry.id}}%>
+	<h2>Edit entry:</h2>
+<%
+ end %>
+<div  class="edit_form_master">
+
+<% form_remote_tag(params) do %>
+<%= hidden_field 'entry', 'account_id', :value => @selected_account.id.to_s %>
+
+<div class='tr'>
+	<div class='td td_checked'>&nbsp;</div>
+	<div class='td td_effective_date'>&nbsp;</div>
+	<div class='td td_category'>&nbsp;</div>
+	<div class='td td_comment'>Comment</div>
+	<div class='td td_check_number'>Check ID.</div>
+	<div class='td td_value'>Value</div>
+</div>
+
+<div class='tr'>
+	<div class='td td_checked'><%= check_box 'entry', 'checked' %></div>
+	<div class='td td_effective_date'><%= date_picker_field 'entry', 'effective_date' %></div>
+	<div class='td td_category'><div id='content_form_new_categories_select'><%= render :partial => "/entry/form_new_categories_select"%></div></div>
+	<div class='td td_comment'><%= text_field 'entry', 'comment' %></div>
+	<div class='td td_check_number'><%= text_field 'entry', 'check_number' %></div>
+	<div class='td td_value'><%= text_field 'entry', 'value' %></div>
+</div>
+
+<div class='tr'>
+<%if !@updating %>
+	<%= link_to_function 'add', "$('add_entry_form_submit').click();" %>
+	<%= submit_tag 'add', :id => 'add_entry_form_submit' , :style=>'display:none;' %>
+<% else %>
+	<%= link_to_remote 'cancel', :url => {:controller => :entry, :action => :cancel_update, :id => @selected_account.id} %>
+	<%= link_to_remote 'delete', :url => {:controller => :entry, :action => :delete_update, :id => @entry.id} %>
+	<%= link_to_function 'save', "$('update_entry_form_submit').click();" %>
+	<%= submit_tag 'save', :id => 'update_entry_form_submit' , :style=>'display:none;'%>
+<% end %>
+</div>
+
+<% end %>
+
+</div>

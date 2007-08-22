@@ -1,0 +1,3 @@
+if @entry
+ page.replace_html 'add_entry_form', :partial => '/entry/form_new', :object => @entry, :object => @selected_account, :object => @categories, :object => @updating
+end

@@ -1,0 +1,11 @@
+<div class='left_block'>
+<%for category in @categories%>
+<div onmouseover="Element.show('cat_<%=category.id%>_delete_link');" onmouseout="Element.hide('cat_<%=category.id%>_delete_link');">
+	
+	<span id='cat_<%=category.id%>_delete_link' style='display:none;' class='hidden_link'>
+		<%=link_to 'delete', {:controller => :category, :action => :delete, :id => category.id,  :selected_account_id => @selected_account_id}, :confirm => "It will also delete any related entry. Are you sure?"%>
+	</span>
+	<%=category.name%>
+</div>
+<%end%>
+</div>
