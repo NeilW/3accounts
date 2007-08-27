@@ -1,0 +1,89 @@
+= OpenID demo application with Multiple OpenIDs per User
+
+OpenID makes it super easy for your users to signup initially, and to login each time.
+
+This app demonstrates support for multiple OpenID urls for each User.
+
+The point of this code is for you to pilfer snippets for your own application so you can quickly and confidently
+integrate OpenID into your applications.
+
+== Download
+
+Either:
+  
+  * Get latest zip or tar (http://drnicwilliams.com/openid/demos/apps/openidauth_multiopenid.zip)
+  * Get from SVN:
+    * svn co http://drnicwilliams.com/svn/openid/demos/apps/openidauth_multiopenid/trunk openidauth_multiopenid
+
+Note: the zip/tar does not include Edge Rails, but it is required for this particular app. If your current 
+installed rails gems are 1.2.3 or less, then you can use the rake command to freeze rails to your app.
+
+* rake rails:freeze:edge
+* rake rails:freeze:edge
+
+Yes, you need to run it twice; due to the introduction of the activeresource gem which rails 1.2.3 does not know about.
+
+== Installation
+
+* Create a config/database.yml
+* Create the databases
+* rake db:migrate
+* rake test
+
+== Demo - multiple OpenIDs for existing User
+
+This demonstration assumes you have obtained yourself an OpenID (e.g. from http://myopenid.com)
+
+* rake db:fixtures:load
+* ruby script/server
+* Open your browser to http://localhost:3000/
+* Click 'Login'
+* Login as user:quentin, pw:test
+* Click 'Settings'
+
+Note this user already has two dummy OpenIDs.
+
+* To remove them, click the minus sign preceeding each one
+* Click "Add an OpenID"
+* Enter your own OpenID url and press Save
+* Press Logout
+* Press Login
+* Enter your OpenID url and press Sign-in
+
+You will be redirected to your OpenID provider to authenticate that you are the owner of this OpenID. Signin and click "Allow Forever".
+ 
+You will now be logged into the application as 'quentin'.
+
+* Delete this OpenID from 'quentin' in preparation for the next demonstration
+
+== Demo - signup using OpenID
+
+* Ensure you are logged out of the application
+* Click Login
+* Enter your OpenID and press 'Sign in'
+
+Note, this OpenID is not associated with any User.
+
+You will be redirected to your OpenID provider. If you pressed "Allow Forever" earlier, it will automatically redirect you back to the application. Brilliant! (yes, I just watched Harry Potter)
+
+You will now be redirected to the "Settings" or "User Edit" page to complete your sign up. Several fields will already be setup for you if you had filled them in with your OpenID provider. Neat eh!
+
+* Make up a login, and fill in any fields that weren't defaulted by your OpenID provider.
+
+Now, if you don't really need to store User information, you could skip this step and let the user move straight into using your application. 
+
+Most applications only need a unique login (say, the openid url itself), and possibly an email address. But the email address is normally used for authentication... and we've done this already with OpenID, so its actually optional now for OpenID logins.
+
+So, in your app, you could redirect anywhere, instead of the "Settings" page.
+
+Remember - just because you specified OpenID fields (such as "nickname" and "email") as "Required" doesn't mean they will be returned from the OpenID provider. They can still be null, and you need to accomodate that situation.
+
+This is why this demo goes straight to the "Settings" page. Your app could be more complex internally, and simpler for the new User.
+
+
+== Credits
+
+* Extended by Dr Nic Williams, http://drnicwilliams.com, MIT License, etc etc
+* Based on the demo app created by Ben Curtis (http://www.bencurtis.com/archives/2007/03/rails-openid-and-acts-as-authenticated/)
+* Uses the theme from Ryan Bates' Railscasts (from the Generator episode http://railscasts.com/episodes/58)
+

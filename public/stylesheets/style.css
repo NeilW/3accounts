@@ -81,3 +81,12 @@ table#entry_editor {padding:0;margin:0;width:100%;font-size:11px;}
 #index-tutorial h1 {color:#266fbb;font-weight:bold;font-size:24px;background:none;margin:0;padding:0;padding-top:10px;margin-bottom:15px;height:auto;margin-top:25px;}
 #index-tutorial h1 .number {color:#fff;padding-right:20px;padding-left:12px;padding-bottom:6px;padding-top:6px;background-image:url(/images/h1-number-bg.gif);background-repeat:no-repeat;background-position:middle;}
 #index-tutorial .info {padding:15px;border:1px #dcdcdc solid;background:#eee;color:#216bb5;font-size:12px;}
+
+// embeds the openid image in the text field
+input.openid_login {
+  background: url(http://openid.net/login-bg.gif) no-repeat;
+  background-color: #fff;
+  background-position: 0 50%;
+  color: #000;
+  padding-left: 18px;
+}

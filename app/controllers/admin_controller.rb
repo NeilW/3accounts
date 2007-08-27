@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_filter :login_required
   def index
     @accounts = Account.find(:all)
     @categories = Category.find(:all)
