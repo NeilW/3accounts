@@ -8,7 +8,7 @@ class SessionController < ApplicationController
     if using_open_id?
       open_id_authentication(params[:openid_url])
     else
-      password_authentication(params[:login], params[:password])
+      failed_login "Please enter your OpenID and sign in"
     end
   end
 
@@ -49,7 +49,7 @@ class SessionController < ApplicationController
   end
 
   def failed_login(message = "Authentication failed")
-    flash.now[:error] = message
+    flash[:notice] = message
     render :action => 'new'
   end
 

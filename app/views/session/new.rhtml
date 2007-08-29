@@ -1,25 +1,63 @@
-<h1>Login</h1>
-
-<% form_tag session_path do -%>
-<p><label for="login">Login</label><br/>
-<%= text_field_tag 'login' %></p>
-
-<p><label for="password">Password</label><br/>
-<%= password_field_tag 'password' %></p>
-
-<p>
-  or use...
-</p>
-
-<p>
-  <label for="openid_url">OpenID URL</label><br />
-  <%= text_field_tag "openid_url" %>
-</p>
-
-<!-- Uncomment this if you want this functionality
-<p><label for="remember_me">Remember me:</label>
-<%= check_box_tag 'remember_me' %></p>
--->
-
-<p><%= submit_tag 'Log in' %></p>
-<% end -%>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>3Accounts - Welcome</title>
+    <%= stylesheet_link_tag "home", :media => "screen" %>
+    <style type="text/css" media="screen">
+      body {background: url( <%= image_path("background_gradient.png") %> ) repeat-x;}
+    </style>
+  </head>
+  <body >
+    <div id="left-box">
+      <div class="menu_heading">Neil Wilson</div>
+      <ul>
+      <li><a href="#">Overview</a></li>
+      </ul>
+      <div class="menu_heading">Settings</div>
+      <ul>
+      <li><a href="#">Update Personal Details</a></li>
+      <li><a href="#">Change Email Address</a></li>
+      <li><a href="#">Logout</a></li>
+      </ul>
+    </div>
+    <div id="main-box">
+      <p class="centralise">
+        <%= image_tag("3accounts.png") %>
+      </P>
+      <div class="open_id_login">
+        <% if flash[:notice] -%>
+          <div id="notice">
+            <%= flash[:notice] %>
+          </div>
+        <% end -%>
+        <% form_tag session_path do -%>
+        <p>
+          <label for="openid_url">
+            <%= image_tag("openid_login.gif", :size => "16x16") %> OpenID
+          </label>
+          <%= text_field_tag "openid_url" %>
+        </p>
+        <p class="open_id_login">
+          <%= check_box_tag 'remember_me' %>
+          <label for="remember_me">Remember me</label>
+        </p>
+        <p><%= submit_tag 'Sign in' %></p>
+        <% end -%>
+      </div>
+    </div>
+    <div id="right-box">
+      <div class="menu_heading">Activities</div>
+      <ul>
+      <li><a href="#">Check Outstanding Tasks</a></li>
+      </ul>
+      <div class="menu_heading">Go To</div>
+      <ul>
+      <li><a href="#">Check Bank Statement</a></li>
+      <li><a href="#">Account Manager</a></li>
+      <li><a href="#">Cheque Book</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

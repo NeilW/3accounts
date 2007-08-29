@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.home '', :controller => 'home', :action => 'index'
+  map.home '', :controller => 'session', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
 
 #  - add an observer to config/environment.rb
