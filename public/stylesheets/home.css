@@ -1,38 +1,78 @@
 html, body {
   background-color: #cccccc;
+  font: medium/1.4em Sans,Verdana,Helvetica,sans-serif;
   padding: 0;
   margin: 0;
+  min-width: 80em;
+  min-height: 35em;
   color: black;
-  min-height: 550px;
-  min-width: 1260px;
-  height: 80%;
 }
 
 #left-box, #main-box, #right-box {
   float: left;
-  margin: 0.3%;
-  padding: 0.3%;
-  height: 100%;
+  margin: 0.3em;
+  padding: 0.3em;
+  height: 34.4em;
 }
 
 #left-box {
   background-color: #000066;
   color: white;
-  width: 17%;
+  min-width: 13em;
 }
 
 #main-box {
   background-color: white;
   color: black;
-  width: 61%;
+  min-width: 48.81em;
 }
 
 #right-box {
   background-color: #e5eaef;
   color: black;
-  width: 17%;
+  min-width: 13em;
 }
 
+#left-box ul, #right-box ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#left-box div.menu_heading, #right-box div.menu_heading {
+  padding-left: 0.2em;
+  color: #e5eaef;
+  background-color: #3366cc;
+  margin-top: 0.3em;
+}
+
+#left-box li a{
+  display: block;
+  text-decoration: none;
+  padding-left: 0.5em;
+  color: #e5eaef;
+  background-color: #000066;
+  border-top: 1px solid #e5eaef;
+}
+
+#left-box li a:hover {
+  background-color: #e5eaef;
+  color: #000066;
+}
+
+#right-box li a{
+  display: block;
+  text-decoration: none;
+  padding-left: 0.5em;
+  color: #000066;
+  background-color: #e5eaef;
+  border-top: 1px solid #000066;
+}
+
+#right-box li a:hover {
+  color: #e5eaef;
+  background-color: #000066;
+}
 
 // embeds the openid image in the text field
 input.openid_login {
