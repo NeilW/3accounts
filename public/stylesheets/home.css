@@ -1,0 +1,44 @@
+body {
+  background-color: #cccccc;
+  padding: 0;
+  margin: 0;
+  color: black;
+  min-height: 550;
+  min-width: 1260;
+  height: 80%;
+}
+
+#left-box, #main-box, #right-box {
+  float: left;
+  margin: 0.3%;
+  padding: 0.3%;
+  height: 100%;
+}
+
+#left-box {
+  background-color: #000066;
+  color: white;
+  width: 17%;
+}
+
+#main-box {
+  background-color: white;
+  color: black;
+  width: 61%;
+}
+
+#right-box {
+  background-color: #e5eaef;
+  color: black;
+  width: 17%;
+}
+
+
+// embeds the openid image in the text field
+input.openid_login {
+  background: url(http://openid.net/login-bg.gif) no-repeat;
+  background-color: #fff;
+  background-position: 0 50%;
+  color: #000;
+  padding-left: 18px;
+}
