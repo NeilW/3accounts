@@ -23,7 +23,29 @@
       </ul>
     </div>
     <div id="main-box">
-      middle
+      <p class="centralise">
+        <%= image_tag("3accounts.png") %>
+      </P>
+      <div class="open_id_login">
+        <% if flash[:notice] -%>
+          <div id="notice">
+            <%= flash[:notice] %>
+          </div>
+        <% end -%>
+        <% form_tag session_path do -%>
+        <p>
+          <label for="openid_url">
+            <%= image_tag("openid_login.gif", :size => "16x16") %> OpenID
+          </label>
+          <%= text_field_tag "openid_url" %>
+        </p>
+        <p class="open_id_login">
+          <%= check_box_tag 'remember_me' %>
+          <label for="remember_me">Remember me</label>
+        </p>
+        <p><%= submit_tag 'Sign in' %></p>
+        <% end -%>
+      </div>
     </div>
     <div id="right-box">
       <div class="menu_heading">Activities</div>
