@@ -50,7 +50,7 @@ class SessionController < ApplicationController
 
   def failed_login(message = "Authentication failed")
     flash[:notice] = message
-    render :action => 'new'
+    redirect_to :action => :new
   end
 
   def successful_login
