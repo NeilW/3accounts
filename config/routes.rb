@@ -8,8 +8,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource  :session
 
-  map.home '', :controller => 'users'
-
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
 
   map.signup '/signup', :controller => 'users', :action => 'new'
