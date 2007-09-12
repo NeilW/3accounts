@@ -1,10 +1,11 @@
 html, body {
   background-color: #cccccc;
-  font: medium/1.6em Sans,Arial,Helvetica,sans-serif;
+  font: medium/1.6em Sans,"Trebuchet MS",Helvetica,sans-serif;
   padding: 0;
   margin: 0;
   min-width: 78.5em;
   min-height: 35em;
+  *min-width: 78.7em;
   color: black;
 }
 

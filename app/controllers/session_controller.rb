@@ -1,15 +1,25 @@
 # This controller handles the login/logout function of the site.  
 class SessionController < ApplicationController
+
+protected
+
+  def ssl_required?
+    true
+  end
+
+public
+
   # render new.rhtml
   def new
   end
 
   def create
-    if using_open_id?
-      open_id_authentication(params[:openid_url])
-    else
-      failed_login "Please enter your OpenID and sign in"
-    end
+    password_authentication(params[:login], params[:password])
+ #   if using_open_id?
+ #     open_id_authentication(params[:openid_url])
+ #   else
+ #     failed_login "Please enter your OpenID and sign in"
+ #   end
   end
 
   def destroy
@@ -50,7 +60,7 @@ class SessionController < ApplicationController
 
   def failed_login(message = "Authentication failed")
     flash[:notice] = message
-    redirect_to :action => :new
+    render :action => "new"
   end
 
   def successful_login

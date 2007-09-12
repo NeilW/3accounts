@@ -30,7 +30,7 @@ test:
 
 production:
   adapter: mysql
-  database: 3accounts_production
-  username: root
+  database: beta41_1d6c94_3accounts
+  username: beta41_1d6c94
   password: 
-  socket: /var/run/mysqld/mysqld.sock
+  host: sqlreadwrite.db.reflex.net

@@ -64,12 +64,12 @@ module AuthenticatedSystem
       respond_to do |accepts|
         accepts.html do
           store_location
-          redirect_to :controller => '/session', :action => 'new'
+          redirect_to new_session_url
         end
         accepts.xml do
           headers["Status"]           = "Unauthorized"
           headers["WWW-Authenticate"] = %(Basic realm="Web Password")
-          render :text => "Could't authenticate you", :status => '401 Unauthorized'
+          render :text => "Couldn't authenticate you", :status => '401 Unauthorized'
         end
       end
       false
