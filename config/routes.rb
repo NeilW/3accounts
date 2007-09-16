@@ -8,7 +8,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource  :session
 
-  map.connect '', :controller => 'home', :action => 'index'
 
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
 
@@ -16,8 +15,8 @@ ActionController::Routing::Routes.draw do |map|
   map.login  '/login', :controller => 'session', :action => 'new'
   map.logout '/logout', :controller => 'session', :action => 'destroy'
 
-  map.connect 'home/:action/:id.:format', :controller => 'home'
-  map.connect ':action/:id', :controller => 'home'
+  map.home '', :controller => 'home', :action => 'index'
+  map.connect '/:action/:id', :controller => 'home'
 
   #map.connect ':controller/:action/:id.:format'
 

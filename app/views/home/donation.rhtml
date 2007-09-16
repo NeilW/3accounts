@@ -1,0 +1,19 @@
+<% content_for(:left_menu) do %>
+  <%= render :partial => 'static_left' %>
+<% end %>
+<% content_for(:right_menu) do -%>
+  <%= render :partial => 'static_right' %>
+<% end -%>
+
+<p class="centralise">
+  <img alt="3accounts" src="/images/3accounts.png?1189620037" />
+</P>
+<div class="boxed">
+  <h1>How to make 3accounts better.</h1>
+  <h3>Funding = Features faster</h3>
+  <p>Cash is the most flexible resource. It allows us to rent more servers, buy more bandwidth, but most importantly it allows us to pay people to get things done. So, if you like what you see:
+  <%= render :partial => 'donation_button' %>
+  <h3>Share your thoughts and ideas</h3>
+  <p>3accounts is community led. We need to know what you think and what you want so that we can build it. Please <%= link_to "join the group", group_url %> and chip in.
+  </p>
+</div> 
