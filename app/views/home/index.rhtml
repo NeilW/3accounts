@@ -10,21 +10,20 @@
 </P>
 <div class="boxed">
   <h1>Money Management the Free and Easy Way</h1>
-  <dl class="content">
-    <dt>Free</dt>
-    <dd><%= link_to "Register for an account today.", signup_url %> Full access to all features. Have a go. See what you think. Let us know. </a></dd>
-    <dt>Easy</dt>
-    <dd>A simple interface that you can access from anywhere, whenever you want.</dd>
-  </dl>
-  <h1>What it can do today</h1>
-  <ul class="content">
-    <li></li>
-  </ul>
-  <h1>What will it do tomorrow?</h1>
-  <dl class="content">
-    <dt>What would you like it to do?</dt>
-    <dd class="clear"><%= link_to "Share your ideas", group_url %> with the 3accounts community</a></dd>
-    <dt>Funding = Features Faster.&nbsp;&nbsp;</dt>
-    <dd class="clear">It really is as simple as that. So if you like what you see <%= link_to "please make a contribution", :action => :donation %></dd>
-  </dl>
+  <div class="content">
+    <p><strong>Free</strong> - <%= link_to "Register for an account today.", signup_url %> Full access to all features. Have a go. See what you think.</p>
+    <p><strong>Easy</strong> - A simple interface that you can access from anywhere, whenever you want.</p>
+  </div>
+  <h1>What 3accounts can do today</h1>
+  <div class="content">
+    <p>There's a <%= link_to "whole section", :action => 'features' %>
+    on that.</p>
+  </div>
+  <h1>What will 3accounts do tomorrow?</h1>
+  <div class="content">
+    <h3>What would you like it to do?</h3>
+    <p><%= link_to "Share your ideas", group_url %> with the 3accounts community.</p>
+    <h3>Funding = Features Faster.</h3>
+    <p>It really is as simple as that. So if you like what you see <%= link_to "please make a contribution", :action => :donation %>.</p>
+  </div>
 </div>

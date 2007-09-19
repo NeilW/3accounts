@@ -1,6 +1,23 @@
+/*
+  3Accounts - Accounts management and compliance
+  Copyright (C) 2007 Neil Wilson, Aldur Systems Ltd 
+
+  This program is free software: you can redistribute it and/or modify it
+  under the terms of the GNU Affero General Public License as published
+  by the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/ 
 html, body {
   background: #CCC url(../images/background_gradient.png) repeat-x;
-  font: medium/1.6em "Trebuchet MS","Lucida Grande",Helvetica,sans-serif;
+  font: normal normal 100%/1.6em Arial, sans-serif;
   padding: 0;
   margin: 0;
   min-width: 78.5em;
@@ -91,31 +108,30 @@ html, body {
   color: white;
   padding: 0.8em 1.3em;
   line-height: 1em;
+  font-size: 110%;
   background: #3c74e6 url("../images/header_gradient.gif") repeat-x;
 }
 
 .boxed .content {
-  margin: 0;
-  padding: 1em;
+  padding: 0;
   border-top: 1px solid white;
   background: white url("../images/content_gradient.png") repeat-x;
 }
 
-.boxed dl {
-  margin: 0;
+.boxed h3 {
   padding: 0;
+  font-size: 1em;
+  font-weight: bold;
+  color: black;
+  margin: 0.8em 1em;
 }
 
-.boxed dt {
-  float: left;
-  clear: left;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-  margin-right: 1em;
-}
-.boxed dd {
-  margin-left:1em;
-  margin-bottom: 0.5em;
+.boxed p {
+  padding: 0;
+  font-size: 1em;
+  font-weight: normal;
+  color: black;
+  margin: 0.8em 1em;
 }
 
 
@@ -127,6 +143,8 @@ html, body {
 
 .clear {
   clear: both;
+  padding:0;
+  margin:0;
 }
 
 #notice {
