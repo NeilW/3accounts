@@ -8,9 +8,9 @@ task "svn:setup" do
   system "svn commit -m 'Ignoring all files in /log/ ending in .log'"
 
   puts "Ignoring /db"
-  system 'svn propset svn:ignore "*.db" db/'
+  system 'svn propset svn:ignore "schema.rb" db/'
   system "svn update db/"
-  system "svn commit -m 'Ignoring all files in /db/ ending in .db'"
+  system "svn commit -m 'Ignoring schema.rb file in db/'"
 
   puts "Renaming database.yml database.example"
   system "svn move config/database.yml config/database.example"
