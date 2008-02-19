@@ -1,5 +1,7 @@
 class Rates::CorporationTaxController < ApplicationController
 
+  caches_page :index, :show
+
   def index
     @ct_rates=Rates::CorporationTax.find(:all)
     respond_to do |format|
