@@ -16,3 +16,15 @@ set :use_sudo, false
 role :app, "3accounts.co.uk"
 role :web, "3accounts.co.uk"
 role :db,  "3accounts.co.uk", :primary => true
+
+# Redefine the application server controls to use monit.
+
+namespace :deploy do
+  %W(start stop restart).each do |event|
+    desc "#{event} using Monit"
+    task event, :except => { :no_release => true } do
+      sudo "/usr/sbin/monit -g #{application} #{event} all"
+    end
+  end
+end
+
