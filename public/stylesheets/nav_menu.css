@@ -1,0 +1,72 @@
+/* -------------------------------------------------------------- 
+   
+    Left Hand Navigation Menu - Accordion style
+    Copyright (C) 2007    Neil Wilson, Aldur Systems
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   
+-------------------------------------------------------------- */
+
+#nav-menu {
+  float:left;
+  border: 1px solid black;
+  border-bottom-width: 0;
+  width: 15em;
+  padding: 0;
+  margin: 0;
+  font-size: 100%
+}
+
+#nav-menu h2 {
+  margin: inherit;
+  background-color: silver;
+  color: black;
+  border-bottom: 1px solid black;
+  font-size: inherit;
+}
+
+#nav-menu h3 {
+  color: white;
+  padding: 0.25em;
+  padding-right: 0;
+  margin: inherit;
+  background-color: black;
+  font-size: inherit;
+}
+
+/*
+ * Generally we want block hyperlinks and we don't want them to change colour
+ */
+#nav-menu a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Make the hyperlinks provide some sort of feedback
+ */
+#nav-menu a:hover {
+  background-color: teal;
+}
+
+#nav-menu ul
+{
+  padding: inherit;
+  padding-left: 1em;
+  margin: inherit;
+  list-style: none;
+  color: black;
+  background-color: white;
+  font-size: inherit;
+}

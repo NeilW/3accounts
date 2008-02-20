@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <%= stylesheet_link_tag "print", :media => "print" %>
+  <!--[if lte IE 6]>
+    <%= stylesheet_link_tag "lib/ie.css" %>
+  <![endif-->
+  <%= stylesheet_link_tag "screen", "nav_menu", :cache => true %>
+</head>
+<body>
+  <div id="page">
+    <div id="header">
+    </div>
+    <div id="body">
+      <div id="nav-menu" class="wrapper">
+        <h2>Customers</h2>
+        <h2>Suppliers</h2>
+        <h2>Information</h2>
+          <ul>
+            <li><%=link_to("Corporation Tax Rates", rates_corporation_tax_index_path)%></li>
+          </ul>
+      </div>
+      <%= yield %>
+    </div>
+    <div id="footer">
+      <p class="quiet small">&copy; 2008 Aldur Systems Ltd</p>
+    </div>
+  </div>
+</body>
+</html>
+
+
