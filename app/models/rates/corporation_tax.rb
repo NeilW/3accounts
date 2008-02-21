@@ -1,6 +1,6 @@
 class Rates::CorporationTax < ActiveRecord::Base
 
-  validates_inclusion_of :main_rate, :small_companies_rate, :in => 1..100
+  validates_inclusion_of :main_rate, :small_companies_rate, :in => 0..100
   validates_numericality_of :fiscal_year_starting, :small_companies_rate, :main_rate, :mscr_lower_limit, :mscr_upper_limit, :integer_only => true
   validates_presence_of :fiscal_year_starting, :small_companies_rate, :main_rate, :mscr_lower_limit, :mscr_upper_limit
 
