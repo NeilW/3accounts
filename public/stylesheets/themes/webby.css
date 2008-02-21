@@ -1,0 +1,215 @@
+/* -------------------------------------------------------------- 
+   
+    3Accounts application layout file - Webby version
+    Copyright (C) 2008    Neil Wilson, Aldur Systems
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   
+-------------------------------------------------------------- */
+
+/* 
+ * Body styling and global defaults
+ */
+
+body
+{
+  background: #E7E7E7;
+  margin: 0;
+}
+
+/*-------------------------------------------------------------*/
+/*
+ * Header area 
+ */
+
+#header
+{
+  background: #003163;
+  color: #FCD406;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+
+* html #header
+{
+  height: 1%;
+}
+
+#header h1
+{
+  float: left;
+  font-size: 1.5em;
+  font-weight: normal;
+  padding: 0.4em;
+  margin: 0.2em 0 0.6em 1em;
+}
+
+* html #header h1
+{
+  margin: 0 0 0.6em 4em;
+}
+
+#header p
+{
+  color: #FFF;
+  font-size: 0.8em;
+  font-weight: normal;
+  float: right;
+  padding: 0 1em 1em 0;
+}
+
+
+/*-------------------------------------------------------------*/
+/*
+ * Top Menu
+ */
+
+#topmenu
+{
+  position: absolute;
+  top: 3em;
+  right: 0.6em;
+  font-size: 0.8em;
+  margin: 0 0 2em 0;
+  clear: both;
+}
+
+#topmenu ul
+{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#topmenu ul li
+{
+  display: inline;
+}
+
+#topmenu ul li a
+{
+  background: #185285;
+  line-height: 1.6em;
+  color: #FFF;
+  text-decoration: none;
+  padding: 0.3em 0.3em 0.1em 0.3em;
+}
+
+#topmenu ul li a:hover
+{
+  background: #1D64AD;
+}
+
+
+/*-------------------------------------------------------------*/
+/*
+ * Left Menu
+ */
+
+#leftmenu
+{
+  float: right;
+  font-size: 1em;
+  width: 15em;
+  margin: 0 1em 0 0;
+}
+
+#leftmenu ul
+{
+  list-style: none;
+  padding: 0;
+  margin: 2em 0 0 0;
+}
+
+#leftmenu ul li
+{
+  padding: 0.1em;
+  margin: 0 0 0.3em 0;
+}
+
+* html #leftmenu ul li
+{
+  height: 1%;
+}
+
+#leftmenu ul li a
+{
+  display: block;
+  text-decoration: underline;
+  color: #00F;
+  padding: 0.3em;
+}
+
+#leftmenu ul li a:hover
+{
+  color: #FFF;
+  background: #00F;
+  text-decoration: none;
+}
+
+#leftmenu ul li a.current
+{
+  background: #FFF;
+  color: #090;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+/*-------------------------------------------------------------*/
+/*
+ * Content Area
+ */
+
+#content
+{
+  background: #FFF url(../images/content-bg-right.png) repeat-y top right;
+  padding: 0.5em 2em 3em 2em;
+  margin: 1em 18em 1em 2em;
+}
+
+#content h2
+{
+  border: 0 solid #999;
+  border-width: 0 0 1px 0;
+  padding: 0 0 0.2em 0;
+  margin: 2em 0 0 0;
+}
+
+#content h2:first-child
+{
+  margin: 1em 0 0 0;
+}
+
+#content h2 img
+{
+  float: right;
+}
+
+#content h3
+{
+  padding: 0.2em 4em 0.2em 0.2em;
+  margin: 0 0 1em 0;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+#footer
+{
+  margin: 1em 18em 1em 2em;
+  color: #999;
+  text-align: center;
+  font-size: 0.8em;
+}
