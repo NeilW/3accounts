@@ -3,33 +3,49 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title></title>
+  <title>
+    <%= @page_title if @page_title %>
+  </title>
+  <%= stylesheet_link_tag :all, :media => "screen", :cache => true %>
   <%= stylesheet_link_tag "print", :media => "print" %>
-  <!--[if lte IE 6]>
-    <%= stylesheet_link_tag "lib/ie.css" %>
-  <![endif-->
-  <%= stylesheet_link_tag "screen", "nav_menu", :cache => true %>
 </head>
 <body>
-  <div id="page">
-    <div id="header">
-    </div>
-    <div id="body">
-      <div id="nav-menu" class="wrapper">
-        <h2>Customers</h2>
-        <h2>Suppliers</h2>
-        <h2>Information</h2>
-          <ul>
-            <li><%=link_to("Corporation Tax Rates", rates_corporation_tax_index_path)%></li>
-          </ul>
-      </div>
-      <%= yield %>
-    </div>
-    <div id="footer">
-      <p class="quiet small">&copy; 2008 Aldur Systems Ltd</p>
-    </div>
+<div class="wrapper">
+  <div id="header">
+    <h1>Aldur Systems</h1>
+    <p>Neil Wilson logged in</p>
   </div>
+  <div id="topmenu">
+    <ul>
+			<li><a href="../new/" id="topNewLink">New</a></li>
+			<li><a href="../search/" id="topSearchLink">Search</a></li>
+			<li><a href="../help/" id="topHelpLink">Help</a></li>
+			<li><a href="../tools/" id="topToolsLink">Tools</a></li>
+			<li><a href="../configuration/" id="topConfigLink">Configuration</a></li>
+			<li><a href="../logout/logout_process.php" id="topLogoutLink">Logout</a></li>
+    </ul>
+  </div>
+  <div id="leftmenu">
+    <ul>
+                        <li><a href=".././" class="homepage_link">Homepage</a></li>
+                        <li><a href="../to-do/" class="to-do_link">To-do List</a></li>
+                        <li><a href="../tasks/" class="fred">Latest notes</a></li>
+                        <li><a href="../projects/" class="projects_link">Projects</a></li>
+                        <li><a href="../clients/" class="clients_link">Clients</a></li>
+                        <li><a href="../contacts/" class="contacts_link">Contacts</a></li>
+      <li>
+        <%=link_to_unless_current("Corporation Tax Rates", rates_corporation_tax_index_path) do
+          link_to("Corporation Tax Rates", rates_corporation_tax_index_path, :class => "current")
+        end %>
+      </li>
+    </ul>
+  </div>                      
+  <div id="content">
+    <%= yield %>
+  </div>
+</div>
+<div id="footer">
+  <p>&copy; Aldur Systems 2008
+</div>
 </body>
 </html>
-
-
