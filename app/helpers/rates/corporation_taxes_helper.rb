@@ -1,2 +1,0 @@
-module Rates::CorporationTaxesHelper
-end

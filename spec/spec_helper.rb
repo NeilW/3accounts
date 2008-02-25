@@ -37,3 +37,11 @@ Spec::Runner.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 end
+
+def status_code(type)
+  if type.is_a?(Symbol)
+    ActionController::StatusCodes::SYMBOL_TO_STATUS_CODE[type]
+  else
+    type
+  end
+end
