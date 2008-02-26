@@ -52,23 +52,43 @@ body
   float: left;
   font-size: 1.5em;
   font-weight: normal;
-  padding: 0.4em;
-  margin: 0.2em 0 0.6em 1em;
+  margin: 0.4em;
+  padding: 0.2em;
 }
 
 * html #header h1
 {
-  margin: 0 0 0.6em 4em;
 }
 
 #header p
 {
   color: #FFF;
-  font-size: 0.8em;
+  font-size: 1em;
   font-weight: normal;
   float: right;
-  padding: 0 1em 1em 0;
+  margin: 0.4em;
 }
+
+#header a
+{
+  color: #FCD406;
+}
+
+#header .button a
+{
+  background: #185285;
+  line-height: 1.6em;
+  color: #FFF;
+  text-decoration: none;
+  padding: 0.3em; 
+  margin-left: 0.5em;
+}
+
+#header .button a:hover
+{
+  background: #1D64AD;
+}
+
 
 
 /*-------------------------------------------------------------*/
@@ -78,11 +98,8 @@ body
 
 #topmenu
 {
-  position: absolute;
-  top: 3em;
-  right: 0.6em;
   font-size: 0.8em;
-  margin: 0 0 2em 0;
+  margin: 0 0 0 0.5em;
   clear: both;
 }
 
@@ -120,22 +137,22 @@ body
 
 #leftmenu
 {
-  float: right;
+  float: left;
   font-size: 1em;
   width: 15em;
-  margin: 0 1em 0 0;
+  margin: 1em 1em 0 0;
 }
 
 #leftmenu ul
 {
   list-style: none;
   padding: 0;
-  margin: 2em 0 0 0;
+  margin: 0;
 }
 
 #leftmenu ul li
 {
-  padding: 0.1em;
+  padding: 0.3em 0 0.3em 0;
   margin: 0 0 0.3em 0;
 }
 
@@ -177,7 +194,7 @@ body
 {
   background: #FFF url(../images/content-bg-right.png) repeat-y top right;
   padding: 0.5em 2em 3em 2em;
-  margin: 1em 18em 1em 2em;
+  margin: 1em 2em 1em 15em;
 }
 
 #content h2
@@ -208,8 +225,9 @@ body
 
 #footer
 {
-  margin: 1em 18em 1em 2em;
+  margin: 1em 2em 1em 18em;
+  padding: 0.5em 2em 3em 2em;
   color: #999;
-  text-align: center;
+  text-align: right;
   font-size: 0.8em;
 }

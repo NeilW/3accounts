@@ -12,26 +12,27 @@
 <div class="wrapper">
   <div id="header">
     <h1>Aldur Systems</h1>
-    <p>Neil Wilson logged in</p>
-  </div>
-  <div id="topmenu">
-    <ul>
-			<li><a href="../new/" id="topNewLink">New</a></li>
-			<li><a href="../search/" id="topSearchLink">Search</a></li>
-			<li><a href="../help/" id="topHelpLink">Help</a></li>
-			<li><a href="../tools/" id="topToolsLink">Tools</a></li>
-			<li><a href="../configuration/" id="topConfigLink">Configuration</a></li>
-			<li><a href="../logout/logout_process.php" id="topLogoutLink">Logout</a></li>
-    </ul>
+    <p>
+      <%= link_to('Neil Wilson', '#') %> logged in 
+      <span class="button">
+        <%= link_to('Logout', '#') %>
+      </span>
+    </p>
+    <div id="topmenu">
+      <ul>
+        <li><%= link_to('Day to Day', '#') %></li>
+        <li><%= link_to('Monthly', '#') %></li>
+        <li><%= link_to('Annual', '#') %></li>
+        <li><%= link_to('Everything', '#') %></li>
+      </ul>
+    </div>
   </div>
   <div id="leftmenu">
     <ul>
-                        <li><a href=".././" class="homepage_link">Homepage</a></li>
-                        <li><a href="../to-do/" class="to-do_link">To-do List</a></li>
-                        <li><a href="../tasks/" class="fred">Latest notes</a></li>
-                        <li><a href="../projects/" class="projects_link">Projects</a></li>
-                        <li><a href="../clients/" class="clients_link">Clients</a></li>
-                        <li><a href="../contacts/" class="contacts_link">Contacts</a></li>
+      <li><%= link_to('New Customer', '#') %></li>
+      <li><%= link_to('New Invoice', '#') %></li>
+      <li><%= link_to('Find a Customer', '#') %></li>
+      <li><%= link_to('Find an Invoice', '#') %></li>
       <li>
         <%=link_to_unless_current("Corporation Tax Rates", rates_corporation_tax_index_path) do
           link_to("Corporation Tax Rates", rates_corporation_tax_index_path, :class => "current")
