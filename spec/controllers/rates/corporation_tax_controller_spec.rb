@@ -29,7 +29,7 @@ describe Rates::CorporationTaxController, "when requesting rates/corporation_tax
       get :index, :format => 'xml'
     end
 
-    it "should accept the request" do
+    it "should return a success" do
       response.should be_success
     end
   end
