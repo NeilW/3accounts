@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :businesses
+
+  map.resources :customers
+
+  map.resources :invoices
+
   map.namespace :rates do |rates|
     rates.resources :corporation_tax
   end

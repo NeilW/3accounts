@@ -1,7 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  fiscal_year_starting: 1
+  business_name: MyString
 
 two:
-  fiscal_year_starting: 1
+  business_name: MyString

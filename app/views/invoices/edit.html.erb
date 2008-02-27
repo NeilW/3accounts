@@ -1,0 +1,27 @@
+<h1>Editing invoice</h1>
+
+<%= error_messages_for :invoice %>
+
+<% form_for(@invoice) do |f| %>
+  <p>
+    <b>Invoice number</b><br />
+    <%= f.text_field :invoice_number %>
+  </p>
+
+  <p>
+    <b>Tax point</b><br />
+    <%= f.date_select :tax_point %>
+  </p>
+
+  <p>
+    <b>Customer</b><br />
+    <%= f.text_field :customer_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @invoice %> |
+<%= link_to 'Back', invoices_path %>

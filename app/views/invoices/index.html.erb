@@ -1,0 +1,24 @@
+<h1>Listing invoices</h1>
+
+<table>
+  <tr>
+    <th>Invoice number</th>
+    <th>Tax point</th>
+    <th>Customer</th>
+  </tr>
+
+<% for invoice in @invoices %>
+  <tr>
+    <td><%=h invoice.invoice_number %></td>
+    <td><%=h invoice.tax_point %></td>
+    <td><%=h invoice.customer_id %></td>
+    <td><%= link_to 'Show', invoice %></td>
+    <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+    <td><%= link_to 'Destroy', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New invoice', new_invoice_path %>

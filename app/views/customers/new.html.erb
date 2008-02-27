@@ -1,0 +1,16 @@
+<h1>New customer</h1>
+
+<%= error_messages_for :customer %>
+
+<% form_for(@customer) do |f| %>
+  <p>
+    <b>Customer name</b><br />
+    <%= f.text_field :customer_name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', customers_path %>
