@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+standard:
+  rate: 0.175
+  name: Standard
+
+lower:
+  rate: 0.05
+  name: Lower
+
+zero:
+  rate: 0
+  name: Zero
+
+exempt:
+  rate: 0
+  name: Exempt
+
+out_of_scope:
+  rate: 0
+  name: Out of Scope

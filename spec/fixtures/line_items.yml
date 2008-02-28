@@ -5,11 +5,10 @@ one:
   description: MyString
   rate: 9.99
   tag: MyString
-  type: MyString
+  vat_type: standard
 
 two:
-  quantity: 9.99
+  quantity: 12
   description: MyString
-  rate: 9.99
-  tag: MyString
-  type: MyString
+  rate: 123.45
+  vat_type: lower

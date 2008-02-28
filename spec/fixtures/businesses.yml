@@ -1,7 +1,5 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  business_name: MyString
+  name: Aldur
 
-two:
-  business_name: MyString

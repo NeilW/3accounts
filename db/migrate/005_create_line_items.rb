@@ -1,9 +1,9 @@
 class CreateLineItems < ActiveRecord::Migration
   def self.up
     create_table :line_items do |t|
-      t.decimal :rate, :quantity, :vat_rate, :precision => 10, :scale => 2 
-      t.string :description, :tag, :type
-      t.references :invoice
+      t.decimal :rate, :quantity, :vat, :precision => 12, :scale => 3 
+      t.string :description, :tag
+      t.references :invoice, :vat_type
 
       t.timestamps
     end

@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  invoice_number: MyString
+  number: OAP001
   tax_point: 2008-02-26
-  customer_id: 1
+  customer: one
 
 two:
-  invoice_number: MyString
+  number: OAP002
   tax_point: 2008-02-26
-  customer_id: 1
+  customer: two
