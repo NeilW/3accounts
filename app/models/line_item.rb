@@ -14,6 +14,8 @@ class LineItem < ActiveRecord::Base
     vat_type.rate if handling_vat?
   end
 
+  # UK Vat rules allow you to round down to the nearest 0.1p 
+  # at line item level.
   def vat
     clear_vat_cache unless handling_vat?
     if self[:vat].nil? && handling_vat? && values_available?

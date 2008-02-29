@@ -73,6 +73,83 @@ describe "A non-blank invoice" do
       @invoice.should be_valid
     end
   end
-
-
 end
+
+describe "A valid invoice" do
+
+  def generate_line_item(options = {})
+    LineItem.new( {
+      :rate => 16.97,
+      :quantity => 1,
+      :description => "Something"
+    }.merge!(options))
+  end
+
+  before(:each) do
+    @vat_type = VatType.create(:name => "Standard", :rate => 0.175)
+    @line_items = [generate_line_item(:vat_type => @vat_type),
+      generate_line_item(:vat_type => @vat_type, :description => "Something else")
+    ]
+    @invoice = Invoice.new(
+      :customer => Customer.create(:name => "Fred"),
+      :line_items => @line_items,
+      :number => "OAP001",
+      :tax_point => "29-Feb-08"
+    )
+  end
+
+  it "should provide the correct value for sub_total" do
+    @invoice.sub_total.should == BigDecimal.new("33.94")
+  end
+
+  it "should provide the correct value for vat" do
+    @invoice.vat.should == BigDecimal.new("5.93")
+  end
+
+  it "should provide the correct value for total" do
+    @invoice.total.should == BigDecimal.new("39.87")
+  end
+
+  it "should error if the vat types are inconsistent" do
+    @invoice.line_items[1].vat_type = nil
+    @invoice.should_not be_valid
+  end
+
+  describe "with missing vat types in the line items" do
+    before(:each) do
+      @invoice.line_items.each { |item| item.vat_type = nil }
+    end
+
+    it "should be valid" do
+      @invoice.should be_valid
+    end
+
+    it "should provide the correct value for vat (0)" do
+      @invoice.vat.should == BigDecimal.new("0")
+    end
+
+    it "should provide the correct value for total" do
+      @invoice.total.should == BigDecimal.new("33.94")
+    end
+  end
+
+  describe "with different vat types in the line items" do
+    before(:each) do
+      @invoice.line_items[1].vat_type = VatType.create(:name => "Lower", :rate => 0.05)
+    end
+    
+    it "should be valid" do
+      @invoice.should be_valid
+    end
+
+    it "should provide the correct value for vat (0)" do
+      @invoice.vat.should == BigDecimal.new("3.81")
+    end
+
+    it "should provide the correct value for total" do
+      @invoice.total.should == BigDecimal.new("37.75")
+    end
+
+  end
+end
+
