@@ -1,6 +1,6 @@
 class Invoice < ActiveRecord::Base
 
-  has_many :line_items
+  has_many :line_items, :dependent => :destroy
   belongs_to :customer
 
   validates_uniqueness_of :number, :case_sensitive => false
