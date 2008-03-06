@@ -10,7 +10,7 @@ describe "An invoice" do
   end
 
   it "should make sure tax point is a valid date" do
-    @invoice.should validate_presence_of(:tax_point)
+    @invoice.should validate_presence_of(:issued_at)
   end
 
   it "should make sure that the invoice number exists" do
@@ -33,7 +33,7 @@ end
 
 describe "A non-blank invoice" do
   before(:each) do
-    @invoice = Invoice.new(:number => "OAP001", :tax_point => '29-Feb-08')
+    @invoice = Invoice.new(:number => "OAP001", :issued_at => '29-Feb-08')
   end
 
   it "should error on a missing customer" do
@@ -94,7 +94,7 @@ describe "A valid invoice" do
       :customer => Customer.create(:name => "Fred"),
       :line_items => @line_items,
       :number => "OAP001",
-      :tax_point => "29-Feb-08"
+      :issued_at => "29-Feb-08"
     )
   end
 

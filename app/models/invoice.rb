@@ -4,7 +4,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :customer
 
   validates_uniqueness_of :number, :case_sensitive => false
-  validates_presence_of :number, :tax_point
+  validates_presence_of :number, :issued_at
   validates_existence_of :customer
   validates_associated :line_items
 

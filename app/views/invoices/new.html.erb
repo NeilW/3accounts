@@ -1,21 +1,19 @@
-<h1>New invoice</h1>
-
 <%= error_messages_for :invoice %>
 
 <% form_for(@invoice) do |f| %>
-  <% field_set_tag do -%>
-    <%= f.label :customer %>
-    <%= f.text_field :customer %>
-  <% end -%>
-  <% field_set_tag do -%>
+  <% field_set_tag("Invoice Details") do -%>
+    <p>
       <%= f.label :number %>
       <%= f.text_field :number %>
+    </p>
+    <p>
+      <%= f.label :issued_at %>
+      <%= f.date_select :issued_at, :order =>[:day, :month, :year]%>
+    </p>
+    <p>
+      <%= f.label :customer %>
+      <%= f.collection_select(:customer_id, @current_business.customers, :id, :name) %>
+    </p>
   <% end -%>
-  <% field_set_tag do -%>
-    <%= f.label :tax_point %>
-    <%= f.date_select :tax_point %>
-  <% end -%>
-    <%= f.submit "Create" %>
+  <%= f.submit "Create" %>
 <% end %>
-
-<%= link_to 'Back', invoices_path %>
