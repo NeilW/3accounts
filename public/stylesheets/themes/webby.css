@@ -25,6 +25,7 @@
 body
 {
   background: #E7E7E7;
+  font-size: small;
   margin: 0;
 }
 
@@ -96,26 +97,21 @@ body
  * Top Menu
  */
 
-#topmenu
+ul#topmenu
 {
-  font-size: 0.8em;
-  margin: 0 0 0 0.5em;
+  margin: 0;
   clear: both;
-}
-
-#topmenu ul
-{
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-#topmenu ul li
+#topmenu li
 {
-  display: inline;
+  float: left;
+  margin-left: 0.5em;
 }
 
-#topmenu ul li a
+#topmenu li a
 {
   background: #185285;
   line-height: 1.6em;
@@ -124,7 +120,7 @@ body
   padding: 0.3em 0.3em 0.1em 0.3em;
 }
 
-#topmenu ul li a:hover
+#topmenu li a:hover
 {
   background: #1D64AD;
 }
@@ -132,36 +128,31 @@ body
 
 /*-------------------------------------------------------------*/
 /*
- * Left Menu
+ * Side Menu
  */
 
-#leftmenu
-{
-  float: left;
-  font-size: 1em;
-  width: 15em;
-  margin: 1em 1em 0 0;
-}
 
-#leftmenu ul
+ul#sidemenu
 {
-  list-style: none;
+  width: 20%;
+  list-style-type: none;
   padding: 0;
-  margin: 0;
+  font-weight: bold;
+  margin: 0 0 0 0.5em;
 }
 
-#leftmenu ul li
+#sidemenu li
 {
-  padding: 0.3em 0 0.3em 0;
+  padding: 0.3em 0;
   margin: 0 0 0.3em 0;
 }
 
-* html #leftmenu ul li
+* html #sidemenu li
 {
   height: 1%;
 }
 
-#leftmenu ul li a
+#sidemenu li a
 {
   display: block;
   text-decoration: underline;
@@ -169,20 +160,21 @@ body
   padding: 0.3em;
 }
 
-#leftmenu ul li a:hover
+#sidemenu li a:hover
 {
-  color: #FFF;
+  color: white;
   background: #00F;
   text-decoration: none;
 }
 
-#leftmenu ul li a.current
+#sidemenu li a.current,
+#sidemenu li a.current:hover
 {
-  background: #FFF;
   color: #090;
-  font-weight: bold;
+  background: inherit;
   text-decoration: none;
 }
+
 
 
 /*-------------------------------------------------------------*/
@@ -192,9 +184,11 @@ body
 
 #content
 {
-  background: #FFF url(../images/content-bg-right.png) repeat-y top right;
+  background: white;
   padding: 0.5em 2em 3em 2em;
-  margin: 1em 2em 1em 15em;
+  margin: 0;
+  width: 75%;
+  float: right;
 }
 
 #content h2
@@ -227,11 +221,11 @@ body
  * Footer Area
  */
 
-#footer
+#footer p
 {
-  margin: 1em 2em 1em 18em;
-  padding: 0.5em 2em 3em 2em;
   color: #999;
   text-align: right;
   font-size: 0.8em;
+  margin: 1em;
+  padding: 0;
 }

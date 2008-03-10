@@ -25,6 +25,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/new.xml
   def new
     @invoice = Invoice.new
+    @invoice.line_items.build
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,19 +1,51 @@
 <%= error_messages_for :invoice %>
 
 <% form_for(@invoice) do |f| %>
-  <% field_set_tag("Invoice Details") do -%>
-    <p>
-      <%= f.label :number %>
+  <fieldset>
+    <legend>Invoice Details</legend>
+    <label>
+      Number 
       <%= f.text_field :number %>
-    </p>
-    <p>
-      <%= f.label :issued_at %>
+    </label>
+    <label>
+      Issued At
       <%= f.date_select :issued_at, :order =>[:day, :month, :year]%>
-    </p>
-    <p>
-      <%= f.label :customer %>
+    </label>
+    <label>
+      Customer
       <%= f.collection_select(:customer_id, @current_business.customers, :id, :name) %>
-    </p>
-  <% end -%>
-  <%= f.submit "Create" %>
-<% end %>
+    </label>
+    <fieldset>
+      <legend>Line Items</legend>
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th scope="col"><label>Description</label></th>
+            <th scope="col"><label>Qty</label></th>
+            <th scope="col"><label>Rate</label></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% for item in @invoice.line_items -%>
+            <% fields_for "invoice[new_lines]", item do |line_form| -%>
+              <tr>
+                <td>
+                  <%= line_form.text_field :description %>
+                </td>
+                <td>
+                  <%= line_form.text_field :quantity %>
+                </td>
+                <td>
+                  <%= line_form.text_field :rate %>
+                </td>
+              </tr>
+            <% end -%>
+        <% end -%>
+        </tbody>
+      </table>
+    </fieldset>
+  </fieldset>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end -%>
