@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag :all, :media => "screen", :cache => true %>
 </head>
 <body>
-<div id="header">
+<div id="header" class="wrapper">
   <h1>Aldur Systems</h1>
   <p>
     <%= link_to('Neil Wilson', '#') %> logged in 
@@ -24,7 +24,7 @@
     <li><%= link_to('Everything', '#') %></li>
   </ul>
 </div>
-<div class="wrapper">
+<div id="mainbody" class="wrapper">
   <div id="content">
     <%= yield %>
   </div>
