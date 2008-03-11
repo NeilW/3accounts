@@ -2,6 +2,7 @@ class Invoice < ActiveRecord::Base
 
   has_many :line_items, :dependent => :destroy
   belongs_to :customer
+  after_update :save_line_items
 
   validates_uniqueness_of :number, :case_sensitive => false
   validates_presence_of :number, :issued_at
@@ -30,30 +31,47 @@ class Invoice < ActiveRecord::Base
   end
 
   def build_requested_number_of_line_items(amount)
-    amount=amount.to_i
-    if amount < DEFAULT_NUMBER_OF_LINE_ITEMS
-      amount = DEFAULT_NUMBER_OF_LINE_ITEMS
-    elsif amount > MAX_NUMBER_OF_LINE_ITEMS
-      amount = MAX_NUMBER_OF_LINE_ITEMS
-    end
     self.line_items.clear
-    amount.times { line_items.build }
+    make_up_requested_number_of_line_items(amount)
+  end
+
+  def make_up_requested_number_of_line_items(amount)
+    lines_required = calculate_lines_required(amount.to_i)
+    lines_required.times do
+      line_items.build
+    end
   end
 
   def new_lines=(invoice_lines)
     invoice_lines.each do |line|
-      unless line.values.join.blank?
+      unless form_line_blank?(line)
         line_items.build(line)
       end
     end
   end
 
-
+  def existing_lines=(invoice_lines)
+    line_items.each do |line|
+      next if line.new_record?
+      details = invoice_lines[line.id.to_s]
+      if details && !form_line_blank?(details)
+        line.attributes = details
+      else
+        line_items.delete(line)
+      end
+    end
+  end
 
   protected
 
   DEFAULT_NUMBER_OF_LINE_ITEMS = 3
   MAX_NUMBER_OF_LINE_ITEMS = 20
+
+  def save_line_items
+    line_items.each do |item|
+      item.save(false)
+    end
+  end
 
   def validate
     has_line_items
@@ -74,5 +92,19 @@ class Invoice < ActiveRecord::Base
                  vat_types.all? {|item| item.nil? }
   end
 
+  # +form_line+ must be a hash
+  def form_line_blank?(form_line)
+    form_line.values.join.blank?
+  end
+
+  # +amount+ must be a number.
+  def calculate_lines_required(amount)
+    if amount < DEFAULT_NUMBER_OF_LINE_ITEMS
+      amount = DEFAULT_NUMBER_OF_LINE_ITEMS
+    elsif amount > MAX_NUMBER_OF_LINE_ITEMS
+      amount = MAX_NUMBER_OF_LINE_ITEMS
+    end
+    lines_required = amount - line_items.size
+  end
 
 end

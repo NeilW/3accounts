@@ -30,14 +30,11 @@
   </div>
   <ul id="sidemenu">
     <li><%= link_to('New Customer', '#') %></li>
-    <li><%= link_to('New Invoice', '#') %></li>
+    <li><%= classify_link_if_current 'New Invoice', new_invoice_path %></li>
     <li><%= link_to('Find a Customer', '#') %></li>
-    <li><%= link_to('Find an Invoice', '#') %></li>
-    <li>
-      <%=link_to_unless_current("Corporation Tax Rates", rates_corporation_tax_index_path) do
-        link_to("Corporation Tax Rates", rates_corporation_tax_index_path, :class => "current")
-      end %>
-    </li>
+    <li><%= classify_link_if_current 'Find an Invoice', invoices_path %></li>
+    <li><%= classify_link_if_current 'Corporation Tax Rates', rates_corporation_tax_index_path %></li>
+
   </ul>
 </div>
 <div id="footer">

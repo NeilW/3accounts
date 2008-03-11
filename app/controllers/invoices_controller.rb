@@ -37,6 +37,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
+    @invoice.make_up_requested_number_of_line_items(params[:number_of_line_items])
   end
 
   # POST /invoices
@@ -59,6 +60,7 @@ class InvoicesController < ApplicationController
   # PUT /invoices/1
   # PUT /invoices/1.xml
   def update
+    params[:invoice][:existing_lines] ||= {}
     @invoice = Invoice.find(params[:id])
 
     respond_to do |format|

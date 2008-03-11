@@ -1,27 +1,62 @@
-<h1>Editing invoice</h1>
-
 <%= error_messages_for :invoice %>
 
 <% form_for(@invoice) do |f| %>
-  <p>
-    <b>Invoice number</b><br />
-    <%= f.text_field :invoice_number %>
-  </p>
-
-  <p>
-    <b>Tax point</b><br />
-    <%= f.date_select :tax_point %>
-  </p>
-
-  <p>
-    <b>Customer</b><br />
-    <%= f.text_field :customer_id %>
-  </p>
-
+  <fieldset>
+    <legend>Invoice Details</legend>
+    <label>
+      Number 
+      <%= f.text_field :number %>
+    </label>
+    <label>
+      Issued At
+      <%= f.date_select :issued_at, :order =>[:day, :month, :year]%>
+    </label>
+    <label>
+      Customer
+      <%= f.collection_select(:customer_id, @current_business.customers, :id, :name) %>
+    </label>
+    <fieldset>
+      <legend>Line Items</legend>
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th scope="col"><label>Description</label></th>
+            <th scope="col"><label>Qty</label></th>
+            <th scope="col"><label>Rate</label></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% for item in @invoice.line_items -%>
+          <% if item.new_record?
+               prefix="invoice[new_lines][]"
+               else
+               prefix="invoice[existing_lines][]"
+               end -%>
+            <% fields_for prefix, item do |line_form| -%>
+              <tr>
+                <td>
+                  <%= line_form.text_field :description, :size => 60 %>
+                </td>
+                <td>
+                  <%= line_form.text_field :quantity, :size => 10 %>
+                </td>
+                <td>
+                  <%= line_form.text_field :rate, :size => 10 %>
+                </td>
+              </tr>
+            <% end -%>
+        <% end -%>
+        </tbody>
+      </table>
+      <p>
+      <%= link_to_if @invoice.line_items.size < 20, "Add 5 more Line Items", edit_invoice_path(@invoice)+"?number_of_line_items="+(@invoice.line_items.size+5).to_s %>
+      </p>
+      <p>
+      <%= link_to_if @invoice.line_items.size > 5,  "Remove 5 Line Items", edit_invoice_path(@invoice)+"?number_of_line_items="+(@invoice.line_items.size-5).to_s %>
+    </p>
+    </fieldset>
+  </fieldset>
   <p>
     <%= f.submit "Update" %>
   </p>
-<% end %>
-
-<%= link_to 'Show', @invoice %> |
-<%= link_to 'Back', invoices_path %>
+<% end -%>
