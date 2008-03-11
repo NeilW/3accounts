@@ -9,8 +9,8 @@
 
 <% for invoice in @invoices %>
   <tr>
-    <td><%=h invoice.invoice_number %></td>
-    <td><%=h invoice.tax_point %></td>
+    <td><%=h invoice.number %></td>
+    <td><%=h invoice.issued_at %></td>
     <td><%=h invoice.customer_id %></td>
     <td><%= link_to 'Show', invoice %></td>
     <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>

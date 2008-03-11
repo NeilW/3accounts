@@ -23,9 +23,10 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/new
   # GET /invoices/new.xml
+  # GET /invoices/new?number_of_line_items=x
   def new
     @invoice = Invoice.new
-    @invoice.line_items.build
+    @invoice.build_requested_number_of_line_items(params[:number_of_line_items])
 
     respond_to do |format|
       format.html # new.html.erb

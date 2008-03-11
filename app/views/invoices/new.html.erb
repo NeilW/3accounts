@@ -27,22 +27,28 @@
         </thead>
         <tbody>
         <% for item in @invoice.line_items -%>
-            <% fields_for "invoice[new_lines]", item do |line_form| -%>
+            <% fields_for "invoice[new_lines][]", item do |line_form| -%>
               <tr>
                 <td>
-                  <%= line_form.text_field :description %>
+                  <%= line_form.text_field :description, :size => 60 %>
                 </td>
                 <td>
-                  <%= line_form.text_field :quantity %>
+                  <%= line_form.text_field :quantity, :size => 10 %>
                 </td>
                 <td>
-                  <%= line_form.text_field :rate %>
+                  <%= line_form.text_field :rate, :size => 10 %>
                 </td>
               </tr>
             <% end -%>
         <% end -%>
         </tbody>
       </table>
+      <p>
+      <%= link_to_if @invoice.line_items.size < 20, "Add 5 more Line Items", new_invoice_path+"?number_of_line_items="+(@invoice.line_items.size+5).to_s %>
+      </p>
+      <p>
+      <%= link_to_if @invoice.line_items.size > 5,  "Remove 5 Line Items", new_invoice_path+"?number_of_line_items="+(@invoice.line_items.size-5).to_s %>
+    </p>
     </fieldset>
   </fieldset>
   <p>

@@ -8,6 +8,7 @@ class Invoice < ActiveRecord::Base
   validates_existence_of :customer
   validates_associated :line_items
 
+
   def sub_total
     line_items.inject(0) do |total, item|
       total + item.sub_total
@@ -28,7 +29,31 @@ class Invoice < ActiveRecord::Base
     sub_total + vat
   end
 
+  def build_requested_number_of_line_items(amount)
+    amount=amount.to_i
+    if amount < DEFAULT_NUMBER_OF_LINE_ITEMS
+      amount = DEFAULT_NUMBER_OF_LINE_ITEMS
+    elsif amount > MAX_NUMBER_OF_LINE_ITEMS
+      amount = MAX_NUMBER_OF_LINE_ITEMS
+    end
+    self.line_items.clear
+    amount.times { line_items.build }
+  end
+
+  def new_lines=(invoice_lines)
+    invoice_lines.each do |line|
+      unless line.values.join.blank?
+        line_items.build(line)
+      end
+    end
+  end
+
+
+
   protected
+
+  DEFAULT_NUMBER_OF_LINE_ITEMS = 3
+  MAX_NUMBER_OF_LINE_ITEMS = 20
 
   def validate
     has_line_items
