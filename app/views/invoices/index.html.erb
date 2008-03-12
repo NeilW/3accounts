@@ -1,24 +1,25 @@
-<h1>Listing invoices</h1>
-
 <table>
-  <tr>
-    <th>Invoice number</th>
-    <th>Tax point</th>
-    <th>Customer</th>
-  </tr>
-
-<% for invoice in @invoices %>
-  <tr>
-    <td><%=h invoice.number %></td>
-    <td><%=h invoice.issued_at %></td>
-    <td><%=h invoice.customer_id %></td>
-    <td><%= link_to 'Show', invoice %></td>
-    <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-    <td><%= link_to 'Destroy', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <caption>Invoices</caption>
+  <thead>
+    <tr>
+      <th>Issued on</th>
+      <th>Invoice number</th>
+      <th>Customer</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for invoice in @invoices %>
+      <tr>
+        <td><%=h invoice.issued_at.to_formatted_s(:rfc822) %></td>
+        <td><%=h invoice.number %></td>
+        <td><%=h invoice.customer.name %></td>
+        <td><%=number_to_currency(h(invoice.total), :unit => "&pound;") %></td>
+        <td><%= link_to 'Show', invoice %>
+          <%= link_to 'Edit', edit_invoice_path(invoice) %>
+          <%= link_to 'Destroy', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New invoice', new_invoice_path %>

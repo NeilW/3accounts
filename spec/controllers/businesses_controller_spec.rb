@@ -182,7 +182,7 @@ describe BusinessesController do
     end
   
     it "should find the business requested" do
-      Business.should_receive(:find).and_return(@business)
+      Business.should_receive(:find).at_least(:once).and_return(@business)
       do_get
     end
   

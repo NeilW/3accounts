@@ -125,11 +125,6 @@ describe InvoicesController do
 
   describe "handling GET /invoices/new" do
 
-    before(:each) do
-      @invoice = mock_model(Invoice)
-      Invoice.stub!(:new).and_return(@invoice)
-    end
-  
     def do_get
       get :new
     end
@@ -145,18 +140,18 @@ describe InvoicesController do
     end
   
     it "should create an new invoice" do
-      Invoice.should_receive(:new).and_return(@invoice)
       do_get
+      assigns[:invoice].should be_new_record
     end
   
     it "should not save the new invoice" do
-      @invoice.should_not_receive(:save)
+      Invoice.should_not_receive(:save)
       do_get
     end
   
     it "should assign the new invoice for the view" do
       do_get
-      assigns[:invoice].should equal(@invoice)
+      assigns[:invoice].class.should == Invoice
     end
   end
 
@@ -165,6 +160,7 @@ describe InvoicesController do
     before(:each) do
       @invoice = mock_model(Invoice)
       Invoice.stub!(:find).and_return(@invoice)
+      @invoice.stub!(:make_up_requested_number_of_line_items)
     end
   
     def do_get

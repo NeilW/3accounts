@@ -5,8 +5,8 @@ describe "/invoices/show.html.erb" do
   
   before(:each) do
     @invoice = mock_model(Invoice)
-    @invoice.stub!(:invoice_number).and_return("MyString")
-    @invoice.stub!(:tax_point).and_return(Date.today)
+    @invoice.stub!(:number).and_return("MyString")
+    @invoice.stub!(:issued_at).and_return(Date.today)
     @invoice.stub!(:customer_id).and_return("1")
 
     assigns[:invoice] = @invoice

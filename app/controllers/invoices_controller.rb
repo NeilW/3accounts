@@ -61,6 +61,7 @@ class InvoicesController < ApplicationController
   # PUT /invoices/1
   # PUT /invoices/1.xml
   def update
+    params[:invoice] ||= {}
     params[:invoice][:existing_lines] ||= {}
     @invoice = Invoice.find(params[:id])
 

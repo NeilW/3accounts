@@ -5,13 +5,15 @@ describe "/invoices/index.html.erb" do
   
   before(:each) do
     invoice_98 = mock_model(Invoice)
-    invoice_98.should_receive(:invoice_number).and_return("MyString")
-    invoice_98.should_receive(:tax_point).and_return(Date.today)
-    invoice_98.should_receive(:customer_id).and_return("1")
+    invoice_98.should_receive(:number).and_return("MyString")
+    invoice_98.should_receive(:issued_at).and_return(Date.today)
+    invoice_98.should_receive(:customer).and_return(mock_model(Customer, :name => 'Fred'))
+    invoice_98.should_receive(:total).and_return(100)
     invoice_99 = mock_model(Invoice)
-    invoice_99.should_receive(:invoice_number).and_return("MyString")
-    invoice_99.should_receive(:tax_point).and_return(Date.today)
-    invoice_99.should_receive(:customer_id).and_return("1")
+    invoice_99.should_receive(:number).and_return("MyString")
+    invoice_99.should_receive(:issued_at).and_return(Date.today)
+    invoice_99.should_receive(:customer).and_return(mock_model(Customer, :name => 'Fred'))
+    invoice_99.should_receive(:total).and_return(100)
 
     assigns[:invoices] = [invoice_98, invoice_99]
   end

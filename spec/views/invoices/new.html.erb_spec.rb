@@ -7,9 +7,13 @@ describe "/invoices/new.html.erb" do
     @invoice = mock_model(Invoice)
     @invoice.stub!(:new_record?).and_return(true)
     @invoice.stub!(:number).and_return("ABC001")
-    @invoice.stub!(:tax_point).and_return(Date.today)
-    @invoice.stub!(:customer).and_return("ACustomer")
+    @invoice.stub!(:issued_at).and_return(Date.today)
+    @invoice.stub!(:line_items).and_return([])
+    @invoice.stub!(:sensible_line_items_size?)
+    @invoice.stub!(:customer_id)
     assigns[:invoice] = @invoice
+    @business = mock_model(Business, :customers => [])
+    assigns[:current_business] = @business
   end
 
   it "should render new form" do
