@@ -5,14 +5,6 @@ module InvoicesHelper
     "invoice[#{record_type}_lines][]"
   end
 
-  def button_caption
-    if @invoice.new_record?
-      "Create"
-    else
-      "Update"
-    end
-  end
-
   def add_items_link(number_of_items = 5)
     change_items_link("Add #{number_of_items} items", number_of_items)
   end
