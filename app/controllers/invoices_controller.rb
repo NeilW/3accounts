@@ -23,7 +23,7 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/new
   # GET /invoices/new.xml
-  # GET /invoices/new?number_of_line_items=x
+  # GET /invoices/new?number_of_line_items=10
   def new
     @invoice = Invoice.new
     @invoice.build_requested_number_of_line_items(params[:number_of_line_items])
@@ -35,8 +35,9 @@ class InvoicesController < ApplicationController
   end
 
   # GET /invoices/1/edit
+  # GET /invoices/1/edit?number_of_line_items=10
   def edit
-    @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.find(params[:id], :include =>[:line_items])
     @invoice.make_up_requested_number_of_line_items(params[:number_of_line_items])
   end
 

@@ -42,6 +42,11 @@ class Invoice < ActiveRecord::Base
     end
   end
 
+  def sensible_line_items_size?(offset)
+    sensible_line_items_range.include?(line_items.size+offset)
+  end
+    
+
   def new_lines=(invoice_lines)
     invoice_lines.each do |line|
       unless form_line_blank?(line)
@@ -66,6 +71,10 @@ class Invoice < ActiveRecord::Base
 
   DEFAULT_NUMBER_OF_LINE_ITEMS = 3
   MAX_NUMBER_OF_LINE_ITEMS = 20
+
+  def sensible_line_items_range
+    [line_items.count, DEFAULT_NUMBER_OF_LINE_ITEMS].max..MAX_NUMBER_OF_LINE_ITEMS
+  end
 
   def save_line_items
     line_items.each do |item|

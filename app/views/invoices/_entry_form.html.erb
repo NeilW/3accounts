@@ -1,0 +1,39 @@
+<%= error_messages_for :invoice %>
+
+<% form_for(@invoice) do |f| %>
+  <fieldset>
+    <legend>Invoice Details</legend>
+    <label>
+      Number 
+      <%= f.text_field :number %>
+    </label>
+    <label>
+      Issued At
+      <%= f.date_select :issued_at, :order =>[:day, :month, :year]%>
+    </label>
+    <label>
+      Customer
+      <%= f.collection_select(:customer_id, @current_business.customers, :id, :name) %>
+    </label>
+    <fieldset>
+      <legend>Line Items</legend>
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th scope="col"><label>Description</label></th>
+            <th scope="col"><label>Qty</label></th>
+            <th scope="col"><label>Rate</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render :partial => 'line_item_entry', :collection => @invoice.line_items %>
+        </tbody>
+      </table>
+      <%= add_items_link %>
+      <%= remove_items_link %>
+    </fieldset>
+  </fieldset>
+  <p>
+    <%= f.submit button_caption %>
+  </p>
+<% end -%>
