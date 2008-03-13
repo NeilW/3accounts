@@ -1,18 +1,35 @@
-<p>
-  <b>Invoice number:</b>
-  <%=h @invoice.number %>
-</p>
-
-<p>
-  <b>Tax point:</b>
-  <%=h @invoice.issued_at %>
-</p>
-
-<p>
-  <b>Customer:</b>
-  <%=h @invoice.customer_id %>
-</p>
-
-
+<h1>Invoice</h1>
+<p><%=h @current_business.name %></p>
+<p>Number <%=h @invoice.number %></p>
+<p>Date <%=h @invoice.issued_at %></p>
+<p>To <%=h @invoice.customer.name %></p>
+<table cellspacing="0">
+  <thead>
+    <tr>
+      <th scope="col"><label>Description</label></th>
+      <th scope="col"><label>Qty</label></th>
+      <th scope="col"><label>Rate</label></th>
+      <th scope="col"><label>Total</label></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td/>
+      <td/>
+      <td/>
+        <td><%=number_to_currency(h(@invoice.total), :unit => "&pound;")%></td>
+      </tfoot>
+  <tbody>
+    <% for line_item in @invoice.line_items do -%>
+      <tr>
+        <td><%=h line_item.description%></td>
+        <td><%=h line_item.quantity%></td>
+        <td><%=number_to_currency(h(line_item.rate), :unit => "&pound;")%></td>
+        <td><%=number_to_currency(h(line_item.total), :unit => "&pound;")%></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', invoices_path %>
+

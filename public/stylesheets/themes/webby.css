@@ -217,6 +217,61 @@ ul#sidemenu
   font-size: 1.2em;
 }
 
+#content table
+{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#content caption,
+#content legend
+{
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 2.5em;
+  text-align: left;
+}
+
+#content form p
+{
+  margin: 0.75em 0;
+}
+
+/* Scrollable table*/
+
+#scrolltable
+{
+  height: 21em;
+  overflow: hidden;
+}
+
+#scrolltable thead tr
+{
+  display: block;
+}
+
+#scrolltable tbody 
+{
+  display: block;
+  height: 15em;
+  overflow: auto;
+}
+
+#scrolltable .desc-width
+{
+  width: 450px;
+  font-size: 1em;
+}
+
+#scrolltable .qty-width,
+#scrolltable .rate-width
+{
+  width: 100px;
+  font-size: 1em;
+}
+
+
 /*
  * Footer Area
  */
