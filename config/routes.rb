@@ -9,6 +9,20 @@ ActionController::Routing::Routes.draw do |map|
     rates.resources :corporation_tax
   end
 
+  valid_eu_country = '(AT|BE|BG|CY|CZ|DE|DK|EE|EL|ES|FI|FR|GB|HU|IE|IT|LT|LU|LV|MT|NL|PL|PT|RO|SE|SI|SK)'
+  eu_vat_picture = '\w{2,12}'
+  map.vat_validity 'vat_validity/:country_code/:vat_number',
+    :controller => 'vat_checker', :action => 'show',
+    :requirements => {
+      :country_code => /#{valid_eu_country}/,
+      :vat_number => /#{eu_vat_picture}/
+    }
+  map.connect 'vat_validity/:vat_number',
+    :controller => 'vat_checker', :action => 'show',
+    :requirements => {
+      :vat_number => /#{valid_eu_country}#{eu_vat_picture}/
+    }
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

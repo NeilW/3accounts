@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(:version => 7) do
     t.string   "tag"
     t.integer  "invoice_id"
     t.integer  "vat_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vat_numbers", :force => true do |t|
+    t.string   "identifier",   :limit => 12
+    t.string   "country_code", :limit => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
