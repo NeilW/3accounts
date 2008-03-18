@@ -191,32 +191,6 @@ ul#sidemenu
   float: right;
 }
 
-#content h2
-{
-  border: 0 solid #999;
-  border-width: 0 0 1px 0;
-  padding: 0 0 0.2em 0;
-  margin: 2em 0 0 0;
-}
-
-#content h2:first-child
-{
-  margin: 1em 0 0 0;
-}
-
-#content h2 img
-{
-  float: right;
-}
-
-#content h3
-{
-  padding: 0.2em 4em 0.2em 0.2em;
-  margin: 0 0 1em 0;
-  font-weight: normal;
-  font-size: 1.2em;
-}
-
 #content table
 {
   width: 100%;
@@ -269,6 +243,48 @@ ul#sidemenu
 {
   width: 100px;
   font-size: 1em;
+}
+
+/* Invoice */
+
+#invoice #business-details
+{
+  float: right;
+  line-height: 1em;
+}
+
+#invoice p
+{ 
+  margin-bottom: 1em;
+}
+
+#invoice #customer-details
+{
+  clear: right;
+  overflow: hidden;
+}
+
+#invoice #customer-details p
+{
+  margin: 0;
+  padding: 0.5em;
+  line-height: 1em;
+}
+
+#invoice #invoice-address
+{
+  width: 45%;
+  height: 6em;
+  float: left;
+  border: 1px solid gray;
+}
+
+#invoice #delivery-address
+{
+  width: 45%;
+  height: 6em;
+  float: right;
+  border: 1px solid gray;
 }
 
 

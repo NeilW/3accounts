@@ -1,0 +1,105 @@
+/* -------------------------------------------------------------- 
+   
+    3Accounts application layout file - Print version
+    Copyright (C) 2008    Neil Wilson, Aldur Systems
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   
+-------------------------------------------------------------- */
+
+/* 
+ * Body styling and global defaults
+ */
+
+body
+{
+  background: white;
+  font: small "URW Bookman L", serif;
+  line-height: 1.5em;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#header, #footer, #sidemenu, #invoice_links
+{
+  display: none;
+}
+
+#invoice h2
+{
+  padding-top: 1em;
+  margin: 0 0 1em;
+}
+
+#invoice p
+{
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+#invoice #business-details
+{
+  float: right;
+  line-height: 1em;
+  margin-bottom: 1.5em;
+}
+
+#invoice #business-details img
+{
+  padding: 0.2em;
+}
+
+#invoice #customer-details
+{
+  clear: right;
+  overflow: hidden;
+  margin: 1.5em 0;
+}
+
+#invoice #customer-details p
+{
+  margin: 0;
+  padding: 0.5em;
+  line-height: 1em;
+}
+
+#invoice #invoice-address
+{
+  width: 45%;
+  height: 8.5em;
+  float: left;
+  border: 1px solid gray;
+}
+
+#invoice #delivery-address
+{
+  width: 45%;
+  height: 8.5em;
+  float: right;
+  border: 1px solid gray;
+}
+
+table { 
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th, td { text-align: left; font-weight:400; }
+th { border-bottom: 2px solid #ddd; font-weight: bold; }
+td { border-bottom: 1px solid #ddd; }
+th,td { padding: 4px 10px 4px 0; }
+tfoot { font-style: italic; }
+caption { font-weight: bold; }
+

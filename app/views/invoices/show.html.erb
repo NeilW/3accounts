@@ -1,35 +1,53 @@
-<h1>Invoice</h1>
-<p><%=h @current_business.name %></p>
-<p>Number <%=h @invoice.number %></p>
-<p>Date <%=h @invoice.issued_at %></p>
-<p>To <%=h @invoice.customer.name %></p>
-<table cellspacing="0">
-  <thead>
-    <tr>
-      <th scope="col"><label>Description</label></th>
-      <th scope="col"><label>Qty</label></th>
-      <th scope="col"><label>Rate</label></th>
-      <th scope="col"><label>Total</label></th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td/>
-      <td/>
-      <td/>
-        <td><%=number_to_currency(h(@invoice.total), :unit => "&pound;")%></td>
-      </tfoot>
-  <tbody>
-    <% for line_item in @invoice.line_items do -%>
+<div id="invoice">
+  <div id="business-details">
+    <p><img src="http://www.google.com/a/aldur.co.uk/images/logo.gif" alt="Logo" /></p>
+    <p><%=h @current_business.name %><br/>3 Heath Lea<br/>Halifax<br/>HX1 2BX</p>
+  </div>
+  <h2>Sales Invoice</h2>
+  <h3><%=h @invoice.number %></h3>
+  <p>Issued on <%=h @invoice.issued_at.to_formatted_s(:rfc822) %><br/>
+  (Due for payment on or before
+  <%=h @invoice.issued_at.next_month.at_end_of_month.to_formatted_s(:rfc822)%>)</p>
+  <div id="customer-details" class="wrapper">
+    <div id="invoice-address">
+      <p>
+      <%=h @invoice.customer.name %><br/>
+      Address line 1<br/>Address line 2<br/>Address line 3<br/>PS22 4XX</p>
+    </div>
+    <div id="delivery-address">
+      <p>As Invoice Address</p>
+    </div>
+  </div>
+  <table cellspacing="0">
+    <thead>
       <tr>
-        <td><%=h line_item.description%></td>
-        <td><%=h line_item.quantity%></td>
-        <td><%=number_to_currency(h(line_item.rate), :unit => "&pound;")%></td>
-        <td><%=number_to_currency(h(line_item.total), :unit => "&pound;")%></td>
+        <th scope="col"><label>Description</label></th>
+        <th scope="col"><label>Qty</label></th>
+        <th scope="col"><label>Rate</label></th>
+        <th scope="col"><label>Total</label></th>
       </tr>
-    <% end -%>
-  </tbody>
-</table>
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+    </thead>
+    <tfoot>
+      <tr>
+        <td/>
+        <td/>
+        <td/>
+          <td><%=number_to_currency(h(@invoice.total), :unit => "&pound;")%></td>
+        </tfoot>
+    <tbody>
+      <% for line_item in @invoice.line_items do -%>
+        <tr>
+          <td><%=h line_item.description%></td>
+          <td><%=h line_item.quantity%></td>
+          <td><%=number_to_currency(h(line_item.rate), :unit => "&pound;")%></td>
+          <td><%=number_to_currency(h(line_item.total), :unit => "&pound;")%></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>
+<div id="invoice_links">
+  <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+  <%= link_to 'Back', invoices_path %>
+</div>
 
