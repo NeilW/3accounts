@@ -9,20 +9,22 @@ ActionController::Routing::Routes.draw do |map|
     rates.resources :corporation_tax
   end
 
-  valid_eu_country = '(AT|BE|BG|CY|CZ|DE|DK|EE|EL|ES|FI|FR|GB|HU|IE|IT|LT|LU|LV|MT|NL|PL|PT|RO|SE|SI|SK)'
+  valid_eu_country = '((?i)AT|BE|BG|CY|CZ|DE|DK|EE|EL|ES|FI|FR|GB|HU|IE|IT|LT|LU|LV|MT|NL|PL|PT|RO|SE|SI|SK)'
   eu_vat_picture = '[\w\+\*]{2,12}'
-  valid_vat_url = 'valid_eu_vat_numbers'
-  map.vat_validity "#{valid_vat_url}/:country_code/:vat_number",
-    :controller => 'vat_checker', :action => 'show',
+  active_vat_url = 'active_eu_vat_numbers'
+  map.vat_validity "#{active_vat_url}/:country_code/:identifier",
+    :controller => 'vat_numbers', :action => 'show',
     :requirements => {
-      :country_code => /#{valid_eu_country}/,
-      :vat_number => /#{eu_vat_picture}/
-    }
-  map.connect 'valid_eu_vat_numbers/:vat_number',
-    :controller => 'vat_checker', :action => 'show',
+      :country_code => /#{valid_eu_country}/i,
+      :identifier => /#{eu_vat_picture}/i
+    },
+    :conditions => { :method => :get }
+  map.connect "#{active_vat_url}/:identifier",
+    :controller => 'vat_numbers', :action => 'show',
     :requirements => {
-      :vat_number => /#{valid_eu_country}#{eu_vat_picture}/
-    }
+      :identifier => /#{valid_eu_country}#{eu_vat_picture}/i
+    },
+    :conditions => { :method => :get }
 
   # The priority is based upon order of creation: first created -> highest priority.
 

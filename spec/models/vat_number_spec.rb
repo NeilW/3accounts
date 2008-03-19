@@ -9,19 +9,26 @@ describe VatNumber do
     @vat_number.should_not be_valid
   end
 
+  it "should strip garbage from identifier" do
+    @vat_number.identifier = "aB1*+$% \t"
+    @vat_number.identifier.should == "AB1*+"
+  end
+  
+  it "should uppercase identifier" do
+    @vat_number.identifier = "ab123"
+    @vat_number.identifier.should == "AB123"
+  end
+
+  it "should uppercase country code" do
+    @vat_number.country_code = "gb"
+    @vat_number.country_code.should == "GB"
+  end
+
   describe "with a GB identifier" do
 
     before(:each) do
       @vat_number.identifier = "123 4023 42"
       @vat_number.country_code = "gb"
-    end
-
-    it "should strip spaces" do
-      @vat_number.identifier.should == "123402342"
-    end
-
-    it "should uppercase country code" do
-      @vat_number.country_code.should == "GB"
     end
 
     it "should be valid" do

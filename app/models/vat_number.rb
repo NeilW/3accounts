@@ -39,14 +39,14 @@ class VatNumber < ActiveRecord::Base
     :in => EU::MEMBER_STATES_COUNTRY_CODES,
     :message => 'not a valid EU country code'
 
-    validates_each :identifier do |record, attr_name, value|
-      value = value.to_s.dup
-      if :country_code
-        eu_country_code = record.send(:country_code)
-      end
-      eu_country_code ||= value.slice!(0..1)
-      record.errors.add(attr_name, "not in the correct format to be a VAT number") unless value =~ EU::MEMBER_STATES_VAT_PICTURES[eu_country_code]
+  validates_each :identifier do |record, attr_name, value|
+    value = value.to_s.dup
+    if :country_code
+      eu_country_code = record.send(:country_code)
     end
+    eu_country_code ||= value.slice!(0..1)
+    record.errors.add(attr_name, "not in the correct format to be a VAT number") unless value =~ EU::MEMBER_STATES_VAT_PICTURES[eu_country_code]
+  end
 
   attr_accessible :identifier, :country_code
 
@@ -67,8 +67,8 @@ class VatNumber < ActiveRecord::Base
     if valid?
       @@vat_check_driver ||= create_vat_check_driver
       result = @@vat_check_driver.checkVat(:countryCode => country_code, :vatNumber => identifier)
-      result.valid == "true" if result
     end
+    result && result.valid == "true"
   end
 
   private
