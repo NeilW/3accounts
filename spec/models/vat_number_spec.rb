@@ -35,7 +35,7 @@ describe VatNumber do
       @vat_number.should be_valid
     end
 
-    (EU::MEMBER_STATES_COUNTRY_CODES - %w(GB BG CZ DE DK EE EL ES FI HU LT LU MT PT RO SI)).each do |member_state|
+    (EU::MEMBER_STATES_COUNTRY_CODES - %w(GB BG CZ DE DK EE EL ES EU FI HU LT LU MT PT RO SI)).each do |member_state|
       it "should not be valid for #{member_state}" do
         @vat_number.country_code = member_state
         @vat_number.country_code.should == member_state
@@ -47,7 +47,7 @@ describe VatNumber do
       @vat_number.should_not be_active
     end
 
-    it "should be active with a operational VAT number" do
+    it "should be active with an operational VAT number" do
       @vat_number.identifier = "665 4023 42"
       @vat_number.should be_active
     end
