@@ -87,13 +87,13 @@ describe VatTestRecord do
   it "should observe the country code supplied in a with" do
     temp = ValidateVatNumberUsingWith.new(:vat_number => 'FI12345678',
                                           :country => 'GB')
-    temp.should_not be_valid
+    temp.should have(1).error_on(:vat_number)
   end
 
   it "should ignore the country code supplied when with is missing" do
     temp = ValidateVatNumberAllowNil.new(:vat_number => 'FI12345678',
                                           :country => 'GB')
-    temp.should be_valid
+    temp.should have(:no).errors_on(:vat_number)
   end
 
   describe "should not be valid" do
@@ -105,12 +105,12 @@ describe VatTestRecord do
 
     it "when country code used is not in EU" do
       temp =ValidateVatNumberUsingWith.new(:vat_number => 'GR123456789')
-      temp.should_not be_valid
+      temp.should have(1).error_on(:vat_number)
     end
 
     it "when country code is missing" do
       temp = ValidateVatNumberUsingWith.new(:vat_number => '123456789')
-      temp.should_not be_valid
+      temp.should have(1).error_on(:vat_number)
     end
 
   end
@@ -124,23 +124,23 @@ describe VatTestRecord do
 
     it "vat number has a country and no with" do
       temp = ValidateVatNumberAllowNil.new(:vat_number => 'gb123456789')
-      temp.should be_valid
+      temp.should have(:no).errors_on(:vat_number)
     end
 
     it "country is supplied as a string" do
       temp = ValidateGBVatNumber.new(:vat_number => '123456789')
-      temp.should be_valid
+      temp.should have(:no).errors_on(:vat_number)
     end
 
     VALID_VAT_NUMBERS.each do |vat_number|
       it "#{vat_number} is provided as a full_vat_number" do
         temp = ValidateVatNumberUsingWith.new(:vat_number => vat_number)
-        temp.should be_valid
+        temp.should have(:no).errors_on(:vat_number)
       end
 
       it "#{vat_number} is provided as vat_number and country code" do
         temp = ValidateVatNumberUsingWith.new(:vat_number => vat_number.slice(2..-1), :country => vat_number.slice(0..1))
-        temp.should be_valid
+        temp.should have(:no).errors_on(:vat_number)
       end
     end
   end
@@ -150,18 +150,18 @@ describe VatTestRecord do
     it "vat number has no country and no with" do
       temp = ValidateVatNumberAllowNil.new(:vat_number => '123456789',
                                            :country => 'GB')
-      temp.should_not be_valid
+      temp.should have(1).error_on(:vat_number)
     end
 
     INVALID_VAT_PICTURES.each do |vat_number|
       it "#{vat_number} is provided as a full vat_number" do
         temp = ValidateVatNumberUsingWith.new(:vat_number => vat_number)
-        temp.should_not be_valid
+        temp.should have(1).error_on(:vat_number)
       end
 
       it "#{vat_number} is provided as vat_number and country code" do
         temp = ValidateVatNumberUsingWith.new(:vat_number => vat_number.slice(2..-1), :country => vat_number.slice(0..1))
-        temp.should_not be_valid
+        temp.should have(1).error_on(:vat_number)
       end
     end
   end
