@@ -12,19 +12,23 @@ ActionController::Routing::Routes.draw do |map|
   valid_eu_country = '((?i)AT|BE|BG|CY|CZ|DE|DK|EE|EL|ES|FI|FR|GB|HU|IE|IT|LT|LU|LV|MT|NL|PL|PT|RO|SE|SI|SK)'
   eu_vat_picture = '[\w\+\*]{2,12}'
   active_vat_url = 'active_eu_vat_numbers'
-  map.vat_validity "#{active_vat_url}/:country_code/:identifier",
+  vat_conditions = { 
     :controller => 'vat_numbers', :action => 'show',
-    :requirements => {
-      :country_code => /#{valid_eu_country}/i,
-      :identifier => /#{eu_vat_picture}/i
-    },
-    :conditions => { :method => :get }
-  map.connect "#{active_vat_url}/:identifier",
-    :controller => 'vat_numbers', :action => 'show',
-    :requirements => {
-      :identifier => /#{valid_eu_country}#{eu_vat_picture}/i
-    },
-    :conditions => { :method => :get }
+    :conditions => {:method => :get},
+    :identifier => /#{valid_eu_country}#{eu_vat_picture}/i
+  }
+  nested_vat_conditions = vat_conditions.merge(
+    :country_code => /#{valid_eu_country}/i,
+    :identifier => /#{eu_vat_picture}/i
+  )
+  map.with_options nested_vat_conditions do |nv|
+    nv.vat_validity "#{active_vat_url}/:country_code/:identifier"
+    nv.formatted_vat_validity "#{active_vat_url}/:country_code/:identifier.:format"
+  end
+  map.with_options vat_conditions do |vc|
+    vc.connect "#{active_vat_url}/:identifier"
+    vc.connect "#{active_vat_url}/:identifier.:format"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 

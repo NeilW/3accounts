@@ -15,7 +15,9 @@ class VatNumbersController < ApplicationController
           :status => :unprocessable_entity }
       elsif temp_vat_number.active?
         format.html { render :text => '<h1>Active</h1>' }
-        format.xml { head :ok }
+        format.xml do
+          render :xml => temp_vat_number.to_xml(:except => [:created_at, :updated_at]) {|xml| xml.active true }
+        end
       else
         format.html { render :text => '<h1>Not Found</h1>',
           :status => :not_found }
