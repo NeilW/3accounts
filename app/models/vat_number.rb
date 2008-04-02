@@ -20,7 +20,10 @@ class VatNumber < ActiveRecord::Base
   def active?
     if valid?
       @@vat_check_driver ||= create_vat_check_driver
-      result = @@vat_check_driver.checkVat(:countryCode => country_code, :vatNumber => identifier)
+      result = @@vat_check_driver.checkVat(
+        :countryCode => country_code,
+        :vatNumber => identifier
+      )
     end
     result && result.valid == "true"
   end
