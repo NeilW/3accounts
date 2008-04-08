@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  quantity: 9.99
+  description: MyString
+  rate: 9.99
+  tag: MyString
+  vat_type: standard
+
+two:
+  quantity: 12
+  description: MyString
+  rate: 123.45
+  vat_type: lower

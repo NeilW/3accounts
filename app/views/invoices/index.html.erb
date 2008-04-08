@@ -1,0 +1,25 @@
+<table>
+  <caption>Invoices</caption>
+  <thead>
+    <tr>
+      <th>Issued on</th>
+      <th>Invoice number</th>
+      <th>Customer</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for invoice in @invoices %>
+      <tr>
+        <td><%=h invoice.issued_at.to_formatted_s(:rfc822) %></td>
+        <td><%=h invoice.number %></td>
+        <td><%=h invoice.customer.name %></td>
+        <td><%=number_to_currency(h(invoice.total), :unit => "&pound;") %></td>
+        <td><%= link_to 'Show', invoice %>
+          <%= link_to 'Edit', edit_invoice_path(invoice) %>
+          <%= link_to 'Destroy', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

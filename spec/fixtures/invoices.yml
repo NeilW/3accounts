@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  number: OAP001
+  tax_point: 2008-02-26
+  customer: one
+
+two:
+  number: OAP002
+  tax_point: 2008-02-26
+  customer: two

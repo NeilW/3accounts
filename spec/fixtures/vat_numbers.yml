@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  identifier: MyString
+  country_code: MyString
+
+two:
+  identifier: MyString
+  country_code: MyString

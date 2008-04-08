@@ -1,4 +1,35 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :businesses
+
+  map.resources :customers
+
+  map.resources :invoices
+
+  map.namespace :rates do |rates|
+    rates.resources :corporation_tax
+  end
+
+  valid_eu_country = '((?i)AT|BE|BG|CY|CZ|DE|DK|EE|EL|ES|FI|FR|GB|HU|IE|IT|LT|LU|LV|MT|NL|PL|PT|RO|SE|SI|SK)'
+  eu_vat_picture = '[\w\+\*]{2,12}'
+  active_vat_url = 'active_eu_vat_numbers'
+  vat_conditions = { 
+    :controller => 'vat_numbers', :action => 'show',
+    :conditions => {:method => :get},
+    :identifier => /#{valid_eu_country}#{eu_vat_picture}/i
+  }
+  nested_vat_conditions = vat_conditions.merge(
+    :country_code => /#{valid_eu_country}/i,
+    :identifier => /#{eu_vat_picture}/i
+  )
+  map.with_options nested_vat_conditions do |nv|
+    nv.vat_validity "#{active_vat_url}/:country_code/:identifier"
+    nv.formatted_vat_validity "#{active_vat_url}/:country_code/:identifier.:format"
+  end
+  map.with_options vat_conditions do |vc|
+    vc.connect "#{active_vat_url}/:identifier"
+    vc.connect "#{active_vat_url}/:identifier.:format"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -30,6 +61,4 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end

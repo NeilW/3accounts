@@ -1,0 +1,13 @@
+<% fields_for field_prefix(line_item_entry), line_item_entry do |line_form| -%>
+  <tr>
+    <td class="desc-width">
+      <%= line_form.text_field :description, :size => 60%>
+    </td>
+    <td class="qty-width">
+      <%= line_form.text_field :quantity, :size => 10 %>
+    </td>
+    <td class="rate-width">
+      <%= line_form.text_field :rate, :size => 10 %>
+    </td>
+  </tr>
+<% end -%>

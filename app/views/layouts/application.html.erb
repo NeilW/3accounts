@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>
+    <%= @page_title if @page_title %>
+  </title>
+  <%= stylesheet_link_tag :all, :media => "screen", :cache => true %>
+  <%= stylesheet_link_tag "print/print", :media => "print", :cache => true %>
+</head>
+<body>
+<div id="header" class="wrapper">
+  <h1>Aldur Systems</h1>
+  <p>
+    <%= link_to('Neil Wilson', '#') %> logged in 
+    <span class="button">
+      <%= link_to('Logout', '#') %>
+    </span>
+  </p>
+  <ul id="topmenu">
+    <li><%= link_to('Day to Day', '#') %></li>
+    <li><%= link_to('Monthly', '#') %></li>
+    <li><%= link_to('Annual', '#') %></li>
+    <li><%= link_to('Everything', '#') %></li>
+  </ul>
+</div>
+<div id="mainbody" class="wrapper">
+  <div id="content">
+    <%= yield %>
+  </div>
+  <ul id="sidemenu">
+    <li><%= link_to('New Customer', '#') %></li>
+    <li><%= classify_link_if_current 'New Invoice', new_invoice_path %></li>
+    <li><%= link_to('Find a Customer', '#') %></li>
+    <li><%= classify_link_if_current 'Find an Invoice', invoices_path %></li>
+    <li><%= classify_link_if_current 'Corporation Tax Rates', rates_corporation_tax_index_path %></li>
+
+  </ul>
+</div>
+<div id="footer">
+  <p>&copy; Aldur Systems 2008</p>
+</div>
+</body>
+</html>

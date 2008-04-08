@@ -1,0 +1,8 @@
+<% content_tag_for(:tr, rates) do -%>
+  <td><%= link_to_unless_current(rates.fiscal_year_starting, { :action => "show", :id => rates.fiscal_year_starting } ) %></td>
+  <td><%= rates.main_rate %></td>
+  <td><%= rates.small_companies_rate %></td>
+  <td><%= number_with_delimiter(rates.mscr_lower_limit) %></td>
+  <td><%= number_with_delimiter(rates.mscr_upper_limit) %></td>
+  <td><%= number_with_precision(rates.mscr_fraction,4) %></td>
+<% end %>

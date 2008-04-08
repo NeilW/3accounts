@@ -1,0 +1,302 @@
+/* -------------------------------------------------------------- 
+   
+    3Accounts application layout file - Webby version
+    Copyright (C) 2008    Neil Wilson, Aldur Systems
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   
+-------------------------------------------------------------- */
+
+/* 
+ * Body styling and global defaults
+ */
+
+body
+{
+  background: #E7E7E7;
+  font-size: small;
+  margin: 0;
+}
+
+/*-------------------------------------------------------------*/
+/*
+ * Header area 
+ */
+
+#header
+{
+  background: #003163;
+  color: #FCD406;
+  padding: 0;
+  margin: 0;
+}
+
+* html #header
+{
+  height: 1%;
+}
+
+#header h1
+{
+  float: left;
+  font-size: 1.5em;
+  font-weight: normal;
+  margin: 0.4em;
+  padding: 0.2em;
+}
+
+* html #header h1
+{
+}
+
+#header p
+{
+  color: white;
+  font-size: 1em;
+  font-weight: normal;
+  float: right;
+  margin: 0.4em;
+}
+
+#header a
+{
+  color: #FCD406;
+}
+
+#header .button a
+{
+  background: #185285;
+  line-height: 1.6em;
+  color: white;
+  text-decoration: none;
+  padding: 0.3em; 
+  margin-left: 0.5em;
+}
+
+#header .button a:hover
+{
+  background: #1D64AD;
+}
+
+
+
+/*-------------------------------------------------------------*/
+/*
+ * Top Menu
+ */
+
+ul#topmenu
+{
+  margin: 0;
+  clear: both;
+  list-style: none;
+  padding: 0;
+}
+
+#topmenu li
+{
+  float: left;
+  margin-left: 0.5em;
+}
+
+#topmenu li a
+{
+  background: #185285;
+  line-height: 1.6em;
+  color: white;
+  text-decoration: none;
+  padding: 0.3em 0.3em 0.1em 0.3em;
+}
+
+#topmenu li a:hover
+{
+  background: #1D64AD;
+}
+
+
+/*-------------------------------------------------------------*/
+/*
+ * Side Menu
+ */
+
+
+ul#sidemenu
+{
+  width: 20%;
+  list-style-type: none;
+  padding: 0;
+  font-weight: bold;
+  margin: 0 0 0 0.5em;
+}
+
+#sidemenu li
+{
+  padding: 0.3em 0;
+  margin: 0 0 0.3em 0;
+}
+
+* html #sidemenu li
+{
+  height: 1%;
+}
+
+#sidemenu li a
+{
+  display: block;
+  text-decoration: underline;
+  color: #00F;
+  padding: 0.3em;
+}
+
+#sidemenu li a:hover
+{
+  color: white;
+  background: #00F;
+  text-decoration: none;
+}
+
+#sidemenu li a.current,
+#sidemenu li a.current:hover
+{
+  color: #090;
+  background: inherit;
+  text-decoration: none;
+}
+
+
+
+/*-------------------------------------------------------------*/
+/*
+ * Content Area
+ */
+
+#content
+{
+  background: white;
+  border: 1px #696969 outset;
+  padding: 0.5em 2em 3em 2em;
+  margin: 0;
+  width: 75%;
+  float: right;
+}
+
+#content table
+{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#content caption,
+#content legend
+{
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 2.5em;
+  text-align: left;
+}
+
+#content form p
+{
+  margin: 0.75em 0;
+}
+
+/* Scrollable table*/
+
+#scrolltable
+{
+  height: 21em;
+  overflow: hidden;
+}
+
+#scrolltable thead tr
+{
+  display: block;
+}
+
+#scrolltable tbody 
+{
+  display: block;
+  height: 15em;
+  overflow: auto;
+}
+
+#scrolltable .desc-width
+{
+  width: 450px;
+  font-size: 1em;
+}
+
+#scrolltable .qty-width,
+#scrolltable .rate-width
+{
+  width: 100px;
+  font-size: 1em;
+}
+
+/* Invoice */
+
+#invoice #business-details
+{
+  float: right;
+  line-height: 1em;
+}
+
+#invoice p
+{ 
+  margin-bottom: 1em;
+}
+
+#invoice #customer-details
+{
+  clear: right;
+  overflow: hidden;
+}
+
+#invoice #customer-details p
+{
+  margin: 0;
+  padding: 0.5em;
+  line-height: 1em;
+}
+
+#invoice #invoice-address
+{
+  width: 45%;
+  height: 6em;
+  float: left;
+  border: 1px solid gray;
+}
+
+#invoice #delivery-address
+{
+  width: 45%;
+  height: 6em;
+  float: right;
+  border: 1px solid gray;
+}
+
+
+/*
+ * Footer Area
+ */
+
+#footer p
+{
+  color: #999;
+  text-align: right;
+  font-size: 0.8em;
+  margin: 1em;
+  padding: 0;
+}

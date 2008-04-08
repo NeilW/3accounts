@@ -1,0 +1,37 @@
+<%= error_messages_for :invoice %>
+
+<% form_for(@invoice) do |f| %>
+  <fieldset>
+    <legend>Invoice Details</legend>
+    <label>
+      Customer
+      <%= f.collection_select(:customer_id, @current_business.customers, :id, :name) %>
+    </label>
+    <label>
+      Number 
+      <%= f.text_field :number %>
+    </label>
+    <label>
+      Issued At
+      <%= f.date_select :issued_at, :order =>[:day, :month, :year]%>
+    </label>
+    <fieldset id="scrolltable">
+      <legend>Line Items</legend>
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th scope="col" class="desc-width"><label>Description</label></th>
+            <th scope="col" class="qty-width"><label>Qty</label></th>
+            <th scope="col" class="rate-width"><label>Rate</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render :partial => 'line_item_entry', :collection => @invoice.line_items %>
+        </tbody>
+      </table>
+    </fieldset>
+  </fieldset>
+  <%= add_items_link %>
+  <%= remove_items_link %>
+  <p> <%= f.submit %> <span class="small">or <%= link_to "Discard changes and go to invoice list", invoices_path %></span></p>
+<% end -%>

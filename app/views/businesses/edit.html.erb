@@ -1,0 +1,17 @@
+<h1>Editing business</h1>
+
+<%= error_messages_for :business %>
+
+<% form_for(@business) do |f| %>
+  <p>
+    <b>Business name</b><br />
+    <%= f.text_field :business_name %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @business %> |
+<%= link_to 'Back', businesses_path %>

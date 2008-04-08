@@ -1,0 +1,24 @@
+ValidatesAsEuVatNumber
+======================
+
+This plugin adds a new validates_as_eu_vat_number class method to
+ActiveRecord::Base
+
+The validator checks the attribute(s) given to see if they are valid EU
+VAT numbers. The :with modifier is either a field containing a country
+code, or the country code itself.
+
+Example
+=======
+
+  class VatNumber < ActiveRecord::Base
+    validates_as_eu_vat_number :full_vat_number
+    validates_as_eu_vat_number :vat_number, :with => :country_code
+  end
+
+Contact
+=======
+Bug fixes,patches and comments to aldursys@gmail.com
+
+Copyright (c) 2008 Neil Wilson, Aldur Systems
+released under the MIT license
