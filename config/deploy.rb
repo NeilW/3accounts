@@ -1,5 +1,6 @@
 set :application, "3accounts"
-set :repository,  "http://accounts4free.rubyforge.org/svn/3accounts/trunk"
+set :repository,  "git://github.com/NeilW/3accounts.git"
+set :branch, "master"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
@@ -11,7 +12,7 @@ set :use_sudo, false
 
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
-# set :scm, :subversion
+set :scm, :git
 
 role :app, "3accounts.co.uk"
 role :web, "3accounts.co.uk"
