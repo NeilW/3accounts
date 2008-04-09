@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title>
-    <%= @page_title if @page_title %>
+    <%= yield :title %>
   </title>
   <%= stylesheet_link_tag "hmrc/hmrc", "hmrc/self_assessment_filing",
     :media => "screen",
@@ -14,8 +14,8 @@
 <body>
   <div id="header">
     <%= link_to(
-      image_tag("logo.png" :size => "160x62", :alt => "3Accounts"), 
-      :controller => :home
+      image_tag("logo.png", :size => "160x62", :alt => "3Accounts"), 
+      filings_path
     ) %>
     <div id ="header-title">3Accounts</div>
     <ul class="inline-navigation">
@@ -36,19 +36,26 @@
        <li class="first">
        File a Return
        </li> 
-       <li class="selected">
+       <li>
        <%= link_to ('1. Welcome', '#') %>
        </li>
-       <li>
-       <%= link_to ('2. Load Journals', :controller => :ledger, :action => :new) %>
+       <li class="selected">
+       <%= link_to ('2. Load Journals', new_filings_path) %>
        </li>
       </ul>
     </div>
     <div class="column page-column">
       <div class="portlet">
         <div class="portlet-header">
+          <h2>
+            <%= yield :header %>
+          </h2>
         </div>
         <div class="portlet-body">
+          <%= content_tag 'div', h(flash[:notice]),
+            :class => 'notice', :id => 'notice' if flash[:notice] %>
+          <%= content_tag 'div', h(flash[:error]),
+            :class => 'error', :id => 'error' if flash[:error] %>
           <%=
             yield :layout
           %>
@@ -56,7 +63,7 @@
       </div>
     </div>
   </div>
-  <ul id="footer">
+  <ul id="footer" class="inline-navigation">
     <li class="first">
     &copy;
     <%= link_to('Aldur Systems 2008','#') %>

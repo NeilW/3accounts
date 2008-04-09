@@ -27,6 +27,7 @@ describe VatNumbersController do
     @vat_number = mock_model(VatNumber)
     @vat_number.stub!(:valid?).and_return(true)
     @vat_number.stub!(:active?).and_return(true)
+    @vat_number.stub!(:to_xml)
     VatNumber.stub!(:new).and_return @vat_number
   end
 
