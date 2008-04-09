@@ -12,6 +12,7 @@
   <%= stylesheet_link_tag "hmrc/print", :media => "print" %>
 </head>
 <body>
+
   <div id="header">
     <%= link_to(
       image_tag("logo.png", :size => "160x62", :alt => "3Accounts"), 
@@ -30,6 +31,13 @@
       </li>
     </ul>
   </div>
+
+  <div id="banner">
+    <div id="user-information">
+      <div class="name">Neil Wilson logged in</div>
+    </div>
+  </div>
+
   <div class="columns">
     <div class="column menu-column">
       <ul id="main-menu">
@@ -63,6 +71,7 @@
       </div>
     </div>
   </div>
+
   <ul id="footer" class="inline-navigation">
     <li class="first">
     &copy;

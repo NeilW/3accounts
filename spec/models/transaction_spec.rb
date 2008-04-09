@@ -18,20 +18,27 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-class Journal < ActiveRecord::Base
-  has_many :transactions
-  belongs_to :ledger
+require File.dirname(__FILE__) + '/../spec_helper'
 
-  validates_presence_of(:org_id)
-  validates_presence_of(:org_type)
-  validates_presence_of(:posted_at)
-  validates_uniqueness_of(:org_id)
-  validates_existence_of :ledger
+describe "A Transaction" do
 
-  def new_transactions=(transaction_list)
-    transaction_list.each do |transaction|
-      transactions.build transaction
-    end
+  before(:each) do
+    @transaction = Transaction.new(:account => "Fred",
+                                   :amount => 1,
+                                   :journal_id => 99999)
+  end
+
+  it "should ensure there is an account" do
+    @transaction.should validate_presence_of(:account)
+  end
+
+  it "should ensure there is an amount" do
+    @transaction.should validate_presence_of(:amount)
+  end
+
+  it "should ensure there is a associated journal" do
+    @transaction.should have(1).errors_on(:journal)
   end
 
 end
+

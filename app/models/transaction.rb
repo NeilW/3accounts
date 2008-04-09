@@ -20,4 +20,7 @@
 
 class Transaction < ActiveRecord::Base
   belongs_to :journal
+  validates_presence_of :amount
+  validates_existence_of :journal
+  validates_presence_of :account
 end

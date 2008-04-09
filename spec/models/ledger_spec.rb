@@ -18,20 +18,17 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-class Journal < ActiveRecord::Base
-  has_many :transactions
-  belongs_to :ledger
+require File.dirname(__FILE__) + '/../spec_helper'
 
-  validates_presence_of(:org_id)
-  validates_presence_of(:org_type)
-  validates_presence_of(:posted_at)
-  validates_uniqueness_of(:org_id)
-  validates_existence_of :ledger
+describe "A Ledger" do
 
-  def new_transactions=(transaction_list)
-    transaction_list.each do |transaction|
-      transactions.build transaction
-    end
+  before(:each) do
+    @ledger = Ledger.new
+  end
+
+  it "should be valid" do
+    @ledger.should be_valid
   end
 
 end
+

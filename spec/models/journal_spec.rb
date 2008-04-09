@@ -18,20 +18,37 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-class Journal < ActiveRecord::Base
-  has_many :transactions
-  belongs_to :ledger
+require File.dirname(__FILE__) + '/../spec_helper'
 
-  validates_presence_of(:org_id)
-  validates_presence_of(:org_type)
-  validates_presence_of(:posted_at)
-  validates_uniqueness_of(:org_id)
-  validates_existence_of :ledger
+describe "A journal" do
 
-  def new_transactions=(transaction_list)
-    transaction_list.each do |transaction|
-      transactions.build transaction
-    end
+  before(:each) do
+    @journal = Journal.new
+  end
+  
+  it "should validate presence of org_type" do
+    @journal.should validate_presence_of(:org_type)
+  end
+
+  it "should validate presence of org_id" do
+    @journal.should validate_presence_of(:org_id)
+  end
+
+  it "should validate uniqueness of org_id" do
+    @journal.should validate_uniqueness_of(:org_id)
+  end
+
+  it "should validate presence of posted_at" do
+    @journal.should validate_presence_of(:posted_at)
+  end
+
+  it "should validate existence of ledger" do
+    @journal = Journal.new(:org_type => "Deposit",
+                           :org_id => 2555,
+                           :posted_at => "2008-02-29",
+                           :ledger_id => 9999)
+    @journal.should have(1).errors_on(:ledger)
   end
 
 end
+
