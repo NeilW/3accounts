@@ -1,0 +1,323 @@
+/* IE 5 doesn't recognize the first-child psuedo class selector */
+#user-information dt /* #user-information dt:first-child */,
+.inline-navigation li /* .linear li:first-child */
+{
+  border-left:expression(this == parentNode.firstChild ? "none" : currentStyle.borderLeft);
+  padding-left:expression(this == parentNode.firstChild ? "0" : currentStyle.paddingLeft);
+}
+.columns.line-between .column /* .columns.line-between .column:first-child */
+{
+  border-left:expression(this == parentNode.firstChild ? "none" : currentStyle.borderLeft);
+  border-right:expression(this == parentNode.firstChild ? "1px solid #ccc" : currentStyle.borderLeft);
+}
+/* #main-menu > li:first-child */
+#main-menu li.first
+{
+  background:#096 url(/images/corner.gif) no-repeat top right;
+  color:#fff;
+  padding:.25em;
+  font-size:1.38em;
+  border:none;
+}
+/* .breadcrumb li:first-child */
+.breadcrumb li
+{
+  background-image:expression(this == parentNode.firstChild ? "none" : currentStyle.backgroundImage);
+  padding-left:expression(this == parentNode.firstChild ? "0" : currentStyle.paddingLeft);
+  margin-left:expression(this == parentNode.firstChild ? "0" : currentStyle.marginLeft);
+  font-weight:expression(this == parentNode.firstChild ? "bold" : currentStyle.fontWeight);
+}
+/* table.default.statement tbody tr:first-child td */
+table.default.statement tbody tr td
+{
+  border-top:expression(parentNode == parentNode.parentNode.firstChild ? "1px solid #ccc" : currentStyle.borderTop);
+}
+
+
+/*
+  IE 5 doesn't recognize the child selector, therefore we use the descendant selector, and JavaScript expressions or
+  a further descendant selector to cancel out the changes (we don't use JavaScript expressions if the defect is severe).
+*/
+/* #main-menu li.submenu > a */
+#main-menu li.submenu a
+{
+  background-image:expression((parentNode.className == 'submenu') ? 'url(/images/arrowDownBlack.gif)' : currentStyle.backgroundImage);
+  padding-left:expression(parentNode.className == 'submenu' ? '1.3em' : currentStyle.paddingLeft);
+  color:expression(parentNode.className == 'submenu'? '#000' : currentStyle.color);
+}
+/* .portlet-body > * */
+.portlet-body *
+{
+  padding-right:.5em;
+  padding-left:.2em;
+}
+.portlet-body * *
+{
+  padding-right:0;
+  padding-left:0;
+}
+/* .catalogue > li */
+.catalogue li
+{
+  position:relative;
+  padding:.5em 25% .5em 0;
+  border-bottom:1px solid #ccc;
+  display:inline-block; /* weird border problems */
+}
+.catalogue li li
+{
+  position:flow;
+  padding:0;
+  border-bottom:none;
+}
+/*.columns.line-between .column > p,
+.columns.line-between .column > div*/
+.columns.line-between .column p,
+.columns.line-between .column div
+{
+  margin-left:expression(/column/.test(parentNode.className) ? '1em' : currentStyle.marginLeft);
+  margin-right:expression(/column/.test(parentNode.className) ? '1em' : currentStyle.marginRight);
+}
+
+
+/* Page width */
+body div,
+#header,
+#footer
+{
+  width:62.5em;
+}
+
+body.fluid div,
+body.fluid #header
+{
+  width:100%;
+}
+
+body div div
+{
+  width:auto;
+}
+
+
+/* Banner not clearing header */
+#banner
+{
+  clear:left;
+}
+
+
+/* site-breadcrumb list items too far from bullet */
+#site-breadcrumb li
+{
+  padding-left:0;
+}
+
+
+/* user information first-line pseudo-class style didn't work */
+#user-information
+{
+  font-size:1.2em;
+}
+#user-information dl
+{
+  font-size:.83em;
+}
+
+
+/* Elements that cause portlets to wrap underneath menu. */
+.columns.line-between,
+.portlet,
+div.table-of-contents
+{
+  width:100%;
+}
+
+/* nested menu gap too large (whitespace bug) */
+#main-menu li a
+{
+  display:inline-block;
+}
+
+
+/* Portlet body text margin */
+.portlet-body
+{
+  padding-left:.2em;
+  padding-right:.5em;
+}
+
+
+/* Portlet Navigation - too much whitespace */
+.portlet-navigation
+{
+  margin-top:-.5em;
+  margin-bottom:-.5em;
+}
+.portlet-navigation a
+{
+  display:inline-block;
+}
+
+
+/* Forms */
+/* Error messages too far to the right */
+.field .error,
+.field .warning,
+.field .hint
+{
+  padding-left:.25em !important;
+}
+/* Labels on multiple-input fields were all over the place */
+.field ul label
+{
+  width:auto; /* IE 5.5 */
+}
+/* Check boxes and radio buttons affect the line-height, making the text lower than the label. */
+input.checkbox,
+input.radio
+{
+  margin:0;
+}
+.field ul
+{
+  margin-left:-1.1em;
+  padding-left:0 !important;
+}
+.field ul.inline
+{
+  margin-left:.25em;
+}
+fieldset
+{
+  margin-left:.5em;
+}
+/* Currency symbol too far away from fields */
+.currency label
+{
+  left:.25em;
+}
+
+
+/* Read-only-forms are not wrapping properly. */
+.read-only-form
+{
+  margin-right:-1%;
+}
+.read-only-form dt
+{
+  float:none;
+  display:inline-block;
+  margin-left:-1em;
+}
+.read-only-form dd
+{
+  float:none;
+  display:inline-block;
+  width:100%;
+  margin-left:50%;
+  margin-top:-1.25em;
+}
+.read-only-form.narrow-labels dd{margin-left:33%;}
+.read-only-form.wide-labels dd{margin-left:66%;}
+.currency .read-only-form dt
+{
+  margin-left:-1.75em;
+}
+
+/* Catalogue */
+.catalogue
+{
+  clear:left; /* Not going to get the top-border in the right place if this follows a floating element */
+}
+.catalogue .options
+{
+  padding-top:.5em; /* Align options with headings */
+  width:36%;
+}
+.catalogue .options a
+{
+  display:inline-block;
+}
+
+
+.index.page-navigation li
+{
+  padding-right:0 !important; /* Text not centered (whitespace bug) */
+}
+.index.page-navigation li.selected
+{
+  margin-right:.3em; /* selected element was touching the next one */
+}
+
+
+/* Table header help icon position. */
+table.default thead th div a.help img
+{
+  right:1px;
+}
+
+
+/* Note */
+div.note
+{
+  margin-right:0; /* Kills the portlet keyline otherwise!(?!) */
+}
+
+
+/* Success & failure message needs padding */
+div.message
+{
+  padding-top:.75em;
+  padding-bottom:.75em;
+  width:98%;
+}
+
+
+/* Calculation backgrounds not filling area */
+div.calculation dt
+{
+  margin:0 -.3em; /* Make background larger */
+  padding:0 .3em; /* Shrink content area */
+}
+/* Try to make the operand boxes all the same height */
+div.calculation dt,
+div.calculation dd
+{
+  height:2.5em;
+}
+
+
+/* min-height is not supported, however, height behaves exactly like min-height in IE. */
+.process-overview dd
+{
+  height:29px;
+}
+
+
+/* Components that must clear others: */
+p,
+h3,
+h4,
+form,
+fieldset,
+#header,
+#banner,
+#footer,
+.catalogue,
+.field,
+.buttons,
+.linear,
+.columns,
+.index,
+.icon-list
+{
+  clear:both;
+}
+
+
+/* Command buttons do not need to clear */
+.command p
+{
+  clear:none;
+}

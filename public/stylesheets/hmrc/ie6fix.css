@@ -1,0 +1,235 @@
+/* IE 6 doesn't recognize the first-child psuedo class selector */
+#user-information dt /* #user-information dt:first-child */,
+.inline-navigation li /* .linear li:first-child */
+{
+  border-left:expression(this == parentNode.firstChild ? "none" : currentStyle.borderLeft);
+  padding-left:expression(this == parentNode.firstChild ? "0" : currentStyle.paddingLeft);
+}
+.columns.line-between .column /* .columns.line-between .column:first-child */
+{
+  border-left:expression(this == parentNode.firstChild ? "none" : currentStyle.borderLeft);
+  border-right:expression(this == parentNode.firstChild ? "1px solid #ccc" : currentStyle.borderLeft);
+}
+/* #main-menu > li:first-child */
+#main-menu li.first
+{
+  background:#096 url(/images/corner.gif) no-repeat top right;
+  color:#fff;
+  padding:.25em;
+  font-size:1.38em;
+  border:none;
+}
+/* .breadcrumb li:first-child */
+.breadcrumb li
+{
+  background-image:expression(this == parentNode.firstChild ? "none" : currentStyle.backgroundImage);
+  padding-left:expression(this == parentNode.firstChild ? "0" : currentStyle.paddingLeft);
+  margin-left:expression(this == parentNode.firstChild ? "0" : currentStyle.marginLeft);
+  font-weight:expression(this == parentNode.firstChild ? "bold" : currentStyle.fontWeight);
+}
+/* table.default.statement tbody tr:first-child td */
+table.default.statement tbody tr td
+{
+  border-top:expression(parentNode == parentNode.parentNode.firstChild ? "1px solid #ccc" : currentStyle.borderTop);
+}
+
+
+/*
+  IE 6 doesn't recognize the child selector, therefore we use the descendant selector, and JavaScript expressions or
+  a further descendant selector to cancel out the changes (we don't use JavaScript expressions if the defect is severe).
+*/
+/* #main-menu li.submenu > a */
+#main-menu li.submenu a
+{
+  background-image:expression(parentNode.className == 'submenu' ? 'url(/images/arrowDownBlack.gif)' : currentStyle.backgroundImage);
+  padding-left:expression(parentNode.className == 'submenu' ? '1.3em' : currentStyle.paddingLeft);
+  color:expression(parentNode.className == 'submenu'? '#000' : currentStyle.color);
+}
+/* menu gap too large (whitespace in source bug) */
+#main-menu li a
+{
+  display:inline-block;
+}
+/* .portlet-body > * */
+.portlet-body *
+{
+  /* not using expressions because on this selector they would cause IE to race. */
+  padding-right:.5em;
+  padding-left:.2em;
+}
+.portlet-body * *
+{
+  padding-right:0;
+  padding-left:0;
+}
+/* .catalogue > li */
+.catalogue li
+{
+  position:relative;
+  padding:.5em 25% .5em 0;
+  border-bottom:1px solid #ccc;
+  display:inline-block; /* weird border problems */
+}
+.catalogue li li
+{
+  position:flow;
+  padding:0;
+  border-bottom:none;
+}
+/*.columns.line-between .column > p,
+.columns.line-between .column > div*/
+.columns.line-between .column p,
+.columns.line-between .column div
+{
+  margin-left:expression(/column/.test(parentNode.className) ? '1em' : currentStyle.marginLeft);
+  margin-right:expression(/column/.test(parentNode.className) ? '1em' : currentStyle.marginRight);
+}
+
+
+/* Forms */
+.field ul label
+{
+  /* Undo normal label styling */
+  margin-right:.5em;
+  
+  /* Too much space after labels */
+  padding-right:0;
+}
+/* Check boxes and radio buttons affect the line-height, making the text lower than the label. */
+input.checkbox,
+input.radio
+{
+  margin:0;
+}
+/* Currency symbol too far away from fields */
+.currency label
+{
+  left:.25em;
+}
+
+
+/* Read-only-forms are not wrapping properly. */
+.read-only-form
+{
+  width:100%;
+  margin:.5em -2% .5em 0;
+}
+.read-only-form dt
+{
+  float:none;
+  display:inline-block;
+}
+.read-only-form dd
+{
+  float:none;
+  display:inline-block;
+  margin-left:50%;
+  margin-top:-1.25em;
+  padding-left:1.33em;
+}
+.read-only-form.narrow-labels dd{margin-left:33%;}
+.read-only-form.wide-labels dd{margin-left:66%;}
+
+/* Read only forms nested in currency forms */
+.currency .read-only-form dt
+{
+  margin-left:.25em;
+}
+
+
+.catalogue .options
+{
+  width:31%;
+  padding-top:.5em; /* Align options with headings */
+}
+/* Too much space between Known Fact term and definition. */
+.catalogue dt
+{
+  margin-right:0; 
+}
+
+
+.index.page-navigation li
+{
+  padding-right:0 !important; /* Text not centered (whitespace bug) */
+}
+.index.page-navigation li.selected
+{
+  margin-right:.3em; /* selected element was touching the next one */
+}
+
+
+/* Table header help icon position. */
+table.default thead th div a.help img
+{
+  right:1px;
+}
+
+
+/* Portlet Navigation - too much spacing. */
+.portlet-navigation
+{
+  margin-top:-.5em;
+  margin-bottom:-.5em;
+}
+.portlet-navigation a
+{
+  display:inline-block;
+}
+
+
+/* Process Overview too wide */
+.process-overview
+{
+  margin-right:-1em;
+}
+/* min-height is not supported, however, height behaves exactly like min-height in IE. */
+.process-overview dd
+{
+  height:29px;
+}
+
+
+/* Success & failure message needs padding */
+div.message
+{
+  padding-top:.75em;
+  padding-bottom:.75em;
+}
+
+
+/* Try to make the operand boxes all the same height */
+div.calculation dt,
+div.calculation dd
+{
+  height:2.5em;
+}
+
+
+/* Components that must clear others: */
+p,
+h3,
+h4,
+form,
+fieldset,
+#header,
+#banner,
+#footer,
+.catalogue,
+.field,
+.buttons,
+.linear,
+.portlet,
+.columns,
+.index,
+.icon-list
+{
+  clear:both;
+}
+
+
+/* Command buttons do not need to clear */
+.command p
+{
+  clear:none;
+}
