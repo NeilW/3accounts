@@ -1,0 +1,352 @@
+/* Contains the styles specific to SA filing */
+
+/* Worksheets have a yellow background. */
+.portlet.worksheet .portlet-header
+{
+  border-bottom:1px solid #096;
+}
+
+.portlet.worksheet .portlet-body,
+div.message.note.worksheet
+{
+  background-color:#ffe;
+}
+
+
+
+/* Colour coding */
+/* IE Fixes */
+div.section,
+div.calculation
+{
+  background-color:transparent !important;
+  background-image:none !important;
+}
+
+/* employment */
+div.calculation.employment dt
+{
+  border-color:#fef;
+}
+div.calculation.employment dt,
+.employment .portlet-header
+{
+  background-color:#fef;
+}
+form.calculation.employment fieldset.calculation /* Form fields linked to calculation operand */,
+div.calculation.employment dl.selected /* Selected operand box */,
+.section.employment
+{
+  border-color:#e08;
+}
+div.calculation.employment .operator
+{
+  color:#e08;
+}
+div.calculation.employment dl.selected span /* Selected operand box indicator */
+{
+  background-image:url(/images/selfAssessmentFiling/calculationIndicatorEmployment.gif);
+}
+.employment .portlet-header,
+.employment .portlet-body
+{
+  background-image:url(/images/selfAssessmentFiling/borderEmployment.gif);
+}
+.employment .portlet-header h2
+{
+  background-image:url(/images/selfAssessmentFiling/cornerEmployment.gif);
+}
+
+/* self-employment */
+div.calculation.self-employment dt
+{
+  border-color:#fed;
+}
+div.calculation.self-employment dt,
+.self-employment .portlet-header
+{
+  background-color:#fed;
+}
+form.calculation.self-employment fieldset.calculation /* Form fields linked to calculation operand */,
+div.calculation.self-employment dl.selected /* Selected operand box */,
+.section.self-employment
+{
+  border-color:#e82;
+}
+div.calculation.self-employment .operator
+{
+  color:#e82;
+}
+div.calculation.self-employment dl.selected span /* Selected operand box indicator */
+{
+  background-image:url(/images/selfAssessmentFiling/calculationIndicatorSelfEmployment.gif);
+}
+.self-employment .portlet-header,
+.self-employment .portlet-body
+{
+  background-image:url(/images/selfAssessmentFiling/borderSelfEmployment.gif);
+}
+.self-employment .portlet-header h2
+{
+  background-image:url(/images/selfAssessmentFiling/cornerSelfEmployment.gif);
+}
+
+/* partnership */
+div.calculation.partnership dt
+{
+  border-color:#eef;
+}
+div.calculation.partnership dt,
+.partnership .portlet-header
+{
+  background-color:#eef;
+}
+form.calculation.partnership fieldset.calculation /* Form fields linked to calculation operand */,
+div.calculation.partnership dl.selected /* Selected operand box */,
+.section.partnership
+{
+  border-color:#0ae;
+}
+div.calculation.partnership .operator
+{
+  color:#0ae;
+}
+div.calculation.partnership dl.selected span /* Selected operand box indicator */
+{
+  background-image:url(/images/selfAssessmentFiling/calculationIndicatorPartnership.gif);
+}
+.partnership .portlet-header,
+.partnership .portlet-body
+{
+  background-image:url(/images/selfAssessmentFiling/borderPartnership.gif);
+}
+.partnership .portlet-header h2
+{
+  background-image:url(/images/selfAssessmentFiling/cornerPartnership.gif);
+}
+
+/* property */
+div.calculation.property dt
+{
+  border-color:#fee;
+}
+div.calculation.property dt,
+.property .portlet-header
+{
+  background-color:#fee;
+}
+form.calculation.property fieldset.calculation /* Form fields linked to calculation operand */,
+div.calculation.property dl.selected /* Selected operand box */,
+.section.property
+{
+  border-color:#d12;
+}
+div.calculation.property .operator
+{
+  color:#d12;
+}
+div.calculation.property dl.selected span /* Selected operand box indicator */
+{
+  background-image:url(/images/selfAssessmentFiling/calculationIndicatorProperty.gif);
+}
+.property .portlet-header,
+.property .portlet-body
+{
+  background-image:url(/images/selfAssessmentFiling/borderProperty.gif);
+}
+.property .portlet-header h2
+{
+  background-image:url(/images/selfAssessmentFiling/cornerProperty.gif);
+}
+
+/* capital-gains */
+div.calculation.capital-gains dt
+{
+  border-color:#def;
+}
+div.calculation.capital-gains dt,
+.capital-gains .portlet-header
+{
+  background-color:#def;
+}
+form.calculation.capital-gains fieldset.calculation /* Form fields linked to calculation operand */,
+div.calculation.capital-gains dl.selected /* Selected operand box */,
+.section.capital-gains
+{
+  border-color:#0be;
+}
+div.calculation.capital-gains .operator
+{
+  color:#0be;
+}
+div.calculation.capital-gains dl.selected span /* Selected operand box indicator */
+{
+  background-image:url(/images/selfAssessmentFiling/calculationIndicatorCapitalGains.gif);
+}
+.capital-gains .portlet-header,
+.capital-gains .portlet-body
+{
+  background-image:url(/images/selfAssessmentFiling/borderCapitalGains.gif);
+}
+.capital-gains .portlet-header h2
+{
+  background-image:url(/images/selfAssessmentFiling/cornerCapitalGains.gif);
+}
+
+/* foreign */
+div.calculation.foreign dt
+{
+  border-color:#eed;
+}
+div.calculation.foreign dt,
+.foreign .portlet-header
+{
+  background-color:#eed;
+}
+form.calculation.foreign fieldset.calculation /* Form fields linked to calculation operand */,
+div.calculation.foreign dl.selected /* Selected operand box */,
+.section.foreign
+{
+  border-color:#a90;
+}
+div.calculation.foreign .operator
+{
+  color:#a90;
+}
+div.calculation.foreign dl.selected span /* Selected operand box indicator */
+{
+  background-image:url(/images/selfAssessmentFiling/calculationIndicatorForeign.gif);
+}
+.foreign .portlet-header,
+.foreign .portlet-body
+{
+  background-image:url(/images/selfAssessmentFiling/borderForeign.gif);
+}
+.foreign .portlet-header h2
+{
+  background-image:url(/images/selfAssessmentFiling/cornerForeign.gif);
+}
+
+/* core */
+div.calculation.core dt
+{
+  border-color:#dee;
+}
+div.calculation.core dt,
+.core .portlet-header
+{
+  background-color:#dee;
+}
+form.calculation.core fieldset.calculation /* Form fields linked to calculation operand */,
+div.calculation.core dl.selected /* Selected operand box */,
+.section.core
+{
+  border-color:#098;
+}
+div.calculation.core .operator
+{
+  color:#098;
+}
+div.calculation.core dl.selected span /* Selected operand box indicator */
+{
+  background-image:url(/images/selfAssessmentFiling/calculationIndicatorCore.gif);
+}
+.core .portlet-header,
+.core .portlet-body
+{
+  background-image:url(/images/selfAssessmentFiling/borderCore.gif);
+}
+.core .portlet-header h2
+{
+  background-image:url(/images/selfAssessmentFiling/cornerCore.gif);
+}
+
+/* Portlet header is black when coloured */
+.employment .portlet-header h2,
+.self-employment .portlet-header h2,
+.partnership .portlet-header h2,
+.property .portlet-header h2,
+.capital-gains .portlet-header h2,
+.foreign .portlet-header h2,
+.core .portlet-header h2
+{
+  color:#000;
+}
+
+/* View your calculation table */
+table.view-tax-calculation
+{
+  width:99%;
+  border-collapse:collapse;
+}
+table.view-tax-calculation tbody th
+{
+  font-weight:normal;
+  text-align:left;
+}
+table.view-tax-calculation th.numeric
+{
+  text-align:right;
+}
+table.view-tax-calculation tbody *.total,
+table.view-tax-calculation tbody tr.total *
+{
+  font-weight:bold;
+}
+table.view-tax-calculation tr *
+{
+  padding:.25em;
+  vertical-align:top;
+}
+table.view-tax-calculation tbody.total,
+table.view-tax-calculation thead th
+{
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+}
+table.view-tax-calculation tbody.total th,
+table.view-tax-calculation tbody.total td
+{
+  border-top:expression(this.parentNode == this.parentNode.parentNode.firstChild ? "1px solid #ccc" : this.currentStyle.borderTop);
+  border-bottom:expression(this.parentNode == this.parentNode.parentNode.lastChild ? "1px solid #ccc" : this.currentStyle.borderBottom);
+}
+table.view-tax-calculation th p.comment
+{
+  font-weight:normal;
+  padding:0;
+  margin:0;
+}
+table.view-tax-calculation tbody.grand-total
+{
+  background:#efe;
+  border:1px solid #ccc;
+}
+table.view-tax-calculation tbody.grand-total td,
+table.view-tax-calculation tbody.grand-total th
+{
+  border-left:expression(this == this.parentNode.firstChild ? "1px solid #ccc" : this.currentStyle.borderLeft);
+  border-right:expression(this == this.parentNode.lastChild ? "1px solid #ccc" : this.currentStyle.borderRight);
+  border-top:expression(this.parentNode == this.parentNode.parentNode.firstChild ? "1px solid #ccc" : this.currentStyle.borderTop);
+  border-bottom:expression(this.parentNode == this.parentNode.parentNode.lastChild ? "1px solid #ccc" : this.currentStyle.borderBottom);
+}
+table.view-tax-calculation tr.heading *
+{
+  color:#063;
+  font-weight:bold;
+}
+table.view-tax-calculation tr.sub-calculation td
+{
+  padding-right:4.5em;
+  white-space:nowrap;
+}
+table.view-tax-calculation tbody tr.sub-calculation-total th
+{
+  font-weight:normal;
+}
+
+.hidden
+{
+	display: none;
+}
+
+

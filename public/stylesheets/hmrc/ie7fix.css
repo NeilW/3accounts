@@ -1,0 +1,79 @@
+/* Check boxes and radio buttons affect the line-height, making the text lower than the label. */
+.checkbox,
+.radio
+{
+  margin:0;
+}
+
+
+.index.page-navigation li
+{
+  padding-right:0 !important; /* Text not centered (whitespace bug) */
+}
+.index.page-navigation li.selected
+{
+  margin-right:.3em; /* selected element was touching the next one */
+}
+
+
+/* Read-only-forms are not wrapping properly. */
+.read-only-form
+{
+  width:100%;
+  margin:.5em -2% .5em 0;
+}
+.read-only-form dt
+{
+  float:none;
+  display:inline-block;
+}
+.read-only-form dd
+{
+  float:none;
+  display:inline-block;
+  margin-left:50%;
+  margin-top:-1.25em;
+  padding-left:1.33em;
+}
+.read-only-form.narrow-labels dd{margin-left:33%;}
+.read-only-form.wide-labels dd{margin-left:66%;}
+
+/* Read only forms nested in currency forms */
+.currency .read-only-form dt
+{
+  margin-left:.25em;
+}
+
+
+/* Success & failure message needs padding */
+div.message
+{
+  padding-top:.75em;
+  padding-bottom:.75em;
+}
+
+
+/* general clearing issue with the + selector */
+div.columns > *,
+.process-overview > *,
+.field > *,
+div.calculation + *
+{
+	clear:none;
+}
+div.columns,
+.field + h3,
+.portlet.no-title-bar,
+fieldset.minimal,
+h4,
+.section,
+form.calculation
+{
+  clear:both !important;
+}
+
+/* Large labels do not have enough space under them */
+form .field
+{
+  clear:both;
+}
