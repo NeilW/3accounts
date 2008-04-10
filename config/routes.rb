@@ -26,7 +26,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :invoices
 
-  map.resource :filings
+  map.resource :ledgers
 
   map.namespace :rates do |rates|
     rates.resources :corporation_tax

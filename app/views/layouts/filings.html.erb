@@ -16,7 +16,7 @@
   <div id="header">
     <%= link_to(
       image_tag("logo.png", :size => "160x62", :alt => "3Accounts"), 
-      filings_path
+      ledgers_path
     ) %>
     <div id ="header-title">3Accounts</div>
     <ul class="inline-navigation">
@@ -48,7 +48,10 @@
        <%= link_to ('1. Welcome', '#') %>
        </li>
        <li class="selected">
-       <%= link_to ('2. Load Journals', new_filings_path) %>
+       <%= link_to ('2. Load Journals', new_ledgers_path) %>
+       </li>
+       <li>
+       <%= link_to ('3. Augment Journals', 'augmentations_path') %>
        </li>
       </ul>
     </div>
@@ -60,10 +63,7 @@
           </h2>
         </div>
         <div class="portlet-body">
-          <%= content_tag 'div', h(flash[:notice]),
-            :class => 'notice', :id => 'notice' if flash[:notice] %>
-          <%= content_tag 'div', h(flash[:error]),
-            :class => 'error', :id => 'error' if flash[:error] %>
+          <%= display_error_messages %>
           <%=
             yield :layout
           %>

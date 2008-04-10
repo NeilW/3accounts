@@ -20,8 +20,25 @@
 
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+
   def classify_link_if_current(link_text, options = {}, html_options = {})
     html_options[:class] ||="current" if current_page?(options)
     link_to(link_text, options, html_options)
   end
+
+  def display_error_messages
+    html = ""
+    if flash[:notice]
+      html << content_tag(:div,
+                  content_tag(:p, h(flash[:notice])),
+                  :class => 'message success', :id => 'notice')
+    end
+    if flash[:error]
+      html << content_tag(:div,
+                  content_tag(:p, h(flash[:error])),
+                  :class => 'message failure', :id => 'error')
+    end
+    html
+  end
+
 end

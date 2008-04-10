@@ -48,16 +48,38 @@ describe "Loading a Ledger" do
     end
   end
 
+  def load_journal_file
+    Ledger.load_journals(@journal_file)
+  end
+
   it "should create a record with correct settings" do
     lambda {
-      Ledger.load_journals(@journal_file)
+      load_journal_file
     }.should change(Ledger, :count).by(1)
   end
 
   it "should not create anything with incorrect settings" do
     lambda {
       @journal_file[0].delete(:org_type)
+      load_journal_file
     }.should_not change(Journal, :count)
+  end
+
+  it "should return the number of journals created" do
+    amount = load_journal_file
+    amount.should == 1
+  end
+
+  describe "when presented with rubbish" do
+    before(:each) do
+      @journal_file.delete_at 0
+    end
+
+    it "should not create a ledger" do
+      lambda {
+        load_journal_file
+      }.should_not change(Ledger, :count)
+    end
   end
 
 end

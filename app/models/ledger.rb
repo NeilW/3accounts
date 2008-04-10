@@ -62,7 +62,12 @@ class Ledger < ActiveRecord::Base
     journal_file.each do |journal|
       journal_list[:new_journals] << journal
     end
-    Ledger.create(journal_list)
+    unless journal_list[:new_journals].empty?
+      ledger = Ledger.create(journal_list)
+      ledger.journals.count
+    else
+      0
+    end
   end
 
 end
