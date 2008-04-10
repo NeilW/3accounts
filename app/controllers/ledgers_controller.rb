@@ -3,7 +3,14 @@ class LedgersController < ApplicationController
 
   # GET /ledgers/
   def show
-    redirect_to :action => :new
+    @ledger = Ledger.find(:first)
+    if @ledger
+      respond_to do |format|
+        format.html
+      end
+    else
+      redirect_to :action => :new
+    end
   end
 
   # GET /ledgers/new
@@ -23,7 +30,7 @@ class LedgersController < ApplicationController
       else
         flash[:notice] = "#{handle_singular(number_of_journals, 'Journal')} uploaded."
       end
-      format.html { render :action => "new" }
+      format.html { render :action => "show" }
     end
   end
 

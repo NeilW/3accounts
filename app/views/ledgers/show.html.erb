@@ -1,0 +1,31 @@
+<% content_for :title, '2. Load Journals' -%>
+<% content_for :header, '2. Load Journals' -%>
+
+<table class="default">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Folio</th>
+      <th>Account</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tfoot>
+  </tfoot>
+  <tbody>
+    <%- for fred in @ledger.journals -%>
+      <%- for jim in fred.transactions -%>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td><%=h(fred.org_id)%></td>
+      <td><%=h(fred.name).first(12)%></td>
+      <td><%=h(fred.org_type).first(12)%></td>
+      <td><%=h(fred.folio)%></td>
+      <td><%=h(jim.account).first(12)%></td>
+      <td><%=number_with_delimiter(jim.amount)%></td>
+    </tr>
+      <%-end-%>
+    <%-end-%>
+  </tbody>
+</table>
