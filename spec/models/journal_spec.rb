@@ -50,5 +50,29 @@ describe "A journal" do
     @journal.should have(1).errors_on(:ledger)
   end
 
+  describe "with transactions" do
+    before(:each) do
+      @journal = Journal.new(
+      :org_type => "Invoice",
+      :org_id => 2555,
+      :posted_at => "2008-02-29",
+      :new_transactions => [{
+        :account => "Receivable",
+        :amount => 130},
+        { :account => "Sales", :amount => -130 }]
+      )
+    end
+
+    it "a correct entry should be valid" do
+      @journal.should be_valid
+    end
+    
+    it "should have transactions" do
+      @journal.transactions.clear
+      @journal.should have(1).errors_on(:transactions)
+    end
+
+  end
+
 end
 

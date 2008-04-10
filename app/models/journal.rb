@@ -19,14 +19,15 @@
 #
 
 class Journal < ActiveRecord::Base
-  has_many :transactions
+  has_many :transactions, :dependent => :delete_all
   belongs_to :ledger
 
   validates_presence_of(:org_id)
   validates_presence_of(:org_type)
   validates_presence_of(:posted_at)
+  validates_presence_of(:transactions)
   validates_uniqueness_of(:org_id)
-  validates_existence_of :ledger
+  validates_existence_of(:ledger, :allow_nil => true)
 
   def new_transactions=(transaction_list)
     transaction_list.each do |transaction|

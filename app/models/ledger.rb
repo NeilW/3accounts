@@ -20,7 +20,7 @@
 
 require 'qb_6_journal_file'
 class Ledger < ActiveRecord::Base
-  has_many :journals
+  has_many :journals, :dependent => :delete_all
   has_many :invoices, :conditions => ['org_type = ?', 'Invoice'],
     :class_name => 'Journal'
   has_many :bills, :conditions => ['org_type = ?', 'Bill'],
@@ -45,6 +45,8 @@ class Ledger < ActiveRecord::Base
   has_many :payments,
     :conditions => ['org_type = ?', 'Payment'],
     :class_name => 'Journal'
+
+  validates_presence_of(:loaded_from)
 
   def new_journals=(journal_list)
     journal_list.each do |journal|
