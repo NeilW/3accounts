@@ -23,10 +23,12 @@ class Qb6JournalFile
 
   # Need a file
   def initialize(from_file)
+    unless from_file.respond_to? 'readline'
+      raise ArgumentError, "Need an open file to read"
+    end
     @file = from_file
     @current_split = [ "" ] * 8
     @current_journal = {}
-    get_columns
   end
 
   def name
@@ -36,7 +38,9 @@ class Qb6JournalFile
   def each
     @file.each_line do |line| 
       @current_split = split_line(line)
-      if transaction_line? then
+      if first_line? then
+        get_columns(line)
+      elsif transaction_line? then
         @current_journal[:new_transactions] && @current_journal[:new_transactions] << create_transaction
       elsif journal_line? then
         @current_journal = create_journal
@@ -44,11 +48,7 @@ class Qb6JournalFile
         yield @current_journal
       end
     end
-    nil
-  end
-
-  def read_entry
-    get_line_split
+    []
   end
 
   private
@@ -64,6 +64,10 @@ class Qb6JournalFile
     }
   end
 
+  def first_line?
+    @file.lineno == 1
+  end
+    
   def transaction_line?
     journal_id.empty? && (
       credit_amount.empty? || debit_amount.empty?
@@ -83,12 +87,8 @@ class Qb6JournalFile
     /[\t\r\n]/
   end
 
-  def get_columns
-    @columns ||= get_line_split
-  end
-
-  def get_line_split
-    @file.readline.split(splitter)
+  def get_columns(line)
+    @columns ||= split_line(line)
   end
 
   def split_line(line)

@@ -85,35 +85,59 @@ describe "Loading a Ledger" do
 end
 
 describe "Quickbooks load class" do
-  before(:each) do
-    @qb_extract = StringIO.new <<DOC
+
+  def get_journals
+    @test.collect {|journal| journal}
+  end
+
+  describe "with a valid file" do
+    before(:each) do
+      @qb_extract = StringIO.new <<-DOC
 Trans no	Type	Date	Num	Name	Memo	Account	Debit	Credit
 2555	Deposit	01/11/2006			Interest	Abbey National	0.50	
 					Interest	Interest Income		0.50
 							0.50	0.50
-2556	Credit Card Charge	03/11/2006	387565015	Fred		Directors Loan		1.56
-				Fred	Mobiles	Mobile	1.33	
-				Fred	Total VAT	VAT Control	0.23	
+2556	Credit Card Charge	03/11/2006	387565015	Virgin Mobile		Directors Loan		1.56
+				Virgin Mobile	Mobiles	Mobile	1.33	
+				Virgin Mobile	Total VAT	VAT Control	0.23	
 							1.56	1.56
 2558	Bill	15/11/2006		Ebay International		Accounts Payable		4.48
 				Ebay International	Ebay Charges	eBay Charges	4.48	
 				Ebay International	Total VAT	VAT Control	0.00	
 							4.48	4.48
 DOC
-    @test = Qb6JournalFile.new(@qb_extract)
-  end
-  
-  it "should load an extract correctly" do
-    @test.collect {|journal| journal}.should have(3).items
+      @test = Qb6JournalFile.new(@qb_extract)
+    end
+    
+    it "should load an extract correctly" do
+      get_journals.should have(3).items
+    end
+
+    it "should have a nil name" do
+      @test.name.should be_nil
+    end
+
   end
 
-  it "should have a nil name" do
-    @test.name.should be_nil
-  end
+  describe "with faulty input" do
 
-  it "should read a line correctly" do
-    @test.read_entry.should have(8).items
-  end
+    it "should error with an empty string as input" do
+      lambda {
+        @test = Qb6JournalFile.new("")
+      }.should raise_error(ArgumentError)
+    end
 
+    it "should error with nil as input" do
+      lambda {
+        @test = Qb6JournalFile.new(nil)
+      }.should raise_error(ArgumentError)
+    end
+
+    it "should handle an empty file" do
+      @test = Qb6JournalFile.new(StringIO.new(""))
+      get_journals.should == []
+    end
+
+  end
 
 end

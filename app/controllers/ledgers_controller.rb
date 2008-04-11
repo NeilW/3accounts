@@ -33,8 +33,9 @@ class LedgersController < ApplicationController
 
   # POST /ledgers/
   def create
+    file = params[:ledger] && params[:ledger][:upload_file]
     number_of_journals = Ledger.load_journals(
-      Qb6JournalFile.new(params[:ledger][:upload_file])
+      Qb6JournalFile.new(file)
     )
     if number_of_journals.zero?
       flash[:error] = "No journals loaded from file. Have you already loaded them or picked the wrong file?"
@@ -43,6 +44,9 @@ class LedgersController < ApplicationController
       flash[:notice] = "#{handle_singular(number_of_journals, 'Journal')} uploaded."
       redirect_to ledgers_url
     end
+  rescue ArgumentError
+    flash[:error] = "Please select a file containing Journals"
+    redirect_to new_ledgers_url
   end
 
   protected
