@@ -28,6 +28,9 @@ class CreateJournals < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :journals, :id, :unique => true
+    add_index :journals, :ledger_id
   end
 
   def self.down

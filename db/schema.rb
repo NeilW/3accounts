@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(:version => 11) do
 
   create_table "corporation_taxes", :force => true do |t|
     t.integer  "fiscal_year_starting"
-    t.integer  "main_rate",            :limit => 3
-    t.integer  "small_companies_rate", :limit => 3
-    t.integer  "mscr_lower_limit",     :limit => 8
-    t.integer  "mscr_upper_limit",     :limit => 8
+    t.integer  "main_rate",            :limit => 3, :precision => 3, :scale => 0
+    t.integer  "small_companies_rate", :limit => 3, :precision => 3, :scale => 0
+    t.integer  "mscr_lower_limit",     :limit => 8, :precision => 8, :scale => 0
+    t.integer  "mscr_upper_limit",     :limit => 8, :precision => 8, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,11 +53,16 @@ ActiveRecord::Schema.define(:version => 11) do
     t.datetime "updated_at"
   end
 
+  add_index "journals", ["ledger_id"], :name => "index_journals_on_ledger_id"
+  add_index "journals", ["id"], :name => "index_journals_on_id", :unique => true
+
   create_table "ledgers", :force => true do |t|
     t.string   "loaded_from"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ledgers", ["id"], :name => "index_ledgers_on_id", :unique => true
 
   create_table "line_items", :force => true do |t|
     t.decimal  "rate",        :precision => 12, :scale => 3
@@ -79,6 +84,9 @@ ActiveRecord::Schema.define(:version => 11) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "transactions", ["journal_id"], :name => "index_transactions_on_journal_id"
+  add_index "transactions", ["id"], :name => "index_transactions_on_id", :unique => true
 
   create_table "vat_numbers", :force => true do |t|
     t.string   "identifier",   :limit => 12

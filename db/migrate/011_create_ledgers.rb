@@ -25,6 +25,8 @@ class CreateLedgers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :ledgers, :id, :unique => true
   end
 
   def self.down

@@ -10,6 +10,13 @@
     :media => "screen",
     :cache => "hmrc" %>
   <%= stylesheet_link_tag "hmrc/print", :media => "print" %>
+  <!--[if IE 7]>
+    <%=stylesheet_link_tag "hmrc/ie7fix.css", :media => "screen" %>
+  <![endif]--><!--[if IE 6]>
+    <%=stylesheet_link_tag "hmrc/ie6fix.css", :media => "screen" %>
+  <![endif]--><!--[if IE 5]>
+    <%=stylesheet_link_tag "hmrc/ie5fix.css", :media => "screen" %>
+  <![endif]-->
 </head>
 <body>
 
@@ -45,13 +52,13 @@
        File a Return
        </li> 
        <li>
-       <%= link_to ('1. Welcome', '#') %>
+       <%= link_to('1. Welcome', '#') %>
        </li>
        <li class="selected">
-       <%= link_to ('2. Load Journals', new_ledgers_path) %>
+       <%= link_to('2. Load Journals', ledgers_path) %>
        </li>
        <li>
-       <%= link_to ('3. Augment Journals', 'augmentations_path') %>
+       <%= link_to('3. Augment Journals', 'augmentations_path') %>
        </li>
       </ul>
     </div>

@@ -30,7 +30,7 @@ class LedgersController < ApplicationController
       else
         flash[:notice] = "#{handle_singular(number_of_journals, 'Journal')} uploaded."
       end
-      format.html { render :action => "show" }
+      format.html { redirect_to :action => "show" }
     end
   end
 

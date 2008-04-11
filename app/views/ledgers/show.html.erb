@@ -16,14 +16,15 @@
   </tfoot>
   <tbody>
     <%- for fred in @ledger.journals -%>
+    <%- journal_cycle = cycle("odd", "even") -%>
       <%- for jim in fred.transactions -%>
-    <tr class="<%= cycle("odd", "even") %>">
-      <td><%=h(fred.org_id)%></td>
+    <tr class="<%= journal_cycle %>">
+      <td class="numeric"><%=h(fred.org_id)%></td>
       <td><%=h(fred.name).first(12)%></td>
       <td><%=h(fred.org_type).first(12)%></td>
       <td><%=h(fred.folio)%></td>
       <td><%=h(jim.account).first(12)%></td>
-      <td><%=number_with_delimiter(jim.amount)%></td>
+      <td class="numeric"><%=number_to_currency(jim.amount, :unit => "")%></td>
     </tr>
       <%-end-%>
     <%-end-%>

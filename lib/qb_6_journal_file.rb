@@ -25,6 +25,7 @@ class Qb6JournalFile
   def initialize(from_file)
     @file = from_file
     @current_split = [ "" ] * 8
+    @current_journal = {}
     get_columns
   end
 
@@ -36,7 +37,7 @@ class Qb6JournalFile
     @file.each_line do |line| 
       @current_split = split_line(line)
       if transaction_line? then
-        @current_journal[:new_transactions] << create_transaction
+        @current_journal[:new_transactions] && @current_journal[:new_transactions] << create_transaction
       elsif journal_line? then
         @current_journal = create_journal
       elsif total_line? then

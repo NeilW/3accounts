@@ -20,7 +20,7 @@
 
 set :application, "3accounts"
 set :repository,  "git://github.com/NeilW/3accounts.git"
-set :branch, "master"
+set :branch, "3report"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location

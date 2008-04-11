@@ -27,6 +27,9 @@ class CreateTransactions < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :transactions, :id, :unique => true
+    add_index :transactions, :journal_id
   end
 
   def self.down
