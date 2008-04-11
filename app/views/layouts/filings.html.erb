@@ -53,7 +53,12 @@
        </li> 
        <%= classified_list_link('1. Welcome', '#') %>
        <%= classified_list_link('2. Load Journals', new_ledgers_path) %>
-       <%= classified_list_link('3. Update Journals', ledgers_path(params)) %>
+       <%= classified_list_link('3. Update Journals',
+                                if params[:page]
+                                  ledgers_path(:page => params[:page])
+                                else
+                                  ledgers_path
+                                end) %>
       </ul>
     </div>
     <div class="column page-column">
