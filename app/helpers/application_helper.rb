@@ -22,7 +22,7 @@
 module ApplicationHelper
 
   def classify_link_if_current(link_text, options = {}, html_options = {})
-    html_options[:class] ||="current" if current_page?(options)
+    html_options.reverse_merge! :class => "current" if current_page?(options)
     link_to(link_text, options, html_options)
   end
 
@@ -40,5 +40,7 @@ module ApplicationHelper
     end
     html
   end
+
+  Time::DATE_FORMATS[:uk] = "%d-%b-%y"
 
 end

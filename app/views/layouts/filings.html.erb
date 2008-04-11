@@ -51,15 +51,9 @@
        <li class="first">
        File a Return
        </li> 
-       <li>
-       <%= link_to('1. Welcome', '#') %>
-       </li>
-       <li class="selected">
-       <%= link_to('2. Load Journals', ledgers_path) %>
-       </li>
-       <li>
-       <%= link_to('3. Augment Journals', 'augmentations_path') %>
-       </li>
+       <%= classified_list_link('1. Welcome', '#') %>
+       <%= classified_list_link('2. Load Journals', new_ledgers_path) %>
+       <%= classified_list_link('3. Update Journals', ledgers_path(params)) %>
       </ul>
     </div>
     <div class="column page-column">

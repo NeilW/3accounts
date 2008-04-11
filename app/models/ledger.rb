@@ -21,6 +21,7 @@
 require 'qb_6_journal_file'
 class Ledger < ActiveRecord::Base
   has_many :journals, :dependent => :delete_all, :include => :transactions
+  has_many :transactions, :through => :journals
   has_many :invoices, :conditions => ['org_type = ?', 'Invoice'],
     :class_name => 'Journal'
   has_many :bills, :conditions => ['org_type = ?', 'Bill'],

@@ -1,0 +1,16 @@
+<tr class="<%= journal_cycle %>">
+  <% if ledger_transaction_counter == 0 -%>
+    <td class="numeric"><%=h(ledger_journal.org_id)%></td>
+    <td class="numeric"><%=h(ledger_journal.posted_at.to_s(:uk))%></td>
+    <td><%=h(ledger_journal.name).first(max_column_size)%></td>
+    <td><%=h(ledger_journal.org_type).first(max_column_size)%></td>
+    <td><%=h(ledger_journal.folio)%></td>
+  <% else -%>
+    <td />
+      <td colspan=4> 
+        <%= link_to 'Make Periodic', '#' if ledger_transaction_counter == 1 %>
+      </td>
+  <% end -%>
+  <td><%=h(ledger_transaction.account).first(max_column_size)%></td>
+  <td class="numeric"><%=number_to_currency(ledger_transaction.amount, :unit => "")%></td>
+</tr>

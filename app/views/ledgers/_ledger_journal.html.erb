@@ -1,0 +1,10 @@
+<%= render :partial => 'ledger_transaction',
+  :collection => ledger_journal.transactions,
+  :locals => {
+    :journal_cycle => cycle("odd", "even"),
+    :ledger_journal => ledger_journal,
+    :max_column_size => 13
+  }
+%>
+
+

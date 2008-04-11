@@ -1,10 +1,22 @@
-<% content_for :title, '2. Load Journals' -%>
-<% content_for :header, '2. Load Journals' -%>
+<% content_for :title, '3. Update Journals' -%>
+<% content_for :header, '3. Update Journals' -%>
+<ul class="navigation">
+  <li>
+  <p>
+  <%= link_to 'Delete Journals', {:action => "destroy", :id => @ledger},
+    :confirm => "Are you sure you want to remove the journals?",
+    :method => :delete
+  %>
+  </p>
+  </li>
+</ul>
 
+<% paginated_section @journals do %>
 <table class="default">
   <thead>
     <tr>
       <th>Id</th>
+      <th>Tax Point</th>
       <th>Name</th>
       <th>Type</th>
       <th>Folio</th>
@@ -15,18 +27,7 @@
   <tfoot>
   </tfoot>
   <tbody>
-    <%- for fred in @ledger.journals -%>
-    <%- journal_cycle = cycle("odd", "even") -%>
-      <%- for jim in fred.transactions -%>
-    <tr class="<%= journal_cycle %>">
-      <td class="numeric"><%=h(fred.org_id)%></td>
-      <td><%=h(fred.name).first(12)%></td>
-      <td><%=h(fred.org_type).first(12)%></td>
-      <td><%=h(fred.folio)%></td>
-      <td><%=h(jim.account).first(12)%></td>
-      <td class="numeric"><%=number_to_currency(jim.amount, :unit => "")%></td>
-    </tr>
-      <%-end-%>
-    <%-end-%>
+    <%= render :partial => 'ledger_journal', :collection => @journals %>
   </tbody>
 </table>
+<% end -%>
