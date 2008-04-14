@@ -1,0 +1,23 @@
+<% content_for :title, '3. Update Journals' -%>
+<% content_for :header, '3. Update Journals' -%>
+
+<% form_for @period, :url => journal_period_path do |f| %>
+  <p>
+  <label>Start At</label>
+    <%= f.calendar_date_select :start_at %>
+    <%# f.date_select :start_at, :order => [:day, :month, :year] %>
+  </p>
+  <p>
+  <label>End At</label>
+   <%= f.calendar_date_select :end_at %>
+  <%# f.date_select :end_at, :order => [:day, :month, :year] %>
+  </p>
+  <p>
+      <%= f.submit "Alter Period"%>
+  <% if @journal.period -%>
+    or <%=link_to "Return to a point invoice", {:action => "destroy", :journal_id => @journal}, :method => :delete %>
+  <% end -%>
+  </p>
+<% end %>
+
+<%= link_to 'Back', :back %>

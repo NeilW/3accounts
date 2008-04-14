@@ -65,3 +65,34 @@ def status_code(type)
     type
   end
 end
+
+module Spec
+  module Rails
+    module Matchers
+      class Validate  #:nodoc:
+
+        def matches?(model)
+          @model = model
+          @model.valid?
+        end
+
+        def failure_message
+          "#{@model.class} expected to be valid but had errors:\n  #{@model.errors.full_messages.join("\n  ")}"
+        end
+
+        def negative_failure_message
+          "#{@model.class} expected to have errors, but it did not"
+        end
+
+        def description
+          "be valid"
+        end
+
+      end
+
+      def validate
+        Validate.new
+      end
+    end
+  end
+end

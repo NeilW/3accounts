@@ -36,7 +36,7 @@ describe "Loading a Ledger" do
   before(:each) do
     @journal_file = [{
       :org_type => "Invoice",
-      :org_id => 2555,
+      :org_id => 3124,
       :posted_at => "2008-02-29",
       :new_transactions => [{
         :account => "Receivable",
@@ -80,64 +80,6 @@ describe "Loading a Ledger" do
         load_journal_file
       }.should_not change(Ledger, :count)
     end
-  end
-
-end
-
-describe "Quickbooks load class" do
-
-  def get_journals
-    @test.collect {|journal| journal}
-  end
-
-  describe "with a valid file" do
-    before(:each) do
-      @qb_extract = StringIO.new <<-DOC
-Trans no	Type	Date	Num	Name	Memo	Account	Debit	Credit
-2555	Deposit	01/11/2006			Interest	Abbey National	0.50	
-					Interest	Interest Income		0.50
-							0.50	0.50
-2556	Credit Card Charge	03/11/2006	387565015	Virgin Mobile		Directors Loan		1.56
-				Virgin Mobile	Mobiles	Mobile	1.33	
-				Virgin Mobile	Total VAT	VAT Control	0.23	
-							1.56	1.56
-2558	Bill	15/11/2006		Ebay International		Accounts Payable		4.48
-				Ebay International	Ebay Charges	eBay Charges	4.48	
-				Ebay International	Total VAT	VAT Control	0.00	
-							4.48	4.48
-DOC
-      @test = Qb6JournalFile.new(@qb_extract)
-    end
-    
-    it "should load an extract correctly" do
-      get_journals.should have(3).items
-    end
-
-    it "should have a nil name" do
-      @test.name.should be_nil
-    end
-
-  end
-
-  describe "with faulty input" do
-
-    it "should error with an empty string as input" do
-      lambda {
-        @test = Qb6JournalFile.new("")
-      }.should raise_error(ArgumentError)
-    end
-
-    it "should error with nil as input" do
-      lambda {
-        @test = Qb6JournalFile.new(nil)
-      }.should raise_error(ArgumentError)
-    end
-
-    it "should handle an empty file" do
-      @test = Qb6JournalFile.new(StringIO.new(""))
-      get_journals.should == []
-    end
-
   end
 
 end

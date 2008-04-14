@@ -18,27 +18,21 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-module LedgersHelper
+class Period < ActiveRecord::Base
+  belongs_to :journal
+  validates_uniqueness_of :journal_id
+  validates_presence_of :start_at
+  validates_presence_of :end_at
+  validates_existence_of :journal
 
-  def classified_list_link(link_text, options = {}, html_options = {})
-    select = if current_page?(options)
-      {:class => :selected}
-    else
-      {}
-    end
-    content_tag(:li,
-                link_to(link_text, options, html_options),
-                select)
+protected
+  def validate
+    errors.add_to_base("start_at must be before end_at") unless has_sequential_dates?
   end
 
-  def period_link(journal)
-    Date::DATE_FORMATS[:uk] = "%d-%b-%y"
-    period = journal.period
-    if period
-      link_to "Covers #{period.start_at.to_s(:uk)} to #{period.end_at.to_s(:uk)}", edit_journal_period_path(journal)
-    else
-      link_to "Make Periodic", new_journal_period_path(journal)
-    end
+  private
+  def has_sequential_dates?
+    end_at && start_at && end_at > start_at
   end
 
 end

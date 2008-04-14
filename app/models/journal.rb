@@ -20,6 +20,7 @@
 
 class Journal < ActiveRecord::Base
   has_many :transactions, :dependent => :delete_all
+  has_one :period, :dependent => :delete
   belongs_to :ledger
 
   validates_presence_of(:org_id)

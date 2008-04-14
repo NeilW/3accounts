@@ -30,19 +30,44 @@ describe LedgersController do
       get :show
     end
   
-    it "should be successful" do
-      pending
+    it "should ask for journals if none found" do
+      Ledger.should_receive(:find).with(:first).and_return(nil)
+      do_get
+      flash[:error].should_not be_blank
+      response.should redirect_to(new_ledgers_url)
     end
+
+    it "should paginate journals if ledger found" do
+      @ledger = mock_model(Ledger)
+      @journals = [Journal.new]
+      @ledger.stub!(:journals).and_return(@journals)
+      Journal.stub!(:paginate).and_return(@journals)
+      Ledger.should_receive(:find).with(:first).and_return(@ledger)
+      do_get
+      flash[:error].should be_nil
+      response.should render_template("ledgers/show")
+    end
+
   end
 
   describe "handling GET /ledgers/new" do
 
-    def do_get
+    def do_new
       get :new
     end
 
-    it "should be successful" do
-      pending
+    it "should be successful when no existing journals" do
+      Ledger.should_receive(:find).with(:first).and_return(nil)
+      do_new
+      assigns[:ledger].should be_new_record
+      response.should render_template("ledgers/new")
+    end
+
+    it "should error when journals exist" do
+      Ledger.should_receive(:find).with(:first).and_return(true)
+      do_new
+      flash[:error].should_not be_blank
+      response.should redirect_to(ledgers_url)
     end
   
   end

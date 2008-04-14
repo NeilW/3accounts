@@ -18,7 +18,6 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-require 'qb_6_journal_file'
 class Ledger < ActiveRecord::Base
   has_many :journals, :dependent => :delete_all, :include => :transactions
   has_many :transactions, :through => :journals

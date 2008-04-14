@@ -1,0 +1,13 @@
+<p>
+  <b>Start at:</b>
+  <%=h @period.start_at %>
+</p>
+
+<p>
+  <b>End at:</b>
+  <%=h @period.end_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_period_path(@period) %> |
+<%= link_to 'Back', periods_path %>

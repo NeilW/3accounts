@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+right:
+  start_at: 2008-02-26
+  end_at: 2008-10-3
+  journal: one
+
+wrong:
+  start_at: 2008-04-14
+  end_at: 2008-04-14
+  journal: one

@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  org_type: Invoice
+  name: "Something"
+  org_id: 2555
+  posted_at: 2008-04-10
+
+unattached:
+  org_type: Invoice
+  name: "Unattached"
+  org_id: 2556
+  posted_at: 2008-04-09
+

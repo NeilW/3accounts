@@ -25,6 +25,14 @@ describe "A journal" do
   before(:each) do
     @journal = Journal.new
   end
+
+  it "should have many transactions" do
+    Journal.should have_many(:transactions)
+  end
+
+  it "should have on period" do
+    Journal.should have_one(:period)
+  end
   
   it "should validate presence of org_type" do
     @journal.should validate_presence_of(:org_type)

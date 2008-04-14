@@ -20,6 +20,8 @@
 
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :journals, :has_one => :period
+
   map.resources :businesses
 
   map.resources :customers
