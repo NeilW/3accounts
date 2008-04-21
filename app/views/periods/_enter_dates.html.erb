@@ -1,7 +1,7 @@
-<% content_for :title, '3. Update Journals' -%>
-<% content_for :header, '3. Update Journals' -%>
+<% content_for :title, '3. Mark Periods' -%>
+<% content_for :header, '3. Mark Periods' -%>
 
-<% form_for @period, :url => journal_period_path do |f| %>
+<% form_for @period, :url => periodic_period_path do |f| %>
   <table summary = "period form">
     <colgroup>
       <col class="labels">
@@ -35,7 +35,7 @@
   <ul class="navigation">
     <% if @journal.period -%>
       <li>
-          <%=link_to "Return to a point invoice", {:action => "destroy", :journal_id => @journal}, :method => :delete %>
+          <%=link_to "Remove period from journal", {:action => "destroy", :periodic_id => @journal}, :method => :delete %>
       </li>
     <% end -%>
     <li>

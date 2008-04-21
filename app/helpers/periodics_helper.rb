@@ -18,32 +18,15 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-class Journal < ActiveRecord::Base
-  has_many :transactions, :dependent => :delete_all
-  has_one :period, :dependent => :delete
-  has_one :fixed_asset, :dependent => :delete
-  belongs_to :ledger
+module PeriodicsHelper
 
-  validates_presence_of(:org_id)
-  validates_presence_of(:org_type)
-  validates_presence_of(:posted_at)
-  validates_presence_of(:transactions)
-  validates_uniqueness_of(:org_id)
-  validates_existence_of(:ledger, :allow_nil => true)
-
-  def new_transactions=(transaction_list)
-    transaction_list.each do |transaction|
-      transactions.build transaction
-    end
-  end
-
-  def original_cost
-    transactions.inject(0) do |sum,transaction|
-      if transaction.amount < 0 || transaction.account =~ /Vat/
-        sum
-      else
-        sum + transaction.amount
-      end
+  def period_link(journal)
+    Date::DATE_FORMATS[:uk] = "%d-%b-%y"
+    period = journal.period
+    if period
+      link_to "Covers #{period.start_at.to_s(:uk)} to #{period.end_at.to_s(:uk)}", edit_periodic_period_path(journal)
+    else
+      link_to "Make Periodic", new_periodic_period_path(journal)
     end
   end
 

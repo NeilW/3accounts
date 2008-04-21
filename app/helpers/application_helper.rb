@@ -43,4 +43,23 @@ module ApplicationHelper
 
   Time::DATE_FORMATS[:uk] = "%d-%b-%y"
 
+  def classified_list_link(link_text, options = {}, html_options = {})
+    select = if current_page?(options)
+      {:class => :selected}
+    else
+      {}
+    end
+    content_tag(:li,
+                link_to(link_text, options, html_options),
+                select)
+  end
+
+  def paged
+    if params[:page]
+      yield({:page => params[:page]})
+    else
+      yield({})
+    end
+  end
+
 end

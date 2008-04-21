@@ -33,6 +33,10 @@ describe "A journal" do
   it "should have on period" do
     Journal.should have_one(:period)
   end
+
+  it "should have one asset" do
+    Journal.should have_one(:fixed_asset)
+  end
   
   it "should validate presence of org_type" do
     @journal.should validate_presence_of(:org_type)
@@ -62,7 +66,7 @@ describe "A journal" do
     before(:each) do
       @journal = Journal.new(
       :org_type => "Invoice",
-      :org_id => 2555,
+      :org_id => 3145,
       :posted_at => "2008-02-29",
       :new_transactions => [{
         :account => "Receivable",

@@ -11,28 +11,14 @@ describe PeriodsController do
   describe "handling GET /journals/:id/period" do
 
     def do_get
-      get :show, :journal_id => @journal.id
+      get :show, :periodic_id => @journal.id
     end
 
-    it "should be successful" do
+    it "should redirect to edit" do
       do_get
-      response.should be_success
+      response.should redirect_to(edit_periodic_period_path(@journal))
     end
-  
-    it "should render show template" do
-      do_get
-      response.should render_template('show')
-    end
-  
-    it "should find the period requested" do
-      do_get
-      assigns[:period].should == @period
-    end
-  
-    it "should assign the found period for the view" do
-      do_get
-      assigns[:period].should equal(@period)
-    end
+
   end
 
   describe "handling GET /periods/new" do
@@ -43,7 +29,7 @@ describe PeriodsController do
     end
   
     def do_get
-      get :new, :journal_id => @journal.id
+      get :new, :periodic_id => @journal.id
     end
 
     it "should be successful" do
@@ -75,7 +61,7 @@ describe PeriodsController do
   describe "handling GET journals/:id/period/edit" do
 
     def do_get
-      get :edit, :journal_id => @journal.id
+      get :edit, :periodic_id => @journal.id
     end
 
     it "should be successful" do
@@ -113,7 +99,7 @@ describe PeriodsController do
   
       def do_post
         @period.should_receive(:save).and_return(true)
-        post :create, :journal_id => @journal.id, :period => {}
+        post :create, :periodic_id => @journal.id, :period => {}
       end
   
       it "should create a new period" do
@@ -121,9 +107,9 @@ describe PeriodsController do
         do_post
       end
 
-      it "should redirect to the new period" do
+      it "should redirect to the periodics list" do
         do_post
-        response.should redirect_to(ledgers_url)
+        response.should redirect_to(periodics_path)
       end
       
     end
@@ -132,7 +118,7 @@ describe PeriodsController do
 
       def do_post
         @period.should_receive(:save).and_return(false)
-        post :create, :journal_id => @journal.id, :period => {}
+        post :create, :periodic_id => @journal.id, :period => {}
       end
   
       it "should re-render 'new'" do
@@ -154,7 +140,7 @@ describe PeriodsController do
 
       def do_put
         @period.should_receive(:update_attributes).and_return(true)
-        put :update, :journal_id => @journal.id, :id => "1"
+        put :update, :periodic_id => @journal.id, :id => "1"
       end
 
       it "should find the period requested" do
@@ -172,9 +158,9 @@ describe PeriodsController do
         assigns(:period).should equal(@period)
       end
 
-      it "should redirect to the period" do
+      it "should redirect to the periodics list" do
         do_put
-        response.should redirect_to(ledgers_url)
+        response.should redirect_to(periodics_path)
       end
 
     end
@@ -183,7 +169,7 @@ describe PeriodsController do
 
       def do_put
         @period.should_receive(:update_attributes).and_return(false)
-        put :update, :journal_id => @journal.id, :id => "1"
+        put :update, :periodic_id => @journal.id, :id => "1"
       end
 
       it "should re-render 'edit'" do
@@ -202,7 +188,7 @@ describe PeriodsController do
     end
   
     def do_delete
-      delete :destroy, :journal_id => @journal.id
+      delete :destroy, :periodic_id => @journal.id
     end
 
     it "should find the period requested" do
@@ -215,9 +201,9 @@ describe PeriodsController do
       do_delete
     end
   
-    it "should redirect to the periods list" do
+    it "should redirect to the periodics list" do
       do_delete
-      response.should redirect_to(ledgers_url)
+      response.should redirect_to(periodics_path)
     end
   end
 end

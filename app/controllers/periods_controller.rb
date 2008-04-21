@@ -3,17 +3,12 @@ class PeriodsController < ApplicationController
   before_filter :get_journal
   layout 'filings'
 
-  # GET journals/:journal_id/period
+  # GET periodics/:periodic_id/period
   def show
-    @period = @journal.period
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @period }
-    end
+    redirect_to(edit_periodic_period_path(@journal))
   end
 
-  # GET journals/:journal_id/period/new
+  # GET periodics/:periodic_id/period/new
   def new
     @period = Period.new(:start_at => @journal.posted_at, :end_at => @journal.posted_at)
 
@@ -23,12 +18,12 @@ class PeriodsController < ApplicationController
     end
   end
 
-  # GET journals/:journal_id/period/edit
+  # GET periodics/:periodic_id/period/edit
   def edit
     @period = @journal.period
   end
 
-  # POST /journals/:journal_id/period
+  # POST /periodics/:periodic_id/period
   # POST /periods.xml
   def create
     @journal.period = Period.new(params[:period])
@@ -37,7 +32,7 @@ class PeriodsController < ApplicationController
     respond_to do |format|
       if @period.save
         flash[:notice] = 'Period was successfully created.'
-        format.html { redirect_to(ledgers_url) }
+        format.html { redirect_to(periodics_path) }
         format.xml  { render :xml => @period, :status => :created, :location => journal_period_url }
       else
         format.html { render :action => "new" }
@@ -46,14 +41,14 @@ class PeriodsController < ApplicationController
     end
   end
 
-  # PUT journals/:journal_id/period
+  # PUT periodics/:periodic_id/period
   def update
     @period = @journal.period
 
     respond_to do |format|
       if @period.update_attributes(params[:period])
         flash[:notice] = 'Period was successfully updated.'
-        format.html { redirect_to(ledgers_url) }
+        format.html { redirect_to(periodics_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -62,7 +57,7 @@ class PeriodsController < ApplicationController
     end
   end
 
-  # DELETE journals/:journal_id/period
+  # DELETE periodics/:periodic_id/period
   def destroy
     @period = @journal.period
     @period.destroy
@@ -70,7 +65,7 @@ class PeriodsController < ApplicationController
     respond_to do |format|
       format.html do
         flash[:notice] = "Period was successfully removed."
-        redirect_to(ledgers_url)
+        redirect_to(periodics_path)
       end
       format.xml  { head :ok }
     end
@@ -79,7 +74,7 @@ class PeriodsController < ApplicationController
   protected
 
   def get_journal
-    @journal = Journal.find(params[:journal_id])
+    @journal = Journal.find(params[:periodic_id])
   end
 
 end

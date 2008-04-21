@@ -18,33 +18,34 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-class Journal < ActiveRecord::Base
-  has_many :transactions, :dependent => :delete_all
-  has_one :period, :dependent => :delete
-  has_one :fixed_asset, :dependent => :delete
-  belongs_to :ledger
+require File.dirname(__FILE__) + '/../spec_helper'
 
-  validates_presence_of(:org_id)
-  validates_presence_of(:org_type)
-  validates_presence_of(:posted_at)
-  validates_presence_of(:transactions)
-  validates_uniqueness_of(:org_id)
-  validates_existence_of(:ledger, :allow_nil => true)
+describe BillsController do
+  describe "handling GET /bills" do
 
-  def new_transactions=(transaction_list)
-    transaction_list.each do |transaction|
-      transactions.build transaction
+    before(:each) do
     end
-  end
-
-  def original_cost
-    transactions.inject(0) do |sum,transaction|
-      if transaction.amount < 0 || transaction.account =~ /Vat/
-        sum
-      else
-        sum + transaction.amount
-      end
+  
+    def do_get
+      get :index
     end
-  end
+  
+    it "should render index template " do
+      do_get
+      flash[:error].should be_nil
+      response.should render_template("bills/index")
+    end
 
+    it "should paginate journals if ledger found" do
+      @ledger = mock_model(Ledger)
+      @journals = [Journal.new]
+      @ledger.stub!(:bills).and_return(@journals)
+      Journal.stub!(:paginate).and_return(@journals)
+      Ledger.should_receive(:find).with(:first).and_return(@ledger)
+      do_get
+      assigns[:journals].should == @journals
+    end
+
+  end
 end
+

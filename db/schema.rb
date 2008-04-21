@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 12) do
+ActiveRecord::Schema.define(:version => 13) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(:version => 12) do
   create_table "customers", :force => true do |t|
     t.string   "name"
     t.integer  "business_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fixed_assets", :force => true do |t|
+    t.decimal  "bought_for", :precision => 12, :scale => 2
+    t.decimal  "sold_for",   :precision => 12, :scale => 2
+    t.date     "bought_on"
+    t.date     "sold_on"
+    t.integer  "journal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -24,7 +24,7 @@ class LedgersController < ApplicationController
   # GET /ledgers/
   def show
     @ledger = Ledger.find(:first)
-    @journals = @ledger && @ledger.periodic_journals.paginate(:page => params[:page], :order => 'posted_at', :per_page => 5)
+    @journals = @ledger && @ledger.journals.paginate(:page => params[:page], :order => 'posted_at', :per_page => 5)
     unless @journals
       flash[:error] = "You need to load some Journals first"
       redirect_to new_ledgers_url

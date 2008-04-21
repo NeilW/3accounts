@@ -7,9 +7,12 @@
     <td><%=h(ledger_journal.folio)%></td>
   <% else -%>
     <td />
-      <td colspan=4> 
-        <%= period_link(ledger_journal) if ledger_transaction_counter == 1 %>
-      </td>
+    <td colspan=4> 
+      <% if ledger_transaction_counter == 1  -%>
+        <%= render :partial => 'transaction_links',
+          :locals => {:journal => ledger_journal } %>
+      <% end -%>
+    </td>
   <% end -%>
   <td><%=h(ledger_transaction.account).first(max_column_size)%></td>
   <td class="numeric"><%=number_to_currency(ledger_transaction.amount, :unit => "")%></td>

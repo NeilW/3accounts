@@ -55,15 +55,8 @@
         </li> 
         <%= classified_list_link('1. Welcome', '#') %>
         <%= classified_list_link('2. Load Journals', new_ledgers_path) %>
-        <%= classified_list_link('3. Mark Periods',
-                                if params[:page]
-                                  ledgers_path(:page => params[:page])
-                                else
-                                  ledgers_path
-                                end)
-                              %>
-        <%= classified_list_link('4. Mark Assets', '#')
-                            %>
+        <%= classified_list_link('3. Mark Periods', paged {|options| periodics_path(options)}) %>
+        <%= classified_list_link('4. Mark Assets', paged {|options| bills_path(options)}) %>
       </ul>
     </div>
     <div class="column page-column">

@@ -18,33 +18,28 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-class Journal < ActiveRecord::Base
-  has_many :transactions, :dependent => :delete_all
-  has_one :period, :dependent => :delete
-  has_one :fixed_asset, :dependent => :delete
-  belongs_to :ledger
+class FixedAsset < ActiveRecord::Base
+  belongs_to :journal
+  validates_uniqueness_of(:journal_id)
+  validates_presence_of(:bought_for)
+  validates_presence_of(:bought_on)
+  validates_numericality_of(:bought_for, :greater_than_or_equal_to => 0)
+  validates_numericality_of(:sold_for, :greater_than_or_equal_to => 0, :allow_nil => true)
+  validates_existence_of :journal
 
-  validates_presence_of(:org_id)
-  validates_presence_of(:org_type)
-  validates_presence_of(:posted_at)
-  validates_presence_of(:transactions)
-  validates_uniqueness_of(:org_id)
-  validates_existence_of(:ledger, :allow_nil => true)
+  protected
 
-  def new_transactions=(transaction_list)
-    transaction_list.each do |transaction|
-      transactions.build transaction
-    end
+  def validate
+    errors.add_to_base("Date asset sold must not be before date bought") unless has_sequential_dates?
+    errors.add_to_base("Date sold and price must both be present") unless has_complete_sale_entry?
   end
 
-  def original_cost
-    transactions.inject(0) do |sum,transaction|
-      if transaction.amount < 0 || transaction.account =~ /Vat/
-        sum
-      else
-        sum + transaction.amount
-      end
-    end
+  def has_sequential_dates?
+    sold_on.nil? || bought_on && sold_on >= bought_on
+  end
+
+  def has_complete_sale_entry?
+    (sold_for && sold_on) || (sold_for.nil? && sold_on.nil?)
   end
 
 end

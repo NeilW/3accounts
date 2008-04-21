@@ -20,38 +20,4 @@
 
 module LedgersHelper
 
-  def classified_list_link(link_text, options = {}, html_options = {})
-    select = if current_page?(options)
-      {:class => :selected}
-    else
-      {}
-    end
-    content_tag(:li,
-                link_to(link_text, options, html_options),
-                select)
-  end
-
-  def period_link(journal)
-    Date::DATE_FORMATS[:uk] = "%d-%b-%y"
-    period = journal.period
-    if period
-      link_to "Covers #{period.start_at.to_s(:uk)} to #{period.end_at.to_s(:uk)}", edit_journal_period_path(journal)
-    else
-      link_to "Make Periodic", new_journal_period_path(journal)
-    end
-  end
-
-  def asset_link(journal)
-    if journal.org_type == "Bill"
-      link_to "Mark as Asset", "#"
-    end
-  end
-
-  def journal_amendment_links(journal)
-    html = [period_link(journal)]
-    temp = asset_link(journal)
-    html << temp if temp
-    html.join(" | ")
-  end
-
 end

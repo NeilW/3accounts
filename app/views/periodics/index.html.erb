@@ -1,16 +1,5 @@
-<% content_for :title, '2. Load Journals' -%>
-<% content_for :header, '2. Load Journals' -%>
-<ul class="navigation">
-  <li>
-  <p>
-  <%= link_to 'Delete Journals', {:action => "destroy", :id => @ledger},
-    :confirm => "Are you sure you want to remove the journals?",
-    :method => :delete
-  %>
-  </p>
-  </li>
-</ul>
-
+<% content_for :title, '3. Mark Periods' -%>
+<% content_for :header, '3. Mark Periods' -%>
 <% paginated_section @journals do %>
 <table class="default">
   <thead>

@@ -1,4 +1,4 @@
-<%= render :partial => 'ledger_transaction',
+<%= render :partial => 'shared/ledger_transaction',
   :collection => ledger_journal.transactions,
   :locals => {
     :journal_cycle => cycle("odd", "even"),

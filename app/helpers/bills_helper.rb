@@ -18,32 +18,14 @@
 #    <http://www.gnu.org/licenses/>.
 #
 
-class Journal < ActiveRecord::Base
-  has_many :transactions, :dependent => :delete_all
-  has_one :period, :dependent => :delete
-  has_one :fixed_asset, :dependent => :delete
-  belongs_to :ledger
+module BillsHelper
 
-  validates_presence_of(:org_id)
-  validates_presence_of(:org_type)
-  validates_presence_of(:posted_at)
-  validates_presence_of(:transactions)
-  validates_uniqueness_of(:org_id)
-  validates_existence_of(:ledger, :allow_nil => true)
-
-  def new_transactions=(transaction_list)
-    transaction_list.each do |transaction|
-      transactions.build transaction
-    end
-  end
-
-  def original_cost
-    transactions.inject(0) do |sum,transaction|
-      if transaction.amount < 0 || transaction.account =~ /Vat/
-        sum
-      else
-        sum + transaction.amount
-      end
+  def asset_link(journal)
+    asset = journal.fixed_asset
+    if asset
+      link_to "Remove Asset Record", bill_asset_path(journal), :method => :delete
+    else
+      link_to "Mark as an Asset", bill_asset_path(journal), :method => :post
     end
   end
 
