@@ -41,4 +41,17 @@ module LedgersHelper
     end
   end
 
+  def asset_link(journal)
+    if journal.org_type == "Bill"
+      link_to "Mark as Asset", "#"
+    end
+  end
+
+  def journal_amendment_links(journal)
+    html = [period_link(journal)]
+    temp = asset_link(journal)
+    html << temp if temp
+    html.join(" | ")
+  end
+
 end

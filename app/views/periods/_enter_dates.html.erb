@@ -2,22 +2,43 @@
 <% content_for :header, '3. Update Journals' -%>
 
 <% form_for @period, :url => journal_period_path do |f| %>
-  <p>
-  <label>Start At</label>
-    <%= f.calendar_date_select :start_at %>
-    <%# f.date_select :start_at, :order => [:day, :month, :year] %>
-  </p>
-  <p>
-  <label>End At</label>
-   <%= f.calendar_date_select :end_at %>
-  <%# f.date_select :end_at, :order => [:day, :month, :year] %>
-  </p>
-  <p>
-      <%= f.submit "Alter Period"%>
-  <% if @journal.period -%>
-    or <%=link_to "Return to a point invoice", {:action => "destroy", :journal_id => @journal}, :method => :delete %>
-  <% end -%>
-  </p>
+  <table summary = "period form">
+    <colgroup>
+      <col class="labels">
+      <col class="data">
+    </colgroup>
+    <tbody>
+      <tr>
+        <th>
+          <label>Start At</label>
+        </th>
+        <td>
+          <%= f.calendar_date_select :start_at %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <label>End At</label>
+        </th>
+        <td>
+          <%= f.calendar_date_select :end_at %>
+        </td>
+      </tr>
+      <tr class="buttons">
+        <td colspan="2">
+    <%= f.submit "Alter Period"%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 <% end %>
-
-<%= link_to 'Back', :back %>
+  <ul class="navigation">
+    <% if @journal.period -%>
+      <li>
+          <%=link_to "Return to a point invoice", {:action => "destroy", :journal_id => @journal}, :method => :delete %>
+      </li>
+    <% end -%>
+    <li>
+      <%= link_to 'Back', :back %>
+    </li>
+  </ul>

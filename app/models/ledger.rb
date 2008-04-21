@@ -19,32 +19,32 @@
 #
 
 class Ledger < ActiveRecord::Base
-  has_many :journals, :dependent => :delete_all, :include => :transactions
-  has_many :transactions, :through => :journals
-  has_many :invoices, :conditions => ['org_type = ?', 'Invoice'],
-    :class_name => 'Journal'
-  has_many :bills, :conditions => ['org_type = ?', 'Bill'],
-    :class_name => 'Journal'
-  has_many :transfers, :conditions => ['org_type = ?', 'Transfer'],
-    :class_name => 'Journal'
-  has_many :credit_card_charges,
-    :conditions => ['org_type = ?', 'Credit Card Charge'],
-    :class_name => 'Journal'
-  has_many :bill_payments,
-    :conditions => ['org_type = :ccard or org_type = :cheque', {:ccard => 'Bill Pmt -CCard', :cheque => 'Bill Pmt -Cheque'}],
-    :class_name => 'Journal'
-  has_many :deposits,
-    :conditions => ['org_type = ?', 'Deposit'],
-    :class_name => 'Journal'
-  has_many :cheques,
-    :conditions => ['org_type = ?', 'Cheque'],
-    :class_name => 'Journal'
-  has_many :general_journals,
-    :conditions => ['org_type = ?', 'General Journal'],
-    :class_name => 'Journal'
-  has_many :payments,
-    :conditions => ['org_type = ?', 'Payment'],
-    :class_name => 'Journal'
+  with_options :dependent => :delete_all, :include => [:transactions, :period], :class_name => 'Journal' do |ledger|
+    ledger.has_many :journals
+    ledger.has_many :transactions, :through => :journals
+    ledger.has_many :periodic_journals,
+      :conditions => ['org_type not in (?)',
+        ['Transfer', 'Bill Pmt -CCard', 'Bill Pmt -Cheque', 'Payment']]
+    ledger.has_many :invoices,
+      :conditions => ['org_type = ?', 'Invoice']
+    ledger.has_many :bills,
+      :conditions => ['org_type = ?', 'Bill']
+    ledger.has_many :transfers,
+      :conditions => ['org_type = ?', 'Transfer']
+    ledger.has_many :credit_card_charges,
+      :conditions => ['org_type = ?', 'Credit Card Charge']
+    ledger.has_many :bill_payments,
+      :conditions => ['org_type in (?)',
+        ['Bill Pmt -CCard', 'Bill Pmt -Cheque']]
+    ledger.has_many :deposits,
+      :conditions => ['org_type = ?', 'Deposit']
+    ledger.has_many :cheques,
+      :conditions => ['org_type = ?', 'Cheque']
+    ledger.has_many :general_journals,
+      :conditions => ['org_type = ?', 'General Journal']
+    ledger.has_many :payments,
+      :conditions => ['org_type = ?', 'Payment']
+  end
 
   validates_presence_of(:loaded_from)
 
