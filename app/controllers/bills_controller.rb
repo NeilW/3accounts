@@ -25,6 +25,10 @@ class BillsController < ApplicationController
   def index
     @ledger = Ledger.find(:first)
     @journals = @ledger && @ledger.bills.paginate(:page => params[:page], :order => 'posted_at', :per_page => 5)
+    unless @journals
+      flash[:error] = "You need to load some Journals first"
+      redirect_to new_ledgers_url
+    end
   end
 
 end
