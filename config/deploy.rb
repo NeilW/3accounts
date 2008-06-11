@@ -1,51 +1,101 @@
-#    3accounts - Accounts software for real people 
-#    Copyright (C) 2008, Neil Wilson, Aldur Systems
-#
-#    This file is part of 3accounts
-#
-#    3accounts is free software: you can redistribute it and/or modify it
-#    under the terms of the GNU Affero General Public License as published
-#    by the Free Software Foundation, either version 3 of the License,
-#    or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-#    Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General
-#    Public License along with this program.  If not, see
-#    <http://www.gnu.org/licenses/>.
-#
+## Generated with 'brightbox' on Wed Jun 11 12:12:33 +0100 2008
+gem 'brightbox', '>=2.0.1'
+require 'brightbox/recipes'
 
+# The name of your application.  Used for deployment directory and filenames
+# and Apache configs. Should be unique on the Brightbox
 set :application, "3accounts"
-set :repository,  "git://github.com/NeilW/3accounts.git"
-set :branch, "3report"
 
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-# set :deploy_to, "/var/www/#{application}"
-set :user, "rails"
-set :deploy_to , "/home/#{user}/#{application}"
-set :use_sudo, false
+# Primary domain name of your application. Used in the Apache configs
+set :domain, "3accounts.co.uk"
 
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
-set :scm, :git
+## List of servers
+server "3accounts.co.uk", :app, :web, :db, :primary => true
 
-role :app, "3accounts.co.uk"
-role :web, "3accounts.co.uk"
-role :db,  "3accounts.co.uk", :primary => true
+# Target directory for the application on the web and app servers.
+set(:deploy_to) { File.join("", "home", user, application) }
 
-# Redefine the application server controls to use monit.
+# URL of your source repository. This is the default one that comes on 
+# every Brightbox, you can use your own (we'll let you :)
+set :repository, "."
+set :scm, :none
+set :deploy_via, :copy
 
-namespace :deploy do
-  %W(start stop restart).each do |event|
-    desc "#{event} using Monit"
-    task event, :except => { :no_release => true } do
-      sudo "/usr/sbin/monit -g #{application} #{event} all"
-    end
-  end
-end
+### Other options you can set ##
+# Comma separated list of additional domains for Apache
+# set :domain_aliases, "www.example.com,dev.example.com"
 
+## Local Shared Area
+# These are the list of files and directories that you want
+# to share between all the releases of your application.
+# So if you have an 'upload' directory in public, add 'public/upload'
+# to the :local_shared_dirs array.
+# If you want to share the database.yml add 'config/database.yml'
+# to the :local_shared_files array.
+# The shared area is prepared with 'deploy:setup' and all the shared
+# items are symlinked in when the code is updated.
+# set :local_shared_dirs, %w(public/upload)
+# set :local_shared_files, %w(config/database.yml)
+
+# SSL Certificates. If you specify an SSL certificate name then
+# the gem will create an 'https' configuration for this application
+# TODO: Upload and install the keys on the server
+# set :ssl_certificate, "/path/to/certificate/for/my_app.crt"
+# set :ssl_key, "/path/to/key/for/my_app.key
+# or
+# set :ssl_certificate, "name_of_installed_certificate"
+
+# SSH options. The forward agent option is used so that loopback logins
+# with keys work properly
+# ssh_options[:forward_agent] = true
+
+# Forces a Pty so that svn+ssh repository access will work. You
+# don't need this if you are using a different SCM system. Note that
+# ptys stop shell startup scripts from running.
+default_run_options[:pty] = true
+
+## Logrotation
+# Where the logs are stored. Defaults to <shared_path>/log
+# set :log_dir, "central/log/path"
+# The size at which to rotate a log. e.g 1G, 100M, 5M. Defaults to 100M
+# set :log_max_size, "100M"
+# How many old compressed logs to keep. Defaults to 10
+# set :log_keep, "10"
+
+## Version Control System
+# Which version control system. Defaults to subversion if there is
+# no 'set :scm' command.
+# set :scm, :git
+# set :scm_username, "rails"
+# set :scm_password, "mysecret"
+# or be explicit
+# set :scm, :subversion
+
+## Mongrel settings
+# Host where mongrel lives. Defaults to the app server
+# set :mongrel_host, "127.0.0.1"
+# Port number where mongrel starts. Defaults to 9200
+# set :mongrel_port, 9200
+# Number of mongrel servers to start. Defaults to 2
+# set :mongrel_servers, 2
+
+## Deployment settings
+# The brightbox gem deploys as the user 'rails' by default and
+# into the 'production' environment. You can change these as required.
+# set :user, "rails"
+# set :rails_env, :production
+
+## Command running settings
+# use_sudo is switched off by default so that commands are run
+# directly as 'user' by the run command. If you switch on sudo
+# make sure you set the :runner variable - which is the user the
+# capistrano default tasks use to execute commands.
+# NB. This just affects the default recipes unless you use the
+# 'try_sudo' command to run your commands.
+# set :use_sudo, false
+# set :runner, user
+
+## Dependencies
+# Set the commands and gems that your application requires. e.g.
+# depend :remote, :gem, "will_paginate", ">=2.2.2"
+# depend :remote, :command, "brightbox"
