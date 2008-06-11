@@ -56,6 +56,8 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
+
+  #Gems
+  config.gem 'will_paginate', :version => ">= 2.2.2"
 end
 
-require 'will_paginate'
